@@ -1,8 +1,23 @@
 extends EntityStateMachine
 
+@onready var skill_manager = $SkillManager
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+
+var has_cast_skill: bool = false  # Track if we've cast the skill in this attack state
+
 func _ready() -> void:
 	add_to_group("player")
-	# ... rest of your ready function
+	setup_skills()
+
+func setup_skills() -> void:
+	# Create skills
+	var spark = SparkSkill.new()
+	var additional_projectiles = AdditionalProjectilesSupport.new()
+	
+	# Setup primary attack
+	skill_manager.add_skill_link("primary_attack")
+	var support_skills: Array = [additional_projectiles]
+	skill_manager.link_skills("primary_attack", spark, support_skills)
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -37,3 +52,36 @@ func _physics_process(delta: float) -> void:
 			handle_dying_state()
 	
 	move_and_slide()
+
+func handle_idle_state() -> void:
+	if Input.is_action_just_pressed("attack"):
+		change_state(PlayerState.ATTACKING)
+	elif velocity.length() > 0:
+		change_state(PlayerState.WALKING)
+
+func handle_walking_state() -> void:
+	if Input.is_action_just_pressed("attack"):
+		change_state(PlayerState.ATTACKING)
+	elif velocity.length() == 0:
+		change_state(PlayerState.IDLE)
+
+func handle_attacking_state() -> void:
+	if !has_cast_skill:
+		# Cast spark only once when entering attack state
+		skill_manager.use_skill("primary_attack", self)
+		has_cast_skill = true
+	
+	if !animated_sprite.is_playing():
+		has_cast_skill = false  # Reset the flag when leaving attack state
+		change_state(PlayerState.IDLE)
+
+func handle_hurt_state() -> void:
+	if !animated_sprite.is_playing():
+		change_state(PlayerState.IDLE)
+
+func handle_dying_state() -> void:
+	if !animated_sprite.is_playing():
+		die()
+
+func die() -> void:
+	is_dead = true

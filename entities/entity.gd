@@ -4,10 +4,16 @@ class_name Entity
 # Base Attributes
 var max_hp: float = 100.0
 var current_hp: float = max_hp
-var max_mana: float = 100.0
+var max_mana: float = 1000.0
 var current_mana: float = max_mana
 var base_shield: float = 0.0
 var current_shield: float = base_shield
+
+# Mana Attributes
+var mana_regeneration_rate: float = 10.0  # Base 2% per second
+var mana_regeneration_multiplier: float = 1.0  # For modifiers that increase mana regen
+var last_mana_spent_time: float = 0.0
+var mana_regen_delay: float = 1.0  # Delay in seconds before mana starts regenerating
 
 # Defensive Attributes
 var armor: float = 0.0
@@ -38,6 +44,33 @@ const ARMOR_EFFECTIVENESS = 0.1  # 10% effectiveness per point
 const EVASION_EFFECTIVENESS = 0.05  # 5% per point
 const RESISTANCE_CAP = 75.0  # Maximum resistance percentage
 const BASE_DAMAGE_REDUCTION = 0.25  # Base damage reduction from armor
+
+func _ready() -> void:
+	# Initialize current values
+	current_hp = max_hp
+	current_mana = max_mana
+
+func _process(delta: float) -> void:
+	handle_mana_regeneration(delta)
+
+func handle_mana_regeneration(delta: float) -> void:
+	# Check if enough time has passed since last mana spent
+	if Time.get_unix_time_from_system() - last_mana_spent_time < mana_regen_delay:
+		return
+		
+	# Calculate mana regeneration for this frame
+	var regen_amount = (max_mana * (mana_regeneration_rate / 100.0) * mana_regeneration_multiplier) * delta
+	
+	# Apply regeneration
+	if current_mana < max_mana:
+		current_mana = min(current_mana + regen_amount, max_mana)
+
+func spend_mana(amount: float) -> bool:
+	if current_mana >= amount:
+		current_mana -= amount
+		last_mana_spent_time = Time.get_unix_time_from_system()
+		return true
+	return false
 
 func take_hit(damage: float, damage_type: String = "physical") -> float:
 	var final_damage = calculate_damage(damage, damage_type)
@@ -126,3 +159,9 @@ func is_alive() -> bool:
 func die() -> void:
 	# Override this in child classes
 	pass
+
+func modify_mana_regen(modifier: float) -> void:
+	mana_regeneration_multiplier *= (1.0 + modifier / 100.0)
+
+func set_mana_regen_delay(delay: float) -> void:
+	mana_regen_delay = delay
