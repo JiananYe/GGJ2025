@@ -1,0 +1,306 @@
+[gd_resource type="SpriteFrames" load_steps=70 format=3 uid="uid://roeobuuy4k8n"]
+
+[ext_resource type="Texture2D" uid="uid://devvywb5byl4" path="res://entities/player/assets/wizard/attacking/Casting Spells_000.png" id="1_qgeb8"]
+[ext_resource type="Texture2D" uid="uid://bxkscq5nle17b" path="res://entities/player/assets/wizard/attacking/Casting Spells_001.png" id="2_03sn2"]
+[ext_resource type="Texture2D" uid="uid://bdovruowpxb6i" path="res://entities/player/assets/wizard/attacking/Casting Spells_002.png" id="3_gmcyd"]
+[ext_resource type="Texture2D" uid="uid://b2w453ekclkg6" path="res://entities/player/assets/wizard/attacking/Casting Spells_003.png" id="4_sqdn2"]
+[ext_resource type="Texture2D" uid="uid://cbcdqt3osnch5" path="res://entities/player/assets/wizard/attacking/Casting Spells_004.png" id="5_rrehi"]
+[ext_resource type="Texture2D" uid="uid://7tw2cmp3aepn" path="res://entities/player/assets/wizard/attacking/Casting Spells_005.png" id="6_pdot6"]
+[ext_resource type="Texture2D" uid="uid://cgc24j3yuy73u" path="res://entities/player/assets/wizard/attacking/Casting Spells_006.png" id="7_kv8ed"]
+[ext_resource type="Texture2D" uid="uid://drkqvxk80i1kj" path="res://entities/player/assets/wizard/attacking/Casting Spells_007.png" id="8_6f14h"]
+[ext_resource type="Texture2D" uid="uid://buwuiocujfsui" path="res://entities/player/assets/wizard/attacking/Casting Spells_008.png" id="9_nhrnm"]
+[ext_resource type="Texture2D" uid="uid://cgay7w6sd5pil" path="res://entities/player/assets/wizard/attacking/Casting Spells_009.png" id="10_uho4a"]
+[ext_resource type="Texture2D" uid="uid://bv1f02fwum37d" path="res://entities/player/assets/wizard/attacking/Casting Spells_010.png" id="11_gblxa"]
+[ext_resource type="Texture2D" uid="uid://bf7cmdvgeiba4" path="res://entities/player/assets/wizard/attacking/Casting Spells_011.png" id="12_if8ue"]
+[ext_resource type="Texture2D" uid="uid://b8eqg0s3jqs8m" path="res://entities/player/assets/wizard/dying/Dying_000.png" id="13_2muw0"]
+[ext_resource type="Texture2D" uid="uid://cnpy7o6j6agny" path="res://entities/player/assets/wizard/dying/Dying_001.png" id="14_rxocx"]
+[ext_resource type="Texture2D" uid="uid://bt7ea8650de2a" path="res://entities/player/assets/wizard/dying/Dying_002.png" id="15_8k0sh"]
+[ext_resource type="Texture2D" uid="uid://bbnylf2vm2ajv" path="res://entities/player/assets/wizard/dying/Dying_003.png" id="16_u6nni"]
+[ext_resource type="Texture2D" uid="uid://bfgoova8q1qn2" path="res://entities/player/assets/wizard/dying/Dying_004.png" id="17_j725s"]
+[ext_resource type="Texture2D" uid="uid://bf3naul7hjn72" path="res://entities/player/assets/wizard/dying/Dying_005.png" id="18_qnjn8"]
+[ext_resource type="Texture2D" uid="uid://ctb1347s5s7yv" path="res://entities/player/assets/wizard/dying/Dying_006.png" id="19_aj4tw"]
+[ext_resource type="Texture2D" uid="uid://cypo06xruxi2f" path="res://entities/player/assets/wizard/dying/Dying_007.png" id="20_dyx1t"]
+[ext_resource type="Texture2D" uid="uid://mhtwpnksojx" path="res://entities/player/assets/wizard/dying/Dying_008.png" id="21_xr11a"]
+[ext_resource type="Texture2D" uid="uid://bsmq156h6pymu" path="res://entities/player/assets/wizard/dying/Dying_009.png" id="22_gwtm7"]
+[ext_resource type="Texture2D" uid="uid://db4vedn8f61pw" path="res://entities/player/assets/wizard/dying/Dying_010.png" id="23_ocbnt"]
+[ext_resource type="Texture2D" uid="uid://cp11g40f8jgiu" path="res://entities/player/assets/wizard/dying/Dying_011.png" id="24_6cl5a"]
+[ext_resource type="Texture2D" uid="uid://prcchr5ohpw4" path="res://entities/player/assets/wizard/dying/Dying_012.png" id="25_lkf5k"]
+[ext_resource type="Texture2D" uid="uid://brhyf186eimja" path="res://entities/player/assets/wizard/dying/Dying_013.png" id="26_bde5h"]
+[ext_resource type="Texture2D" uid="uid://26ix6vceb04y" path="res://entities/player/assets/wizard/dying/Dying_014.png" id="27_roor6"]
+[ext_resource type="Texture2D" uid="uid://cnyghyr6kfmuv" path="res://entities/player/assets/wizard/hurt/Hurt_000.png" id="28_38dx1"]
+[ext_resource type="Texture2D" uid="uid://dk0ulp3bpgdep" path="res://entities/player/assets/wizard/hurt/Hurt_001.png" id="29_lgwso"]
+[ext_resource type="Texture2D" uid="uid://pjjc3ljrow8v" path="res://entities/player/assets/wizard/hurt/Hurt_002.png" id="30_fdebx"]
+[ext_resource type="Texture2D" uid="uid://c2kqxkv8thaaf" path="res://entities/player/assets/wizard/hurt/Hurt_003.png" id="31_8yy00"]
+[ext_resource type="Texture2D" uid="uid://4n4tygrkv8bl" path="res://entities/player/assets/wizard/hurt/Hurt_004.png" id="32_a7012"]
+[ext_resource type="Texture2D" uid="uid://bdrlf1iea42ua" path="res://entities/player/assets/wizard/hurt/Hurt_005.png" id="33_1a6fu"]
+[ext_resource type="Texture2D" uid="uid://cny5eeqsxnvvf" path="res://entities/player/assets/wizard/hurt/Hurt_006.png" id="34_2remy"]
+[ext_resource type="Texture2D" uid="uid://ccxnk8quqccot" path="res://entities/player/assets/wizard/hurt/Hurt_007.png" id="35_fts8i"]
+[ext_resource type="Texture2D" uid="uid://c3oingqsbfbex" path="res://entities/player/assets/wizard/hurt/Hurt_008.png" id="36_c3djr"]
+[ext_resource type="Texture2D" uid="uid://dskmw0xp78ulj" path="res://entities/player/assets/wizard/hurt/Hurt_009.png" id="37_3f3gi"]
+[ext_resource type="Texture2D" uid="uid://0du4ssynf4ud" path="res://entities/player/assets/wizard/hurt/Hurt_010.png" id="38_dnrnn"]
+[ext_resource type="Texture2D" uid="uid://dn68u3myg75a1" path="res://entities/player/assets/wizard/hurt/Hurt_011.png" id="39_xt128"]
+[ext_resource type="Texture2D" uid="uid://dd6bwgnjsbu88" path="res://entities/player/assets/wizard/idle/Idle_000.png" id="40_g8s7c"]
+[ext_resource type="Texture2D" uid="uid://myrtmvtmrvr6" path="res://entities/player/assets/wizard/idle/Idle_001.png" id="41_msg7u"]
+[ext_resource type="Texture2D" uid="uid://ckuogusf453aw" path="res://entities/player/assets/wizard/idle/Idle_002.png" id="42_pofqj"]
+[ext_resource type="Texture2D" uid="uid://j1a5jgvhpct0" path="res://entities/player/assets/wizard/idle/Idle_003.png" id="43_vo65n"]
+[ext_resource type="Texture2D" uid="uid://cy41wos8awdkj" path="res://entities/player/assets/wizard/idle/Idle_004.png" id="44_kfb43"]
+[ext_resource type="Texture2D" uid="uid://k2q7foiare6w" path="res://entities/player/assets/wizard/idle/Idle_005.png" id="45_l2h4p"]
+[ext_resource type="Texture2D" uid="uid://d1e7wqy6cjljf" path="res://entities/player/assets/wizard/idle/Idle_006.png" id="46_0yj4k"]
+[ext_resource type="Texture2D" uid="uid://sy2esv67fr8q" path="res://entities/player/assets/wizard/idle/Idle_007.png" id="47_yn2y8"]
+[ext_resource type="Texture2D" uid="uid://4hxns8rxey6n" path="res://entities/player/assets/wizard/idle/Idle_008.png" id="48_5e7yr"]
+[ext_resource type="Texture2D" uid="uid://0lfgrn2epkcw" path="res://entities/player/assets/wizard/idle/Idle_009.png" id="49_g3xjt"]
+[ext_resource type="Texture2D" uid="uid://b3jsjl0hkmwbb" path="res://entities/player/assets/wizard/idle/Idle_010.png" id="50_c3okh"]
+[ext_resource type="Texture2D" uid="uid://b3uch5y1y4064" path="res://entities/player/assets/wizard/idle/Idle_011.png" id="51_72it2"]
+[ext_resource type="Texture2D" uid="uid://b8eg8pioeqsst" path="res://entities/player/assets/wizard/walking/Walking_000.png" id="52_fu3gw"]
+[ext_resource type="Texture2D" uid="uid://bjyk1iea1qrdm" path="res://entities/player/assets/wizard/walking/Walking_001.png" id="53_3myfj"]
+[ext_resource type="Texture2D" uid="uid://30np6o382vvn" path="res://entities/player/assets/wizard/walking/Walking_002.png" id="54_wl4wj"]
+[ext_resource type="Texture2D" uid="uid://balphncmpl4l6" path="res://entities/player/assets/wizard/walking/Walking_003.png" id="55_xw4rj"]
+[ext_resource type="Texture2D" uid="uid://qd0a8xp7genl" path="res://entities/player/assets/wizard/walking/Walking_004.png" id="56_n7abf"]
+[ext_resource type="Texture2D" uid="uid://d0b6hr6tjxbey" path="res://entities/player/assets/wizard/walking/Walking_005.png" id="57_e22gw"]
+[ext_resource type="Texture2D" uid="uid://weflyy3eupec" path="res://entities/player/assets/wizard/walking/Walking_006.png" id="58_x83e6"]
+[ext_resource type="Texture2D" uid="uid://cnmpc3tmqtja5" path="res://entities/player/assets/wizard/walking/Walking_007.png" id="59_8clxq"]
+[ext_resource type="Texture2D" uid="uid://cp7nhak03atai" path="res://entities/player/assets/wizard/walking/Walking_008.png" id="60_ji1m3"]
+[ext_resource type="Texture2D" uid="uid://bg55d7nen301f" path="res://entities/player/assets/wizard/walking/Walking_009.png" id="61_b12y8"]
+[ext_resource type="Texture2D" uid="uid://bkxk00m4r5g6v" path="res://entities/player/assets/wizard/walking/Walking_010.png" id="62_56st5"]
+[ext_resource type="Texture2D" uid="uid://chf4qmgk12dt" path="res://entities/player/assets/wizard/walking/Walking_011.png" id="63_agjtc"]
+[ext_resource type="Texture2D" uid="uid://dd3ebjn5yifu" path="res://entities/player/assets/wizard/walking/Walking_012.png" id="64_attq5"]
+[ext_resource type="Texture2D" uid="uid://bdujn3oghpx0i" path="res://entities/player/assets/wizard/walking/Walking_013.png" id="65_uty58"]
+[ext_resource type="Texture2D" uid="uid://ykc34cglinn2" path="res://entities/player/assets/wizard/walking/Walking_014.png" id="66_iya66"]
+[ext_resource type="Texture2D" uid="uid://1nm2etfaafkj" path="res://entities/player/assets/wizard/walking/Walking_015.png" id="67_prcpi"]
+[ext_resource type="Texture2D" uid="uid://p16o3fipg363" path="res://entities/player/assets/wizard/walking/Walking_016.png" id="68_mw8nf"]
+[ext_resource type="Texture2D" uid="uid://bpy0o15qgydr2" path="res://entities/player/assets/wizard/walking/Walking_017.png" id="69_2ybok"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qgeb8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_03sn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gmcyd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_sqdn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rrehi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pdot6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_kv8ed")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_6f14h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nhrnm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_uho4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gblxa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_if8ue")
+}],
+"loop": false,
+"name": &"attacking",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_2muw0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_rxocx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_8k0sh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_u6nni")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_j725s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_qnjn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_aj4tw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_dyx1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_xr11a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_gwtm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ocbnt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_6cl5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_lkf5k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_bde5h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_roor6")
+}],
+"loop": true,
+"name": &"dying",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_38dx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_lgwso")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_fdebx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_8yy00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_a7012")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_1a6fu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_2remy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_fts8i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_c3djr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_3f3gi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_dnrnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_xt128")
+}],
+"loop": true,
+"name": &"hurt",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_g8s7c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_msg7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_pofqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_vo65n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_kfb43")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_l2h4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_0yj4k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_yn2y8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_5e7yr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_g3xjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_c3okh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_72it2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("52_fu3gw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_3myfj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_wl4wj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_xw4rj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_n7abf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_e22gw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_x83e6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_8clxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_ji1m3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_b12y8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_56st5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_agjtc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_attq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_uty58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_iya66")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_prcpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_mw8nf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_2ybok")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 30.0
+}]

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Entity
 
 enum PlayerState {
 	IDLE,
