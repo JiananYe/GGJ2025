@@ -9,6 +9,10 @@ var current_mana: float = max_mana
 var base_shield: float = 0.0
 var current_shield: float = base_shield
 
+# Cast Attributes
+var cast_speed: float = 100.0  # Base 100% cast speed
+var cast_speed_multiplier: float = 1.0  # For modifiers that increase cast speed
+
 # Mana Attributes
 var mana_regeneration_rate: float = 10.0  # Base 2% per second
 var mana_regeneration_multiplier: float = 1.0  # For modifiers that increase mana regen
@@ -165,3 +169,9 @@ func modify_mana_regen(modifier: float) -> void:
 
 func set_mana_regen_delay(delay: float) -> void:
 	mana_regen_delay = delay
+
+func get_total_cast_speed() -> float:
+	return (cast_speed / 100.0) * cast_speed_multiplier
+
+func modify_cast_speed(modifier: float) -> void:
+	cast_speed_multiplier *= (1.0 + modifier / 100.0)

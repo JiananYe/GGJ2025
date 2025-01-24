@@ -7,6 +7,8 @@ var base_mana_cost: float
 var level: int = 1
 var tags: Array[String] = []
 var modifiers: Dictionary = {}
+var base_cast_time: float = 1.0  # Base time to cast in seconds
+var cast_speed_multiplier: float = 1.0  # Add this for cast speed modifications
 
 # Base skill stats
 var base_stats: Dictionary = {}
@@ -21,6 +23,7 @@ func setup_base_stats() -> void:
 
 func compute_stats() -> void:
 	computed_stats = base_stats.duplicate()
+	cast_speed_multiplier = 1.0  # Reset cast speed multiplier
 	
 	# Apply modifiers from support skills and other sources
 	for modifier in modifiers.values():
@@ -28,7 +31,9 @@ func compute_stats() -> void:
 
 func apply_modifier(modifier: Dictionary) -> void:
 	for stat in modifier:
-		if stat in computed_stats:
+		if stat == "cast_speed_multiplier":
+			cast_speed_multiplier *= (1 + modifier[stat].value / 100.0)
+		elif stat in computed_stats:
 			if modifier[stat].type == "flat":
 				computed_stats[stat] += modifier[stat].value
 			elif modifier[stat].type == "percent":
@@ -45,3 +50,15 @@ func get_mana_cost() -> float:
 	var cost = base_mana_cost
 	# Apply mana cost modifiers here
 	return cost 
+
+func get_cast_time(caster: Node2D) -> float:
+	var base_speed = 1.0
+	if caster.has_method("get_total_cast_speed"):
+		base_speed = caster.get_total_cast_speed()
+	return base_cast_time / (base_speed * cast_speed_multiplier)
+
+func get_animation_speed(caster: Node2D) -> float:
+	var base_speed = 1.0
+	if caster.has_method("get_total_cast_speed"):
+		base_speed = caster.get_total_cast_speed()
+	return base_speed * cast_speed_multiplier 

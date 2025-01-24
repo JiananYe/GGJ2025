@@ -8,15 +8,22 @@ var has_cast_skill: bool = false  # Track if we've cast the skill in this attack
 func _ready() -> void:
 	add_to_group("player")
 	setup_skills()
+	# Reset animation speed when changing to non-attack animations
+	animated_sprite.animation_finished.connect(_on_animation_finished)
+
+func _on_animation_finished() -> void:
+	if current_state != PlayerState.ATTACKING:
+		animated_sprite.speed_scale = 1.0
 
 func setup_skills() -> void:
 	# Create skills
 	var spark = SparkSkill.new()
 	var additional_projectiles = AdditionalProjectilesSupport.new()
+	var faster_casting = FasterCastingSupport.new()
 	
 	# Setup primary attack
 	skill_manager.add_skill_link("primary_attack")
-	var support_skills: Array = [additional_projectiles]
+	var support_skills: Array = [additional_projectiles, faster_casting]
 	skill_manager.link_skills("primary_attack", spark, support_skills)
 
 func _physics_process(delta: float) -> void:
@@ -72,7 +79,8 @@ func handle_attacking_state() -> void:
 		has_cast_skill = true
 	
 	if !animated_sprite.is_playing():
-		has_cast_skill = false  # Reset the flag when leaving attack state
+		has_cast_skill = false
+		animated_sprite.speed_scale = 1.0  # Reset speed scale
 		change_state(PlayerState.IDLE)
 
 func handle_hurt_state() -> void:

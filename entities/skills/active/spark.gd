@@ -6,7 +6,8 @@ var spark_scene = preload("res://entities/skills/projectiles/spark/SparkProjecti
 func _init() -> void:
 	skill_name = "Spark"
 	base_mana_cost = 10.0
-	tags = ["Lightning", "Projectile", "Hit"]
+	base_cast_time = 0.5  # Half second base cast time
+	tags = ["Lightning", "Projectile", "Hit", "Spell"]
 	setup_base_stats()
 
 func setup_base_stats() -> void:
@@ -20,7 +21,11 @@ func setup_base_stats() -> void:
 	computed_stats = base_stats.duplicate()
 
 func cast(caster: Node2D) -> void:
-	if caster.spend_mana(get_mana_cost()):  # Use new spend_mana function
+	if caster.spend_mana(get_mana_cost()):
+		# Set animation speed based on cast speed
+		if caster.has_node("AnimatedSprite2D"):
+			var anim_sprite = caster.get_node("AnimatedSprite2D")
+			anim_sprite.speed_scale = get_animation_speed(caster)
 		spawn_projectiles(caster)
 
 func spawn_projectiles(caster: Node2D) -> void:
