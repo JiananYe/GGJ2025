@@ -5,13 +5,14 @@
 [ext_resource type="Script" path="res://entities/skills/skill_manager.gd" id="3_c628s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0w13"]
-radius = 89.0
-height = 248.0
+radius = 60.0
+height = 185.0
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_68vns")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
 sprite_frames = ExtResource("2_2rwx1")
 animation = &"idle"
 
@@ -20,3 +21,12 @@ shape = SubResource("CapsuleShape2D_t0w13")
 
 [node name="SkillManager" type="Node" parent="."]
 script = ExtResource("3_c628s")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.1
+drag_top_margin = 0.1
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1

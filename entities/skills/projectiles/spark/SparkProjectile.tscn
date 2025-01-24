@@ -3,25 +3,27 @@
 [ext_resource type="SpriteFrames" uid="uid://cje1hgerr78g4" path="res://entities/skills/projectiles/spark/spark_frames.tres" id="1_0bybi"]
 [ext_resource type="Script" path="res://entities/skills/projectiles/spark/spark_projectile.gd" id="1_l3g64"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_1"]
-radius = 8.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_41nvu"]
+radius = 12.8571
+height = 34.2857
 
 [node name="SparkProjectile" type="Area2D"]
+z_index = 2
 collision_layer = 4
 script = ExtResource("1_l3g64")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_1")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-z_index = 2
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.04, 0.04)
 sprite_frames = ExtResource("1_0bybi")
 frame = 4
 frame_progress = 0.582822
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+scale = Vector2(0.7, 0.7)
+shape = SubResource("CapsuleShape2D_41nvu")
+
 [node name="LifetimeTimer" type="Timer" parent="."]
-wait_time = 3.0
 one_shot = true
 autostart = true
 

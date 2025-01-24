@@ -4,13 +4,14 @@
 [ext_resource type="SpriteFrames" uid="uid://roeobuuy4k8n" path="res://entities/player/assets/wizard/wizard.tres" id="2_jxd00"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0w13"]
-radius = 89.0
-height = 248.0
+radius = 60.0
+height = 185.0
 
 [node name="Mob" type="CharacterBody2D"]
 script = ExtResource("1_4vd2b")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
 sprite_frames = ExtResource("2_jxd00")
 animation = &"dying"
 

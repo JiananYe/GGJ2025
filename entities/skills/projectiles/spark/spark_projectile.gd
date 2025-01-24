@@ -1,7 +1,7 @@
 extends Area2D
 class_name SparkProjectile
 
-var speed: float = 600.0
+var speed: float = 1000.0
 var damage: float = 0.0
 var direction: Vector2 = Vector2.RIGHT
 var bounces_remaining: int = 3
