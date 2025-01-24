@@ -110,9 +110,9 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("13_wgrfo")
 }],
-"loop": false,
+"loop": true,
 "name": &"attacking",
-"speed": 30.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -162,7 +162,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"dying",
-"speed": 30.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -203,7 +203,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"hurt",
-"speed": 30.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -244,7 +244,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 30.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -303,7 +303,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walking",
-"speed": 30.0
+"speed": 5.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0w13"]
