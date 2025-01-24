@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://tuj7ktbyhbuq"]
+
+[ext_resource type="Script" path="res://entities/mobs/mob.gd" id="1_4vd2b"]
+[ext_resource type="SpriteFrames" uid="uid://roeobuuy4k8n" path="res://entities/player/assets/wizard/wizard.tres" id="2_jxd00"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0w13"]
+radius = 89.0
+height = 248.0
+
+[node name="Mob" type="CharacterBody2D"]
+script = ExtResource("1_4vd2b")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("2_jxd00")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_t0w13")
