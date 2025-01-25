@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [autoload]
 
 GameManager="*res://globals/game_manager.gd"
-BMOD="*res://addons/bmod/autoloads/bmod/bmod.tscn"
 
 [display]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c51vk28rl0fog"]
+[gd_scene load_steps=5 format=3 uid="uid://c51vk28rl0fog"]
 
 [ext_resource type="PackedScene" uid="uid://csleddnfksqkl" path="res://entities/player/Player.tscn" id="2_7neqf"]
 [ext_resource type="PackedScene" uid="uid://yr2483au35rl" path="res://entities/spawner/MobSpawner.tscn" id="2_ysyyj"]
 [ext_resource type="PackedScene" uid="uid://dcswe86dml24p" path="res://ui/background/Background.tscn" id="3_n77g8"]
+[ext_resource type="PackedScene" uid="uid://dxbtqygb11gjd" path="res://ui/overlay/GameOverlay.tscn" id="4_rjfr3"]
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -14,4 +15,5 @@ y_sort_enabled = true
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["ui_layer"]]
 
 [node name="Background" parent="." instance=ExtResource("3_n77g8")]
-z_index = -2
+
+[node name="GameOverlay" parent="." instance=ExtResource("4_rjfr3")]

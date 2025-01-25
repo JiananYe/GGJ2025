@@ -10,7 +10,7 @@ var last_damage_time: float = 0.0
 # Base Attributes
 var max_hp: float = 100.0
 var current_hp: float = max_hp
-var max_mana: float = 1000.0
+var max_mana: float = 200.0
 var current_mana: float = max_mana
 var base_shield: float = 0.0
 var current_shield: float = base_shield

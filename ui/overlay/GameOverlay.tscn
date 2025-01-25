@@ -1,0 +1,243 @@
+[gd_scene load_steps=12 format=3 uid="uid://dxbtqygb11gjd"]
+
+[ext_resource type="Script" path="res://ui/overlay/game_overlay.gd" id="1_overlay"]
+[ext_resource type="Texture2D" uid="uid://cb3tonsrd3p3u" path="res://ui/overlay/assets/globes/globe_empty.png" id="2_5vqhg"]
+[ext_resource type="Shader" path="res://ui/overlay/globe_fill.gdshader" id="2_shader"]
+[ext_resource type="Texture2D" uid="uid://dl3om3507gclr" path="res://ui/overlay/assets/globes/globe_full_RED.png" id="4_fsd5a"]
+[ext_resource type="Texture2D" uid="uid://cfi64at2htfk2" path="res://ui/overlay/assets/globes/globe_full_BLUE.png" id="5_l1ubs"]
+[ext_resource type="Texture2D" uid="uid://0ssydroe5m36" path="res://ui/overlay/assets/xp_bar/action_bar_xp_empty.png" id="6_dkyxo"]
+[ext_resource type="Texture2D" uid="uid://bplps7lgu60tj" path="res://ui/overlay/assets/action_bar_main.png" id="6_p8aap"]
+[ext_resource type="Texture2D" uid="uid://gcwpy2vvlmtf" path="res://ui/overlay/assets/xp_bar/action_bar_xp_fill.png" id="7_eb12m"]
+[ext_resource type="Texture2D" uid="uid://dflhnknn0b47t" path="res://ui/overlay/assets/action_bar_slot.png" id="9_manrh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hp"]
+shader = ExtResource("2_shader")
+shader_parameter/fill_amount = 1.0
+shader_parameter/fill_color = Color(1, 0.2, 0.2, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mana"]
+shader = ExtResource("2_shader")
+shader_parameter/fill_amount = 1.0
+shader_parameter/fill_color = Color(0.2, 0.4, 1, 1)
+
+[node name="GameOverlay" type="CanvasLayer"]
+script = ExtResource("1_overlay")
+
+[node name="HPGlobe" type="TextureRect" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 290.0
+offset_top = -175.0
+offset_right = 470.0
+offset_bottom = 5.0
+grow_vertical = 0
+texture = ExtResource("2_5vqhg")
+expand_mode = 2
+
+[node name="HPFill" type="TextureRect" parent="HPGlobe"]
+material = SubResource("ShaderMaterial_hp")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_fsd5a")
+expand_mode = 2
+
+[node name="Mask" type="ColorRect" parent="HPGlobe/HPFill"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ManaGlobe" type="TextureRect" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -482.0
+offset_top = -176.0
+offset_right = -302.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("2_5vqhg")
+expand_mode = 2
+
+[node name="ManaFill" type="TextureRect" parent="ManaGlobe"]
+material = SubResource("ShaderMaterial_mana")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_l1ubs")
+expand_mode = 2
+
+[node name="Mask" type="ColorRect" parent="ManaGlobe/ManaFill"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+color = Color(0, 0, 0, 1)
+
+[node name="ActionBar" type="TextureRect" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -606.0
+offset_top = -109.0
+offset_right = 594.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 0
+texture = ExtResource("6_p8aap")
+expand_mode = 1
+
+[node name="ExpBar" type="TextureRect" parent="ActionBar"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -481.0
+offset_top = 18.0
+offset_right = 482.0
+offset_bottom = 34.0
+grow_horizontal = 2
+texture = ExtResource("6_dkyxo")
+expand_mode = 1
+
+[node name="ExpFill" type="TextureRect" parent="ActionBar/ExpBar"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_eb12m")
+expand_mode = 1
+
+[node name="LevelLabel" type="Label" parent="ActionBar/ExpBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.5
+offset_top = -13.0
+offset_right = 31.5
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 16
+text = "Level 1"
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ActionBar"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -580.0
+offset_top = -67.0
+offset_right = 580.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 14
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ActionBar/MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_manrh")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_manrh")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_manrh")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_manrh")
+expand_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_manrh")
+expand_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_manrh")
+expand_mode = 1
+
+[node name="TextureRect7" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_manrh")
+expand_mode = 1
+
+[node name="TextureRect8" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_manrh")
+expand_mode = 1
+
+[node name="TextureRect9" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_manrh")
+expand_mode = 1
+
+[node name="TextureRect10" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_manrh")
+expand_mode = 1
+
+[node name="TextureRect11" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+size_flags_horizontal = 0
+texture = ExtResource("9_manrh")
+expand_mode = 1
