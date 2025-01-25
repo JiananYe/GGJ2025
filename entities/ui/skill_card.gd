@@ -29,7 +29,7 @@ func _on_button_pressed() -> void:
 func _process(delta: float) -> void:
 	print(scale.x)
 	if content.scale.x < 1:
-		lerp_time += delta * 1.5
+		lerp_time += delta * 1.8
 		var ease_value = ease(lerp_time, 2) * 2 - 1 
 		content.scale.x = ease_value
 		bubble_border.scale.x = ease_value

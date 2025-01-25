@@ -7,18 +7,29 @@ var direction: Vector2 = Vector2.RIGHT
 var bounces_remaining: int = 3
 var bounce_angle_variation: float = PI/4  # 45 degrees variation
 var caster: Node2D  # Store reference to caster
+var time_offset: float = randf() * PI * 2  # Random starting point for sinusoidal movement
+var sinusoidal_amplitude: float = 3.0  # Control the deviation from the original line
+var initial_speed: float = 0.0  # Store the initial speed for exponential decay
 
 func _physics_process(delta: float) -> void:
-	position += direction * speed * delta
+	var time = Time.get_ticks_msec() / 1000.0
+	var sinusoidal_offset = Vector2(-direction.y, direction.x) * sin(time * 5 + time_offset) * sinusoidal_amplitude
+	if $LifetimeTimer.time_left < 0.3:  # Start slowing down exponentially in the last 0.2 seconds
+		speed = initial_speed * exp(-5 * (0.2 - $LifetimeTimer.time_left))
+	position += direction * speed * delta + sinusoidal_offset
 
 func init(initial_position: Vector2, angle: float, projectile_damage: float, projectile_speed: float, projectile_caster: Node2D, duration: float = 3.0) -> void:
 	position = initial_position
 	direction = Vector2.RIGHT.rotated(angle)
 	damage = projectile_damage
-	speed = projectile_speed
+	speed = projectile_speed * (0.9 + randf() * 0.4)  # Add random variation to speed
+	var speed_variation = sin(time_offset) * projectile_speed * 0.4  # Amplitude of 0.5 times the projectile speed
+	speed = projectile_speed + speed_variation
+	initial_speed = speed  # Store the initial speed
 	caster = projectile_caster
 	# Set initial rotation
 	rotation = angle
+	time_offset = randf() * PI * 2  # Initialize time offset for each projectile
 	
 	# Set lifetime timer duration
 	if has_node("LifetimeTimer"):
@@ -57,4 +68,4 @@ func bounce(collision_body: Node2D) -> void:
 	set_collision_mask_value(collision_body.collision_layer, true)
 
 func _on_lifetime_timer_timeout() -> void:
-	queue_free() 
+	queue_free()
