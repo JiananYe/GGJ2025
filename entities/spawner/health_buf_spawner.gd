@@ -1,3 +1,4 @@
+class_name HealthBuffSpawner
 extends Node2D
 
 @export var health_buf_scene: PackedScene = preload("res://entities/health-buf/health_buf.tscn")  # Health buffer scene

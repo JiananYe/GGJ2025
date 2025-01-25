@@ -48,6 +48,9 @@ func bounce(collision_body: Node2D) -> void:
 	# Update rotation after bounce
 	rotation = direction.angle()
 	
+	if collision_body is HealthBuffSpawner:
+		return
+	
 	# Prevent colliding with the same body immediately
 	set_collision_mask_value(collision_body.collision_layer, false)
 	await get_tree().create_timer(0.1).timeout
