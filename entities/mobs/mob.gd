@@ -30,8 +30,11 @@ func _ready() -> void:
 	hp_bar.position = Vector2(0, -100)
 	hp_bar.entity = self
 	
-	# Set experience value
-	experience_value = 40.0  # Base exp value
+	# Set base experience value
+	experience_value = 20.0
+	
+	# Apply initial difficulty scaling
+	apply_difficulty_scaling(GameManager.get_difficulty_multiplier())
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -126,3 +129,19 @@ func die() -> void:
 		# Start despawn timer
 		var despawn_timer = get_tree().create_timer(3.0)
 		despawn_timer.timeout.connect(func(): queue_free())
+
+func apply_difficulty_scaling(multiplier: float) -> void:
+	# Scale mob stats
+	max_hp *= multiplier
+	current_hp = max_hp
+	
+	# Scale damage
+	if skill_manager:
+		var attack_skill = skill_manager.get_main_skill("basic_attack")
+		if attack_skill:
+			attack_skill.base_stats.damage *= multiplier
+			attack_skill.computed_stats.damage *= multiplier
+	
+	# Scale experience value with both difficulty and a random factor
+	var base_exp = experience_value
+	experience_value = base_exp * GameManager.get_exp_multiplier()

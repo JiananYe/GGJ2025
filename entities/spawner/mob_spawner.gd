@@ -30,6 +30,9 @@ func _ready() -> void:
 		
 	if auto_start:
 		start_spawning()
+	
+	# Connect to difficulty signal
+	GameManager.difficulty_increased.connect(_on_difficulty_increased)
 
 func setup_timer() -> void:
 	spawn_timer = Timer.new()
@@ -80,19 +83,20 @@ func spawn_mob() -> void:
 	# Set mob position
 	var spawn_position: Vector2
 	if spawn_points.size() > 0:
-		# Use random spawn point if available
 		spawn_position = spawn_points[randi() % spawn_points.size()]
 	else:
-		# Get random position within ring around player
 		spawn_position = get_random_spawn_position()
 	
 	mob.global_position = spawn_position
+	
+	# Scale mob stats with difficulty
+	if mob.has_method("apply_difficulty_scaling"):
+		mob.apply_difficulty_scaling(GameManager.get_difficulty_multiplier())
 	
 	# Connect mob signals
 	if mob.has_signal("tree_exiting"):
 		mob.tree_exiting.connect(_on_mob_died.bind(mob))
 	
-	# Add mob to scene
 	add_child(mob)
 	current_mobs += 1
 	emit_signal("mob_spawned", mob)
@@ -110,3 +114,12 @@ func add_spawn_point(point: Vector2) -> void:
 
 func clear_spawn_points() -> void:
 	spawn_points.clear()
+
+func _on_difficulty_increased(level: int) -> void:
+	# Increase spawn rate with difficulty
+	spawn_interval = max(0.2, 0.5 - (level * 0.05))  # Decrease interval, minimum 0.2s
+	if spawn_timer:
+		spawn_timer.wait_time = spawn_interval
+	
+	# Increase max mobs with difficulty
+	max_mobs = 20 + (level * 2)  # Add 2 max mobs per difficulty level
