@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcswe86dml24p"]
+
+[ext_resource type="Texture2D" uid="uid://cwx4oshnm6q4k" path="res://ui/background/assets/battleground.png" id="1_2rft8"]
+
+[node name="Background" type="ParallaxBackground"]
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+texture = ExtResource("1_2rft8")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 1920, 1080)
