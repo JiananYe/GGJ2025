@@ -1,0 +1,69 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5xb5jcb1x5gx"]
+
+[ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_3l45r"]
+[ext_resource type="Shader" path="res://ui/main_menu/fish_eye.gdshader" id="1_u6k2w"]
+[ext_resource type="Texture2D" uid="uid://q3o3tujij50x" path="res://ui/main_menu/you_died.png" id="2_w6xsl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj7dt"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kk0cy"]
+shader = ExtResource("1_u6k2w")
+
+[node name="Menus" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3l45r")
+
+[node name="DeathMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BlackBackground" type="Panel" parent="DeathMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qj7dt")
+
+[node name="YouDied" type="MarginContainer" parent="DeathMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 200
+
+[node name="TextureRect" type="TextureRect" parent="DeathMenu/YouDied"]
+layout_mode = 2
+texture = ExtResource("2_w6xsl")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="MainMenu" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu"]
+material = SubResource("ShaderMaterial_kk0cy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
