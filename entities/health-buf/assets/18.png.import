@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4qw5ily8qyaw"
-path="res://.godot/imported/generic-rpg-loot03.png-42b72f1f5d69ea4cd8f64205bc642f9e.ctex"
+uid="uid://bfg35ldawkm2c"
+path="res://.godot/imported/18.png-ef1ac4275d7feede50fb653c187b550a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/health-buf/assets/generic-rpg-loot03.png"
-dest_files=["res://.godot/imported/generic-rpg-loot03.png-42b72f1f5d69ea4cd8f64205bc642f9e.ctex"]
+source_file="res://entities/health-buf/assets/18.png"
+dest_files=["res://.godot/imported/18.png-ef1ac4275d7feede50fb653c187b550a.ctex"]
 
 [params]
 

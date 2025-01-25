@@ -2,7 +2,7 @@ extends Node2D
 
 @export var health_buf_scene: PackedScene = preload("res://entities/health-buf/health_buf.tscn")  # Health buffer scene
 @export var spawn_interval: float = 5.0  # Time interval for spawning health buffers
-@export var max_spawn_count: int = 5  # Max number of health buffers to be spawned at once
+@export var max_spawn_count: int = 1  # Max number of health buffers to be spawned at once
 
 var spawn_timer: Timer
 
