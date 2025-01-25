@@ -3,7 +3,7 @@ extends Node2D
 @onready var label: Label = $Label
 
 var velocity = Vector2(0, -200)  # Move upward
-var fade_duration = 0.5
+var fade_duration = 1.0
 
 func _ready() -> void:
 	# Start fade out animation

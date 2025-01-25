@@ -64,18 +64,6 @@ func chase_target(delta: float) -> void:
 func take_hit(damage: float, damage_type: String = "physical") -> float:
 	var final_damage = super.take_hit(damage, damage_type)
 	
-	var is_crit = randf() < (crit_chance / 100.0)
-	if is_crit:
-		final_damage *= crit_multiplier
-		
-	apply_damage(final_damage)
-	# Spawn damage number
-	var damage_number = damage_number_scene.instantiate()
-	get_tree().current_scene.add_child(damage_number)
-	damage_number.global_position = global_position + Vector2(0, -50)
-	
-	damage_number.setup(final_damage, is_crit)
-	
 	if current_hp <= 0:
 		die()
 	

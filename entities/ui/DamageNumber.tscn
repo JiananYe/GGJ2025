@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entities/ui/damage_number.gd" id="1_damage"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_1"]
-font_size = 48
+font_size = 32
 outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
