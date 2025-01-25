@@ -17,6 +17,19 @@ func _ready() -> void:
 
 func load_available_skills() -> void:
 	available_skills.clear()
+	
+	# Add main skill level up option
+	var main_skill = player.skill_manager.get_main_skill("primary_attack")
+	if main_skill:
+		var main_skill_data = {
+			"title": "Level Up %s" % main_skill.skill_name,
+			"description": main_skill.get_level_up_description(),
+			"type": "main",
+			"skill": "spark"  # This will be used to identify it's a main skill level up
+		}
+		available_skills.append(main_skill_data)
+	
+	# Load support skills
 	var support_dir = "res://entities/skills/support"
 	var dir = DirAccess.open(support_dir)
 	if dir:
@@ -110,6 +123,21 @@ func show_selection() -> void:
 	get_tree().paused = true
 
 func _on_card_selected(skill_data: Dictionary) -> void:
-	emit_signal("skill_selected", skill_data)
+	if skill_data.type == "main":
+		# Level up main skill
+		var main_skill = player.skill_manager.get_main_skill("primary_attack")
+		if main_skill and main_skill.has_method("level_up"):
+			main_skill.level_up()
+	else:
+		# Handle support skill selection (existing code)
+		var skill_class = load("res://entities/skills/support/" + skill_data.skill.to_snake_case() + ".gd")
+		if skill_class:
+			var new_skill = skill_class.new()
+			var main_skill = player.skill_manager.get_main_skill("primary_attack")
+			var current_supports = player.skill_manager.get_support_skills("primary_attack")
+			
+			if main_skill:
+				player.skill_manager.link_skills("primary_attack", main_skill, current_supports + [new_skill])
+	
 	hide()
 	get_tree().paused = false 

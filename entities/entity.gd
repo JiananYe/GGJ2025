@@ -221,7 +221,7 @@ func modify_cast_speed(modifier: float) -> void:
 
 func get_exp_to_next_level() -> float:
 	# Experience curve: each level requires 50% more exp
-	return 100.0 * pow(1.5, level - 1)
+	return 100.0 * pow(1.1, level - 1)
 
 func gain_experience(amount: float) -> void:
 	experience += amount

@@ -12,14 +12,30 @@ func _init() -> void:
 
 func setup_base_stats() -> void:
 	base_stats = {
-		"damage": 10.0,  # Base hit damage
-		"lightning_damage": 15.0,  # Base lightning damage
-		"projectile_speed": 600.0,  # Base projectile speed
-		"projectile_amount": 3,  # Base number of projectiles
-		"projectile_damage_multiplier": 1.0,  # Base projectile damage multiplier
-		"projectile_duration": 0.5  # Base duration in seconds
+		"damage": 10.0 * (1 + (level - 1) * 0.05),  # 5% increase per level
+		"lightning_damage": 15.0 * (1 + (level - 1) * 0.05),
+		"projectile_speed": 600.0,
+		"projectile_amount": 3 + floor((level - 1) / 3),  # +1 projectile every 3 levels
+		"projectile_damage_multiplier": 1.0,
+		"projectile_duration": 0.5
 	}
 	computed_stats = base_stats.duplicate()
+
+func level_up() -> void:
+	level += 1
+	setup_base_stats()
+	compute_stats()
+
+func get_level_up_description() -> String:
+	var next_level = level + 1
+	var description = "Level %d -> %d\n" % [level, next_level]
+	description += "5% increased damage\n"
+	
+	# Check if next level will add a projectile
+	if next_level % 3 == 0:
+		description += "+1 projectile"
+	
+	return description
 
 func cast(caster: Node2D) -> void:
 	if caster.spend_mana(get_mana_cost()):
