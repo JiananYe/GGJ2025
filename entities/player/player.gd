@@ -94,7 +94,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func handle_idle_state() -> void:
-	if Input.is_action_just_pressed("attack"):
+	if Input.is_action_pressed("attack"):
 		change_state(PlayerState.ATTACKING)
 	elif velocity.length() > 0:
 		change_state(PlayerState.WALKING)
@@ -116,6 +116,10 @@ func handle_attacking_state() -> void:
 		animated_sprite.speed_scale = 1.0  # Reset speed scale
 		change_state(PlayerState.IDLE)
 
+func increase_health(increase) -> void:
+	if !animated_sprite.is_playing():
+		current_hp += increase
+		
 func handle_hurt_state() -> void:
 	if !animated_sprite.is_playing():
 		change_state(PlayerState.IDLE)

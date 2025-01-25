@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvbr1y1rw2rbl"]
+
+[ext_resource type="Script" path="res://entities/health-buf/projectile/bubble_effect.gd" id="1_3bsrn"]
+[ext_resource type="Texture2D" uid="uid://dxh62otdvxrna" path="res://entities/skills/projectiles/spark/assets/bubble.png" id="2_aypbj"]
+
+[node name="BubbleEffect" type="Node2D"]
+script = ExtResource("1_3bsrn")
+
+[node name="Bubble" type="Sprite2D" parent="."]
+texture = ExtResource("2_aypbj")

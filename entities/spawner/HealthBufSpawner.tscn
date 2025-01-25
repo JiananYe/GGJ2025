@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://4t0lshfuohu"]
+
+[node name="HealthBufSpawner" type="Node2D"]
