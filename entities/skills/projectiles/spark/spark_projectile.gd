@@ -8,15 +8,8 @@ var bounces_remaining: int = 3
 var bounce_angle_variation: float = PI/4  # 45 degrees variation
 var caster: Node2D  # Store reference to caster
 
-func _ready() -> void:
-	$AnimatedSprite2D.play("default")
-	# Set initial rotation based on direction
-	rotation = direction.angle()
-
 func _physics_process(delta: float) -> void:
 	position += direction * speed * delta
-	# Update rotation to match movement direction
-	rotation = direction.angle()
 
 func init(initial_position: Vector2, angle: float, projectile_damage: float, projectile_speed: float, projectile_caster: Node2D, duration: float = 3.0) -> void:
 	position = initial_position
