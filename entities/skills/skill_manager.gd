@@ -1,42 +1,65 @@
 extends Node
 class_name SkillManager
 
-# Structure: Dictionary of arrays where each array represents a skill link
+# Dictionary to store skill links
+# Format: { "link_name": { "main": main_skill, "support": [support_skills] } }
 var skill_links: Dictionary = {}
 
-func add_skill_link(link_id: String) -> void:
-	if not link_id in skill_links:
-		skill_links[link_id] = []
+func add_skill_link(link_name: String) -> void:
+	if !skill_links.has(link_name):
+		skill_links[link_name] = {
+			"main": null,
+			"support": []
+		}
 
-func link_skills(link_id: String, main_skill: Skill, support_skills: Array) -> bool:
-	if not link_id in skill_links:
-		add_skill_link(link_id)
+func link_skills(link_name: String, main_skill: Skill, support_skills: Array = []) -> void:
+	if !skill_links.has(link_name):
+		add_skill_link(link_name)
 	
-	# Verify support skills can support the main skill
+	skill_links[link_name].main = main_skill
+	skill_links[link_name].support = support_skills
+	
+	# Reset main skill stats before applying new modifiers
+	main_skill.setup_base_stats()
+	
+	# Apply support skill modifiers to main skill
 	for support in support_skills:
-		if not main_skill.can_support(support):
-			push_error("Support skill %s cannot support %s" % [support.skill_name, main_skill.skill_name])
-			return false
-	
-	# Clear existing link
-	skill_links[link_id].clear()
-	
-	# Add main skill
-	skill_links[link_id].append(main_skill)
-	
-	# Add and apply support skills
-	for support in support_skills:
-		skill_links[link_id].append(support)
-		for modifier in support.modifiers.values():
-			main_skill.modifiers[support.skill_name] = modifier
-	
-	# Recompute main skill stats
-	main_skill.compute_stats()
-	return true
+		apply_support_modifiers(main_skill, support)
 
-func use_skill(link_id: String, caster: Node2D) -> void:
-	if not link_id in skill_links or skill_links[link_id].is_empty():
+func get_main_skill(link_name: String) -> Skill:
+	if skill_links.has(link_name):
+		return skill_links[link_name].main
+	return null
+
+func get_support_skills(link_name: String) -> Array:
+	if skill_links.has(link_name):
+		return skill_links[link_name].support
+	return []
+
+func use_skill(link_name: String, caster: Node2D) -> void:
+	if skill_links.has(link_name) and skill_links[link_name].main != null:
+		skill_links[link_name].main.cast(caster)
+
+func apply_support_modifiers(main_skill: Skill, support_skill: Skill) -> void:
+	# Check if support skill can support this main skill
+	if !can_support(main_skill, support_skill):
 		return
-	
-	var main_skill = skill_links[link_id][0]
-	main_skill.cast(caster) 
+		
+	# Apply modifiers from support skill to main skill
+	for category in support_skill.modifiers:
+		# Create a modifier dictionary for this category
+		var category_mods = {
+			"modifiers": support_skill.modifiers[category],
+			"source": support_skill.skill_name
+		}
+		main_skill.apply_modifier(category_mods)
+
+func can_support(main_skill: Skill, support_skill: Skill) -> bool:
+	# Check if main skill has any of the required tags
+	if !support_skill.get("required_tags"):
+		return true
+		
+	for tag in support_skill.required_tags:
+		if tag in main_skill.tags:
+			return true
+	return false 

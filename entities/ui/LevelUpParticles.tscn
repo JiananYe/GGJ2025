@@ -1,22 +1,15 @@
-[gd_scene load_steps=3 format=3]
-
-[sub_resource type="Curve" id="Curve_1"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.0, 0.0, 0, 0]
-point_count = 2
+[gd_scene load_steps=2 format=3 uid="uid://cirrlnqc2r4p2"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1"]
+particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 50.0
-particle_flag_disable_z = true
 spread = 180.0
-gravity = Vector3(0, -98, 0)
 initial_velocity_min = 100.0
 initial_velocity_max = 200.0
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
+gravity = Vector3(0, -98, 0)
 scale_min = 4.0
 scale_max = 8.0
-scale_curve = SubResource("Curve_1")
 color = Color(1, 0.8, 0, 1)
 
 [node name="LevelUpParticles" type="GPUParticles2D"]
@@ -25,4 +18,4 @@ amount = 50
 process_material = SubResource("ParticleProcessMaterial_1")
 lifetime = 1.5
 one_shot = true
-explosiveness = 0.8 
+explosiveness = 0.8

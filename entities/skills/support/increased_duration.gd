@@ -4,7 +4,7 @@ class_name IncreasedDurationSupport
 var required_tags: Array[String] = ["Projectile"]
 
 func _init() -> void:
-	skill_name = "Increased Duration Support"
+	skill_name = "Increased Duration"
 	tags = ["Support", "Duration"]
 	setup_base_stats()
 

@@ -4,7 +4,7 @@ class_name FasterProjectilesSupport
 var required_tags: Array[String] = ["Projectile"]
 
 func _init() -> void:
-	skill_name = "Faster Projectiles Support"
+	skill_name = "Faster Projectiles"
 	tags = ["Support", "Projectile"]
 	setup_base_stats()
 

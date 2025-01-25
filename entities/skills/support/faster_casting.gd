@@ -4,7 +4,7 @@ class_name FasterCastingSupport
 var required_tags: Array[String] = ["Spell"]  # Works with any castable skill
 
 func _init() -> void:
-	skill_name = "Faster Casting Support"
+	skill_name = "Faster Casting"
 	tags = ["Support", "Cast"]
 	setup_base_stats()
 

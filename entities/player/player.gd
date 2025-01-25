@@ -10,6 +10,9 @@ var has_cast_skill: bool = false  # Track if we've cast the skill in this attack
 var level_up_particles = preload("res://entities/ui/LevelUpParticles.tscn")
 var level_up_text = preload("res://entities/ui/LevelUpText.tscn")
 
+var level_up_selection_scene = preload("res://entities/ui/LevelUpSelection.tscn")
+var level_up_selection: Control
+
 # Change the signal name
 signal on_level_up(new_level: int)
 
@@ -28,6 +31,15 @@ func _ready() -> void:
 	
 	# Initialize exp system
 	exp_to_next_level = get_exp_to_next_level()
+
+	# Setup level up selection in UI layer
+	var ui_layer = get_tree().get_first_node_in_group("ui_layer")
+	if ui_layer:
+		level_up_selection = level_up_selection_scene.instantiate()
+		ui_layer.add_child(level_up_selection)
+		level_up_selection.skill_selected.connect(_on_skill_selected)
+	else:
+		push_error("UI Layer not found! Make sure the CanvasLayer is in group 'ui_layer'")
 
 func _on_animation_finished() -> void:
 	if current_state != PlayerState.ATTACKING:
@@ -137,7 +149,10 @@ func level_up() -> void:
 	# Spawn level up effects
 	spawn_level_up_effects()
 	
-	# Emit level up signal with new name
+	# Show skill selection
+	level_up_selection.show_selection()
+	
+	# Emit level up signal
 	emit_signal("on_level_up", level)
 
 func spawn_level_up_effects() -> void:
@@ -157,3 +172,14 @@ func spawn_level_up_effects() -> void:
 		var tween = create_tween()
 		tween.tween_property(camera, "zoom", Vector2(1.1, 1.1), 0.1)
 		tween.tween_property(camera, "zoom", Vector2(1.0, 1.0), 0.1)
+
+func _on_skill_selected(skill_data: Dictionary) -> void:
+	# Create and add the selected skill
+	var skill_class = load("res://entities/skills/support/" + skill_data.skill.to_snake_case() + ".gd")
+	if skill_class:
+		var new_skill = skill_class.new()
+		var main_skill = skill_manager.get_main_skill("primary_attack")
+		var current_supports = skill_manager.get_support_skills("primary_attack")
+		
+		if main_skill:
+			skill_manager.link_skills("primary_attack", main_skill, current_supports + [new_skill])

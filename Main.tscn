@@ -1,0 +1,11 @@
+[node name="Main" type="Node2D"]
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+# ... world content (player, mobs, etc)
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+layer = 2
+# Add to group so player can find it
+@onready var _add_to_group = add_to_group("ui_layer")
+# ... other UI elements 
