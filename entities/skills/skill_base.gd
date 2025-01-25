@@ -26,18 +26,31 @@ func compute_stats() -> void:
 	cast_speed_multiplier = 1.0  # Reset cast speed multiplier
 	
 	# Apply modifiers from support skills and other sources
-	for modifier in modifiers.values():
-		apply_modifier(modifier)
+	for category_mods in modifiers.values():
+		apply_modifier(category_mods)
 
 func apply_modifier(modifier: Dictionary) -> void:
-	for stat in modifier:
-		if stat == "cast_speed_multiplier":
-			cast_speed_multiplier *= (1 + modifier[stat].value / 100.0)
-		elif stat in computed_stats:
-			if modifier[stat].type == "flat":
-				computed_stats[stat] += modifier[stat].value
-			elif modifier[stat].type == "percent":
-				computed_stats[stat] *= (1 + modifier[stat].value / 100.0)
+	# Check if this is a category of modifiers
+	if modifier.has("modifiers"):
+		var mods = modifier.modifiers
+		for stat in mods:
+			if stat == "cast_speed_multiplier":
+				cast_speed_multiplier *= (1 + mods[stat].value / 100.0)
+			elif stat in computed_stats:
+				if mods[stat].type == "flat":
+					computed_stats[stat] += mods[stat].value
+				elif mods[stat].type == "percent":
+					computed_stats[stat] *= (1 + mods[stat].value / 100.0)
+	# Legacy support for direct modifiers
+	else:
+		for stat in modifier:
+			if stat == "cast_speed_multiplier":
+				cast_speed_multiplier *= (1 + modifier[stat].value / 100.0)
+			elif stat in computed_stats:
+				if modifier[stat].type == "flat":
+					computed_stats[stat] += modifier[stat].value
+				elif modifier[stat].type == "percent":
+					computed_stats[stat] *= (1 + modifier[stat].value / 100.0)
 
 func can_support(support_skill: Skill) -> bool:
 	# Check if the support skill can be applied to this skill

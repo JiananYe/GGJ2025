@@ -31,7 +31,7 @@ func _ready() -> void:
 	hp_bar.entity = self
 	
 	# Set experience value
-	experience_value = 10.0  # Base exp value
+	experience_value = 40.0  # Base exp value
 
 func _physics_process(delta: float) -> void:
 	if is_dead:

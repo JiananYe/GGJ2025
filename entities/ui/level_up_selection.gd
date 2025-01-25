@@ -6,13 +6,17 @@ signal skill_selected(skill_data: Dictionary)
 var skill_card_scene = preload("res://entities/ui/SkillCard.tscn")
 
 var available_skills: Array[Dictionary] = []
+var player: Node  # Reference to player to check owned skills
 
 func _ready() -> void:
 	hide()
 	get_tree().paused = false
+	# Get player reference
+	player = get_tree().get_first_node_in_group("player")
 	load_available_skills()
 
 func load_available_skills() -> void:
+	available_skills.clear()
 	var support_dir = "res://entities/skills/support"
 	var dir = DirAccess.open(support_dir)
 	if dir:
@@ -25,15 +29,27 @@ func load_available_skills() -> void:
 				if skill_script:
 					var skill_instance = skill_script.new()
 					if skill_instance is Skill:  # Verify it's a skill
-						var skill_data = {
-							"title": skill_instance.skill_name,
-							"description": get_skill_description(skill_instance),
-							"type": "support",
-							"skill": file_name.get_basename().to_pascal_case()
-						}
-						available_skills.append(skill_data)
+						# Skip if player already has this skill
+						if !has_skill(file_name.get_basename().to_pascal_case()):
+							var skill_data = {
+								"title": skill_instance.skill_name,
+								"description": get_skill_description(skill_instance),
+								"type": "support",
+								"skill": file_name.get_basename().to_pascal_case()
+							}
+							available_skills.append(skill_data)
 			file_name = dir.get_next()
 		dir.list_dir_end()
+
+func has_skill(skill_name: String) -> bool:
+	if !player or !player.skill_manager:
+		return false
+		
+	var current_supports = player.skill_manager.get_support_skills("primary_attack")
+	for support in current_supports:
+		if support.get_script().get_path().get_basename().get_file().to_pascal_case() == skill_name:
+			return true
+	return false
 
 func get_skill_description(skill: Skill) -> String:
 	var description = ""
@@ -63,10 +79,17 @@ func get_skill_description(skill: Skill) -> String:
 	return description.strip_edges()
 
 func show_selection() -> void:
+	# Reload available skills to get current state
+	load_available_skills()
+	
 	# Randomly select 3 different skills
 	var selected_skills = []
 	var available = available_skills.duplicate()
-	for i in 3:
+	
+	# If we have less than 3 available skills, show all of them
+	var num_to_show = mini(3, available.size())
+	
+	for i in num_to_show:
 		if available.size() > 0:
 			var index = randi() % available.size()
 			selected_skills.append(available[index])

@@ -25,6 +25,9 @@ func link_skills(link_name: String, main_skill: Skill, support_skills: Array = [
 	# Apply support skill modifiers to main skill
 	for support in support_skills:
 		apply_support_modifiers(main_skill, support)
+	
+	# Compute final stats after all modifiers are applied
+	main_skill.compute_stats()
 
 func get_main_skill(link_name: String) -> Skill:
 	if skill_links.has(link_name):
@@ -47,12 +50,12 @@ func apply_support_modifiers(main_skill: Skill, support_skill: Skill) -> void:
 		
 	# Apply modifiers from support skill to main skill
 	for category in support_skill.modifiers:
-		# Create a modifier dictionary for this category
-		var category_mods = {
-			"modifiers": support_skill.modifiers[category],
-			"source": support_skill.skill_name
-		}
-		main_skill.apply_modifier(category_mods)
+		if !main_skill.modifiers.has(category):
+			main_skill.modifiers[category] = {}
+		
+		# Add modifiers from support skill
+		for stat in support_skill.modifiers[category]:
+			main_skill.modifiers[category][stat] = support_skill.modifiers[category][stat]
 
 func can_support(main_skill: Skill, support_skill: Skill) -> bool:
 	# Check if main skill has any of the required tags

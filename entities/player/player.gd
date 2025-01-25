@@ -56,13 +56,7 @@ func setup_skills() -> void:
 	
 	# Setup primary attack
 	skill_manager.add_skill_link("primary_attack")
-	var support_skills: Array = [
-		additional_projectiles,
-		faster_casting,
-		increased_duration,
-		faster_projectiles,
-		projectile_damage
-	]
+	var support_skills: Array = []
 	skill_manager.link_skills("primary_attack", spark, support_skills)
 
 func _physics_process(delta: float) -> void:
