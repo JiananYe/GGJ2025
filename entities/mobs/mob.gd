@@ -29,6 +29,9 @@ func _ready() -> void:
 	add_child(hp_bar)
 	hp_bar.position = Vector2(0, -100)
 	hp_bar.entity = self
+	
+	# Set experience value
+	experience_value = 10.0  # Base exp value
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -106,13 +109,16 @@ func die() -> void:
 	if current_state != PlayerState.DYING:
 		change_state(PlayerState.DYING)
 		
-	is_dead = true
-	# Disable collision
-	movement_collision_shape.set_deferred("disabled", true)
-	hit_box_collision_shape.set_deferred("disabled", true)
-	# Make player semi-transparent
-	modulate.a = 0.5
-	# Disable processing
-	set_physics_process(false)
-	# Optional: emit signal for game over handling
-	# emit_signal("player_died")
+		is_dead = true
+		# Give experience to player if killed by player
+		var player = get_tree().get_first_node_in_group("player")
+		if player and player.has_method("gain_experience"):
+			player.gain_experience(experience_value)
+		
+		# Disable collision
+		movement_collision_shape.set_deferred("disabled", true)
+		hit_box_collision_shape.set_deferred("disabled", true)
+		# Make mob semi-transparent
+		modulate.a = 0.5
+		# Disable processing
+		set_physics_process(false)

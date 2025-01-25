@@ -7,7 +7,14 @@ var hp_bar_scene = preload("res://entities/ui/HPBar.tscn")
 
 var has_cast_skill: bool = false  # Track if we've cast the skill in this attack state
 
+var level_up_particles = preload("res://entities/ui/LevelUpParticles.tscn")
+var level_up_text = preload("res://entities/ui/LevelUpText.tscn")
+
+# Change the signal name
+signal on_level_up(new_level: int)
+
 func _ready() -> void:
+	super._ready()
 	add_to_group("player")
 	setup_skills()
 	# Reset animation speed when changing to non-attack animations
@@ -18,6 +25,9 @@ func _ready() -> void:
 	add_child(hp_bar)
 	hp_bar.position = Vector2(0, -100)  # Position above entity
 	hp_bar.entity = self
+	
+	# Initialize exp system
+	exp_to_next_level = get_exp_to_next_level()
 
 func _on_animation_finished() -> void:
 	if current_state != PlayerState.ATTACKING:
@@ -113,3 +123,37 @@ func die() -> void:
 		change_state(PlayerState.DYING)
 		
 	is_dead = true
+
+# Override level_up to emit signal and handle player-specific bonuses
+func level_up() -> void:
+	super.level_up()
+	
+	# Increase player stats with level
+	max_hp += 2.0
+	current_hp = max_hp
+	max_mana += 2.0
+	current_mana = max_mana
+	
+	# Spawn level up effects
+	spawn_level_up_effects()
+	
+	# Emit level up signal with new name
+	emit_signal("on_level_up", level)
+
+func spawn_level_up_effects() -> void:
+	# Spawn particles
+	var particles = level_up_particles.instantiate()
+	add_child(particles)
+	particles.emitting = true
+	
+	# Spawn level up text
+	var text = level_up_text.instantiate()
+	get_tree().current_scene.add_child(text)
+	text.global_position = global_position + Vector2(0, -100)
+	
+	# Optional: Add screen shake or other effects
+	if has_node("Camera2D"):
+		var camera = get_node("Camera2D")
+		var tween = create_tween()
+		tween.tween_property(camera, "zoom", Vector2(1.1, 1.1), 0.1)
+		tween.tween_property(camera, "zoom", Vector2(1.0, 1.0), 0.1)

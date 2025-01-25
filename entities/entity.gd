@@ -55,6 +55,12 @@ const EVASION_EFFECTIVENESS = 0.05  # 5% per point
 const RESISTANCE_CAP = 75.0  # Maximum resistance percentage
 const BASE_DAMAGE_REDUCTION = 0.25  # Base damage reduction from armor
 
+# Experience Attributes
+var experience: float = 0.0  # Current exp
+var experience_value: float = 0.0  # Exp given when killed
+var level: int = 1
+var exp_to_next_level: float = 100.0
+
 func _ready() -> void:
 	# Initialize current values
 	current_hp = max_hp
@@ -212,3 +218,22 @@ func get_total_cast_speed() -> float:
 
 func modify_cast_speed(modifier: float) -> void:
 	cast_speed_multiplier *= (1.0 + modifier / 100.0)
+
+func get_exp_to_next_level() -> float:
+	# Experience curve: each level requires 50% more exp
+	return 100.0 * pow(1.5, level - 1)
+
+func gain_experience(amount: float) -> void:
+	experience += amount
+	
+	print("exp gained", amount)
+	print("exp total", experience)
+	
+	while experience >= exp_to_next_level:
+		level_up()
+
+func level_up() -> void:
+	experience -= exp_to_next_level
+	level += 1
+	exp_to_next_level = get_exp_to_next_level()
+	# Override in child classes for specific level up behavior
