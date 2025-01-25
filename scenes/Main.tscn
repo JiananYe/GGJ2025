@@ -4,9 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://yr2483au35rl" path="res://entities/spawner/MobSpawner.tscn" id="2_ysyyj"]
 
 [node name="Main" type="Node2D"]
+y_sort_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_7neqf")]
-z_index = 1
-position = Vector2(314, 372)
 
 [node name="MobSpawner" parent="." instance=ExtResource("2_ysyyj")]

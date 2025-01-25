@@ -1,11 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://tuj7ktbyhbuq"]
+[gd_scene load_steps=5 format=3 uid="uid://tuj7ktbyhbuq"]
 
 [ext_resource type="Script" path="res://entities/mobs/mob.gd" id="1_mob"]
 [ext_resource type="SpriteFrames" uid="uid://cgurtrab3366u" path="res://entities/mobs/assets/skeleton/skeleton.tres" id="2_1b2f8"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mfgd2"]
+radius = 27.0
+height = 54.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4ak1"]
-radius = 60.0
-height = 185.0
+radius = 53.0
+height = 160.0
 
 [node name="Mob" type="CharacterBody2D"]
 script = ExtResource("1_mob")
@@ -16,4 +20,13 @@ sprite_frames = ExtResource("2_1b2f8")
 animation = &"walking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(3, 53)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_mfgd2")
+
+[node name="HitBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CapsuleShape2D_e4ak1")

@@ -11,7 +11,8 @@ var hp_bar_scene = preload("res://entities/ui/HPBar.tscn")
 var target: Node2D = null
 var direction: Vector2 = Vector2.ZERO
 
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var movement_collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var hit_box_collision_shape: CollisionShape2D = $HitBox/CollisionShape2D
 
 func _ready() -> void:
 	super._ready()
@@ -74,7 +75,8 @@ func die() -> void:
 		change_state(PlayerState.DYING)
 		is_dead = true
 		# Disable collision
-		collision_shape.set_deferred("disabled", true)
+		movement_collision_shape.set_deferred("disabled", true)
+		hit_box_collision_shape.set_deferred("disabled", true)
 		# Make player semi-transparent
 		modulate.a = 0.5
 		# Disable processing

@@ -32,7 +32,8 @@ func init(initial_position: Vector2, angle: float, projectile_damage: float, pro
 		$LifetimeTimer.wait_time = duration
 		$LifetimeTimer.start()
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_area_entered(area: Area2D) -> void:
+	var body = area.get_parent()
 	# Ignore collision with caster
 	if body == caster:
 		return
