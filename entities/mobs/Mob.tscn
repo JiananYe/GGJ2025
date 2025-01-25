@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://tuj7ktbyhbuq"]
 
 [ext_resource type="Script" path="res://entities/mobs/mob.gd" id="1_mob"]
-[ext_resource type="SpriteFrames" uid="uid://roeobuuy4k8n" path="res://entities/player/assets/wizard/wizard.tres" id="2_jxd00"]
+[ext_resource type="SpriteFrames" uid="uid://cgurtrab3366u" path="res://entities/mobs/assets/skeleton/skeleton.tres" id="2_1b2f8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4ak1"]
 radius = 60.0
@@ -12,8 +12,8 @@ script = ExtResource("1_mob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.7, 0.7)
-sprite_frames = ExtResource("2_jxd00")
-animation = &"attacking"
+sprite_frames = ExtResource("2_1b2f8")
+animation = &"walking"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_e4ak1")
