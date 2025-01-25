@@ -16,6 +16,15 @@ var level_up_selection: Control
 # Change the signal name
 signal on_level_up(new_level: int)
 
+var equipped_items: Dictionary = {
+	"weapon": null,
+	"helmet": null,
+	"body": null,
+	"boots": null,
+	"ring": null,
+	"amulet": null
+}
+
 func _ready() -> void:
 	super._ready()
 	add_to_group("player")
@@ -181,3 +190,60 @@ func _on_skill_selected(skill_data: Dictionary) -> void:
 		
 		if main_skill:
 			skill_manager.link_skills("primary_attack", main_skill, current_supports + [new_skill])
+
+func equip_item(item: Item) -> void:
+	var slot = item.base_item.item_type.to_lower()
+	
+	# Unequip existing item
+	if equipped_items[slot]:
+		unequip_item(equipped_items[slot])
+	
+	equipped_items[slot] = item
+	apply_item_stats(item)
+
+func unequip_item(item: Item) -> void:
+	var slot = item.base_item.item_type.to_lower()
+	equipped_items[slot] = null
+	remove_item_stats(item)
+
+func apply_item_stats(item: Item) -> void:
+	# Apply base stats
+	for stat_name in item.base_item.base_stats:
+		match stat_name:
+			"physical_damage":
+				attack_damage += item.base_item.base_stats[stat_name].y
+			"spell_damage":
+				spell_damage += item.base_item.base_stats[stat_name].y
+			"armor":
+				armor += item.base_item.base_stats[stat_name].y
+			# Add more stats as needed
+	
+	# Apply modifiers
+	for mod in item.prefixes + item.suffixes:
+		for i in range(mod.values.size()):
+			match mod.name:
+				"Adds ({0}-{1}) Physical Damage":
+					attack_damage += mod.values[i]
+				"({0}-{1})% Increased Spell Damage":
+					spell_damage += mod.values[i]
+				# Add more modifier types as needed
+
+func remove_item_stats(item: Item) -> void:
+	# Remove base stats
+	for stat_name in item.base_item.base_stats:
+		match stat_name:
+			"physical_damage":
+				attack_damage -= item.base_item.base_stats[stat_name].y
+			"spell_damage":
+				spell_damage -= item.base_item.base_stats[stat_name].y
+			"armor":
+				armor -= item.base_item.base_stats[stat_name].y
+	
+	# Remove modifiers
+	for mod in item.prefixes + item.suffixes:
+		for i in range(mod.values.size()):
+			match mod.name:
+				"Adds ({0}-{1}) Physical Damage":
+					attack_damage -= mod.values[i]
+				"({0}-{1})% Increased Spell Damage":
+					spell_damage -= mod.values[i]

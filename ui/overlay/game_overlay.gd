@@ -4,6 +4,8 @@ extends CanvasLayer
 @onready var mana_fill = $ManaGlobe/ManaFill
 @onready var exp_bar = $ActionBar/ExpBar/ExpFill
 @onready var level_label = $ActionBar/ExpBar/LevelLabel
+@onready var action_bar = $ActionBar/MarginContainer/HBoxContainer
+var slot_map = {}
 
 var player: Node
 
@@ -12,13 +14,13 @@ func _ready() -> void:
 	if player:
 		player.connect("on_level_up", _on_player_level_up)
 	
-	# Setup shaders
-	var hp_shader = hp_fill.material as ShaderMaterial
-	var mana_shader = mana_fill.material as ShaderMaterial
-	
-	if hp_shader and mana_shader:
-		hp_shader.set_shader_parameter("fill_amount", 1.0)
-		mana_shader.set_shader_parameter("fill_amount", 1.0)
+	for slot in action_bar.get_children():
+		if slot is ActionBarSlot:
+			var slot_name = slot.name.to_lower().trim_suffix("slot")
+			slot_map[slot_name] = slot
+			slot.item_equipped.connect(_on_item_equipped)
+			slot.item_unequipped.connect(_on_item_unequipped)
+
 
 func _process(_delta: float) -> void:
 	if !player:
@@ -40,3 +42,29 @@ func _process(_delta: float) -> void:
 
 func _on_player_level_up(new_level: int) -> void:
 	level_label.text = "Level %d" % new_level 
+	
+func _on_item_pickup(item: Item) -> void:
+	if !item or !item.base_item:
+		return
+		
+	# Get the appropriate slot based on item type
+	var item_type = item.base_item.item_type.to_lower()
+	if slot_map.has(item_type):
+		var slot = slot_map[item_type]
+		if !slot.current_item:  # Only equip if slot is empty
+			slot.set_item(item)
+			# No need to call _on_item_equipped here as it's called in set_item
+		else:
+			print("Slot already occupied for item type: ", item_type)
+	else:
+		push_error("No slot found for item type: " + item_type)
+
+func _on_item_equipped(item: Item) -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.equip_item(item)
+
+func _on_item_unequipped(item: Item) -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	if player:
+		player.unequip_item(item)

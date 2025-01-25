@@ -63,5 +63,7 @@ func _on_mouse_exited() -> void:
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("interact"):
-		emit_signal("on_pickup", item)
+		# Find the game overlay and notify it of the pickup
+		var game_overlay = get_tree().get_first_node_in_group("game_overlay")
+		game_overlay._on_item_pickup(item)
 		queue_free() 

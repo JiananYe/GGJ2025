@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://0ssydroe5m36" path="res://ui/overlay/assets/xp_bar/action_bar_xp_empty.png" id="6_dkyxo"]
 [ext_resource type="Texture2D" uid="uid://bplps7lgu60tj" path="res://ui/overlay/assets/action_bar_main.png" id="6_p8aap"]
 [ext_resource type="Texture2D" uid="uid://gcwpy2vvlmtf" path="res://ui/overlay/assets/xp_bar/action_bar_xp_fill.png" id="7_eb12m"]
-[ext_resource type="Texture2D" uid="uid://dflhnknn0b47t" path="res://ui/overlay/assets/action_bar_slot.png" id="9_manrh"]
+[ext_resource type="PackedScene" uid="uid://dwc2gaw0figoo" path="res://entities/ui/ActionBarSlot.tscn" id="9_n0tyi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hp"]
 shader = ExtResource("2_shader")
@@ -20,7 +20,7 @@ shader = ExtResource("2_shader")
 shader_parameter/fill_amount = 1.0
 shader_parameter/fill_color = Color(0.2, 0.4, 1, 1)
 
-[node name="GameOverlay" type="CanvasLayer"]
+[node name="GameOverlay" type="CanvasLayer" groups=["game_overlay"]]
 script = ExtResource("1_overlay")
 
 [node name="HPGlobe" type="TextureRect" parent="."]
@@ -164,80 +164,23 @@ theme_override_constants/margin_bottom = 14
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ActionBar/MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 50
+alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="WeaponSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
 layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("9_manrh")
-expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="HelmetSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
 layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("9_manrh")
-expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="BodySlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
 layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("9_manrh")
-expand_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="BootsSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
 layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("9_manrh")
-expand_mode = 1
 
-[node name="TextureRect5" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="RingSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
 layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("9_manrh")
-expand_mode = 1
 
-[node name="TextureRect6" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="AmuletSlot" parent="ActionBar/MarginContainer/HBoxContainer" groups=["game_overlay"] instance=ExtResource("9_n0tyi")]
 layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("9_manrh")
-expand_mode = 1
-
-[node name="TextureRect7" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("9_manrh")
-expand_mode = 1
-
-[node name="TextureRect8" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("9_manrh")
-expand_mode = 1
-
-[node name="TextureRect9" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("9_manrh")
-expand_mode = 1
-
-[node name="TextureRect10" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("9_manrh")
-expand_mode = 1
-
-[node name="TextureRect11" type="TextureRect" parent="ActionBar/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-size_flags_horizontal = 0
-texture = ExtResource("9_manrh")
-expand_mode = 1

@@ -1,0 +1,45 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwc2gaw0figoo"]
+
+[ext_resource type="Script" path="res://entities/ui/action_bar_slot.gd" id="1_slot"]
+[ext_resource type="Texture2D" uid="uid://dflhnknn0b47t" path="res://ui/overlay/assets/action_bar_slot.png" id="2_e34p1"]
+
+[node name="ActionBarSlot" type="Panel"]
+custom_minimum_size = Vector2(80, 80)
+script = ExtResource("1_slot")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_e34p1")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ItemIcon" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="HoverTooltip" type="RichTextLabel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = -100.0
+offset_right = 232.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center]Item Name[/center]
+Modifier 1
+Modifier 2"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
