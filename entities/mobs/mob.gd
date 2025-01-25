@@ -34,7 +34,7 @@ func _ready() -> void:
 	hp_bar.entity = self
 	
 	# Set base experience value
-	experience_value = 20.0
+	experience_value = 5.0
 	
 	# Apply initial difficulty scaling
 	apply_difficulty_scaling(GameManager.get_difficulty_multiplier())
@@ -136,7 +136,7 @@ func die() -> void:
 		despawn_timer.timeout.connect(func(): queue_free())
 		
 		# Chance to drop item
-		if randf() < 0.3:  # 30% chance to drop item
+		if randf() < 0.01:  # 30% chance to drop item
 			drop_random_item()
 
 func apply_difficulty_scaling(multiplier: float) -> void:
@@ -161,7 +161,7 @@ func drop_random_item() -> void:
 	
 	var item_node = equipment_item_scene.instantiate()
 	item_node.item = dropped_item
-	get_parent().add_child(item_node)
+	get_parent().call_deferred("add_child", item_node)
 	item_node.global_position = global_position
 	
 	# Drop animation

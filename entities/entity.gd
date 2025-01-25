@@ -20,10 +20,10 @@ var cast_speed: float = 100.0  # Base 100% cast speed
 var cast_speed_multiplier: float = 1.0  # For modifiers that increase cast speed
 
 # Mana Attributes
-var mana_regeneration_rate: float = 10.0  # Base 2% per second
+var mana_regeneration_rate: float = 10.0  # Base 10% per second
 var mana_regeneration_multiplier: float = 1.0  # For modifiers that increase mana regen
 var last_mana_spent_time: float = 0.0
-var mana_regen_delay: float = 1.0  # Delay in seconds before mana starts regenerating
+var mana_regen_delay: float = 0.5  # Delay in seconds before mana starts regenerating
 
 # Defensive Attributes
 var armor: float = 0.0

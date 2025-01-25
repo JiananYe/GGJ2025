@@ -10,6 +10,8 @@ signal on_pickup(item: Item)
 
 var item: Item
 var item_texture: CompressedTexture2D
+const TARGET_SIZE = 96.0  # Target size in pixels
+var base_scale: Vector2  # Store the initial scale
 
 func _ready() -> void:
 	interaction_area.mouse_entered.connect(_on_mouse_entered)
@@ -25,6 +27,19 @@ func setup_item_visuals() -> void:
 	item_texture = load(texture_path)
 	if item_texture:
 		sprite.texture = item_texture
+		# Scale sprite to target size while maintaining aspect ratio
+		var max_dimension = max(item_texture.get_width(), item_texture.get_height())
+		var scale_factor = TARGET_SIZE / max_dimension
+		base_scale = Vector2(scale_factor, scale_factor)
+		sprite.scale = base_scale
+		
+		# Update animation with correct base scale
+		var anim = hover_animation.get_animation("hover")
+		anim.track_set_key_value(0, 0, base_scale)  # Initial scale
+		anim.track_set_key_value(0, 1, base_scale * 1.2)  # Hover scale
+		
+		var reset_anim = hover_animation.get_animation("RESET")
+		reset_anim.track_set_key_value(0, 0, base_scale)
 	
 	# Set name label
 	name_label.text = item.get_display_name()

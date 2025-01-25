@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entities/items/equipment_item.gd" id="1_item"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_interaction"]
-radius = 10.67
+radius = 41.1096
 
 [sub_resource type="Animation" id="Animation_reset"]
 length = 0.001
@@ -43,7 +43,6 @@ _data = {
 }
 
 [node name="EquipmentItem" type="Node2D"]
-scale = Vector2(0.33, 0.33)
 script = ExtResource("1_item")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -57,10 +56,10 @@ shape = SubResource("CircleShape2D_interaction")
 
 [node name="NameLabel" type="Label" parent="."]
 visible = false
-offset_left = -33.0
-offset_top = -17.0
-offset_right = 33.0
-offset_bottom = -8.0
+offset_left = -60.0
+offset_top = -40.0
+offset_right = 60.0
+offset_bottom = -20.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
 text = "Item Name"

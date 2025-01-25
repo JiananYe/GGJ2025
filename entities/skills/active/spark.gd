@@ -5,7 +5,7 @@ var spark_scene = preload("res://entities/skills/projectiles/spark/SparkProjecti
 
 func _init() -> void:
 	skill_name = "Spark"
-	base_mana_cost = 10.0
+	base_mana_cost = 5.0
 	base_cast_time = 0.5  # Half second base cast time
 	tags = ["Lightning", "Projectile", "Spell", "Duration"]
 	setup_base_stats()
