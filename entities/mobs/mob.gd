@@ -4,25 +4,30 @@ class_name Mob
 var hp_bar_scene = preload("res://entities/ui/HPBar.tscn")
 @onready var hp_bar: Control
 
+@onready var skill_manager = $SkillManager
+
 @export var movement_speed: float = 200.0
 @export var detection_range: float = 1000.0
-@export var min_distance: float = 100.0  # Minimum distance to keep from player
+@export var min_distance: float = 80.0  # Reduced to allow melee attacks
+@export var attack_range: float = 100.0  # Range at which mob will try to attack
 
 var target: Node2D = null
 var direction: Vector2 = Vector2.ZERO
+var can_attack: bool = true
+var attack_cooldown: float = 1.0  # Time between attacks
 
 @onready var movement_collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var hit_box_collision_shape: CollisionShape2D = $HitBox/CollisionShape2D
 
 func _ready() -> void:
 	super._ready()
-	# Try to find player
 	find_player()
+	setup_skills()
 	
 	# Setup HP bar
 	hp_bar = hp_bar_scene.instantiate()
 	add_child(hp_bar)
-	hp_bar.position = Vector2(0, -100)  # Position above entity
+	hp_bar.position = Vector2(0, -100)
 	hp_bar.entity = self
 
 func _physics_process(delta: float) -> void:
@@ -30,37 +35,64 @@ func _physics_process(delta: float) -> void:
 		return
 		
 	if target:
-		chase_target(delta)
+		handle_combat()
 	else:
 		find_player()
 
 func find_player() -> void:
 	target = get_tree().get_first_node_in_group("player")
 
-func chase_target(delta: float) -> void:
+func handle_combat() -> void:
 	if !is_instance_valid(target):
 		target = null
 		return
 		
 	var distance = global_position.distance_to(target.global_position)
 	
-	# Only chase if within detection range and further than minimum distance
-	if distance < detection_range and distance > min_distance:
+	if distance < detection_range:
 		# Calculate direction to player
 		direction = (target.global_position - global_position).normalized()
-		
-		# Move towards player
-		velocity = direction * movement_speed
 		
 		# Update sprite direction
 		if has_node("AnimatedSprite2D"):
 			var sprite = get_node("AnimatedSprite2D")
 			if direction.x != 0:
 				sprite.flip_h = direction.x < 0
+		
+		if distance <= attack_range and can_attack:
+			# Attack if in range
+			attack()
+		elif distance > min_distance:
+			# Move towards player if too far
+			velocity = direction * movement_speed
+		else:
+			velocity = Vector2.ZERO
 	else:
 		velocity = Vector2.ZERO
 	
 	move_and_slide()
+
+func setup_skills() -> void:
+	# Create melee attack skill
+	var melee_attack = MeleeAttackSkill.new()
+	
+	# Setup attack skill
+	skill_manager.add_skill_link("basic_attack")
+	skill_manager.link_skills("basic_attack", melee_attack, [])
+
+func attack() -> void:
+	can_attack = false
+	change_state(PlayerState.ATTACKING)
+	skill_manager.use_skill("basic_attack", self)
+	
+	# Start attack cooldown
+	await get_tree().create_timer(attack_cooldown).timeout
+	can_attack = true
+	if current_state == PlayerState.ATTACKING:
+		change_state(PlayerState.IDLE)
+
+func get_target_direction() -> Vector2:
+	return direction
 
 func take_hit(damage: float, damage_type: String = "physical") -> float:
 	var final_damage = super.take_hit(damage, damage_type)
@@ -73,13 +105,14 @@ func take_hit(damage: float, damage_type: String = "physical") -> float:
 func die() -> void:
 	if current_state != PlayerState.DYING:
 		change_state(PlayerState.DYING)
-		is_dead = true
-		# Disable collision
-		movement_collision_shape.set_deferred("disabled", true)
-		hit_box_collision_shape.set_deferred("disabled", true)
-		# Make player semi-transparent
-		modulate.a = 0.5
-		# Disable processing
-		set_physics_process(false)
-		# Optional: emit signal for game over handling
-		# emit_signal("player_died")
+		
+	is_dead = true
+	# Disable collision
+	movement_collision_shape.set_deferred("disabled", true)
+	hit_box_collision_shape.set_deferred("disabled", true)
+	# Make player semi-transparent
+	modulate.a = 0.5
+	# Disable processing
+	set_physics_process(false)
+	# Optional: emit signal for game over handling
+	# emit_signal("player_died")

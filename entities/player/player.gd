@@ -4,7 +4,6 @@ var hp_bar_scene = preload("res://entities/ui/HPBar.tscn")
 @onready var hp_bar: Control
 
 @onready var skill_manager = $SkillManager
-@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 var has_cast_skill: bool = false  # Track if we've cast the skill in this attack state
 
@@ -110,4 +109,7 @@ func handle_dying_state() -> void:
 		die()
 
 func die() -> void:
+	if current_state != PlayerState.DYING:
+		change_state(PlayerState.DYING)
+		
 	is_dead = true
