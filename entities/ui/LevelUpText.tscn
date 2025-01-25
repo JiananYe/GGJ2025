@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://clp5e1ixwvgff"]
+[gd_scene load_steps=3 format=3 uid="uid://bfe6np4mj8s7v"]
 
 [ext_resource type="Script" path="res://entities/ui/level_up_text.gd" id="1_levelup"]
 
