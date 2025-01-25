@@ -2,6 +2,7 @@ extends Node2D
 class_name MobSpawner
 
 @export var mob_scene: PackedScene
+@export var boss_scene: PackedScene = preload("res://entities/mobs/BossMob.tscn")
 @export var min_spawn_distance: float = 500.0
 @export var max_spawn_distance: float = 1000.0
 @export var max_mobs: int = 20
@@ -33,6 +34,7 @@ func _ready() -> void:
 	
 	# Connect to difficulty signal
 	GameManager.difficulty_increased.connect(_on_difficulty_increased)
+	GameManager.boss_spawn_time.connect(_on_boss_spawn_time)
 
 func setup_timer() -> void:
 	spawn_timer = Timer.new()
@@ -123,3 +125,15 @@ func _on_difficulty_increased(level: int) -> void:
 	
 	# Increase max mobs with difficulty
 	max_mobs = 20 + (level * 2)  # Add 2 max mobs per difficulty level
+
+func _on_boss_spawn_time() -> void:
+	if !player:
+		return
+		
+	# Spawn boss at a random position around the player
+	var boss = boss_scene.instantiate()
+	if boss:
+		var spawn_pos = get_random_spawn_position()
+		boss.global_position = spawn_pos
+		add_child(boss)
+		emit_signal("mob_spawned", boss)

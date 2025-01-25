@@ -5,12 +5,12 @@
 [ext_resource type="Script" path="res://entities/skills/skill_manager.gd" id="3_mveny"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mfgd2"]
-radius = 27.0
-height = 54.0
+radius = 36.0
+height = 72.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4ak1"]
-radius = 53.0
-height = 160.0
+radius = 88.0
+height = 250.0
 
 [node name="Mob" type="CharacterBody2D"]
 script = ExtResource("1_mob")

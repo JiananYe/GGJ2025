@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkl8kgsm6774m"]
+
+[ext_resource type="PackedScene" uid="uid://tuj7ktbyhbuq" path="res://entities/mobs/Mob.tscn" id="1_boss"]
+[ext_resource type="Script" path="res://entities/mobs/boss_mob.gd" id="2_boss"]
+
+[node name="BossMob" instance=ExtResource("1_boss")]
+script = ExtResource("2_boss")
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(1.2, 1.2)
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(2, 101)

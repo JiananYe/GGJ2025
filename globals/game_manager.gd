@@ -1,10 +1,12 @@
 extends Node
 
 signal difficulty_increased(level: int)
+signal boss_spawn_time
 
 var game_time: float = 0.0
 var difficulty_level: int = 0
-var difficulty_interval: float = 10.0  # Increase difficulty every minute
+var difficulty_interval: float = 60.0  # Increase difficulty every minute
+var boss_spawn_interval: float = 10.0  # Spawn boss after 10 seconds
 
 var difficulty_popup_scene = preload("res://ui/difficulty_popup/DifficultyPopup.tscn")
 var current_popup: Control
@@ -32,6 +34,10 @@ func _process(delta: float) -> void:
 		emit_signal("difficulty_increased", difficulty_level)
 		if current_popup:
 			current_popup.show_difficulty(difficulty_level)
+			
+	if game_time >= boss_spawn_interval:
+		emit_signal("boss_spawn_time")
+		set_process(false)  
 
 # Get multiplier for mob stats based on current difficulty
 func get_difficulty_multiplier() -> float:
