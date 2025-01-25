@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*res://globals/game_manager.gd"
 BMOD="*res://addons/bmod/autoloads/bmod/bmod.tscn"
+BaseItemsDB="*res://entities/items/base_items_db.gd"
 
 [display]
 

@@ -19,6 +19,9 @@ var attack_cooldown: float = 1.0  # Time between attacks
 @onready var movement_collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var hit_box_collision_shape: CollisionShape2D = $HitBox/CollisionShape2D
 
+var equipment_item_scene = preload("res://entities/items/EquipmentItem.tscn")
+var item_generator: ItemGenerator
+
 func _ready() -> void:
 	super._ready()
 	find_player()
@@ -35,6 +38,8 @@ func _ready() -> void:
 	
 	# Apply initial difficulty scaling
 	apply_difficulty_scaling(GameManager.get_difficulty_multiplier())
+	
+	item_generator = ItemGenerator.new()
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -129,6 +134,10 @@ func die() -> void:
 		# Start despawn timer
 		var despawn_timer = get_tree().create_timer(3.0)
 		despawn_timer.timeout.connect(func(): queue_free())
+		
+		# Chance to drop item
+		if randf() < 0.3:  # 30% chance to drop item
+			drop_random_item()
 
 func apply_difficulty_scaling(multiplier: float) -> void:
 	# Scale mob stats
@@ -145,3 +154,17 @@ func apply_difficulty_scaling(multiplier: float) -> void:
 	# Scale experience value with both difficulty and a random factor
 	var base_exp = experience_value
 	experience_value = base_exp * GameManager.get_exp_multiplier()
+
+func drop_random_item() -> void:
+	var base_item = BaseItemsDB.get_random_base_item()
+	var dropped_item = item_generator.generate_item(base_item, level)
+	
+	var item_node = equipment_item_scene.instantiate()
+	item_node.item = dropped_item
+	get_parent().add_child(item_node)
+	item_node.global_position = global_position
+	
+	# Drop animation
+	item_node.scale = Vector2.ZERO
+	var tween = create_tween()
+	tween.tween_property(item_node, "scale", Vector2.ONE, 0.3).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
