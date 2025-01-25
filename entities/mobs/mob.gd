@@ -122,3 +122,7 @@ func die() -> void:
 		modulate.a = 0.5
 		# Disable processing
 		set_physics_process(false)
+		
+		# Start despawn timer
+		var despawn_timer = get_tree().create_timer(3.0)
+		despawn_timer.timeout.connect(func(): queue_free())

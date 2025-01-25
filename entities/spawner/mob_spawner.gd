@@ -4,7 +4,7 @@ class_name MobSpawner
 @export var mob_scene: PackedScene
 @export var min_spawn_distance: float = 500.0
 @export var max_spawn_distance: float = 1000.0
-@export var max_mobs: int = 100
+@export var max_mobs: int = 20
 @export var spawn_interval: float = 0.5  # Time between spawns
 @export var initial_spawn_count: int = 10
 @export var auto_start: bool = true

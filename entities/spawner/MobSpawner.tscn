@@ -7,4 +7,3 @@
 y_sort_enabled = true
 script = ExtResource("1_spawner")
 mob_scene = ExtResource("2_narhl")
-max_mobs = 20
