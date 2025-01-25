@@ -36,6 +36,10 @@ func cast(caster: Node2D) -> void:
 		if target == caster:
 			continue
 			
+		# Only hit the player
+		if !target.is_in_group("player"):
+			continue
+			
 		# Check if target is in attack arc
 		var to_target = (target.global_position - caster.global_position).normalized()
 		var angle_to_target = abs(attack_direction.angle_to(to_target))
