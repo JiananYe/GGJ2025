@@ -1,6 +1,9 @@
 extends EntityStateMachine
 class_name Mob
 
+var hp_bar_scene = preload("res://entities/ui/HPBar.tscn")
+@onready var hp_bar: Control
+
 @export var movement_speed: float = 200.0
 @export var detection_range: float = 1000.0
 @export var min_distance: float = 100.0  # Minimum distance to keep from player
@@ -14,6 +17,12 @@ func _ready() -> void:
 	super._ready()
 	# Try to find player
 	find_player()
+	
+	# Setup HP bar
+	hp_bar = hp_bar_scene.instantiate()
+	add_child(hp_bar)
+	hp_bar.position = Vector2(0, -100)  # Position above entity
+	hp_bar.entity = self
 
 func _physics_process(delta: float) -> void:
 	if is_dead:
@@ -54,6 +63,18 @@ func chase_target(delta: float) -> void:
 
 func take_hit(damage: float, damage_type: String = "physical") -> float:
 	var final_damage = super.take_hit(damage, damage_type)
+	
+	var is_crit = randf() < (crit_chance / 100.0)
+	if is_crit:
+		final_damage *= crit_multiplier
+		
+	apply_damage(final_damage)
+	# Spawn damage number
+	var damage_number = damage_number_scene.instantiate()
+	get_tree().current_scene.add_child(damage_number)
+	damage_number.global_position = global_position + Vector2(0, -50)
+	
+	damage_number.setup(final_damage, is_crit)
 	
 	if current_hp <= 0:
 		die()

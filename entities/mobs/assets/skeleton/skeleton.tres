@@ -40,35 +40,35 @@
 [ext_resource type="Texture2D" uid="uid://dlfuny3jheoqn" path="res://entities/mobs/assets/skeleton/hurt/Regular_Skeleton_01_Hurt_010.png" id="38_ap0l7"]
 [ext_resource type="Texture2D" uid="uid://ksj18gg5okpj" path="res://entities/mobs/assets/skeleton/hurt/Regular_Skeleton_01_Hurt_011.png" id="39_8ewrh"]
 [ext_resource type="Texture2D" uid="uid://cwcv2w18nujqj" path="res://entities/mobs/assets/skeleton/idle/Regular_Skeleton_01_Idle Blink_000.png" id="40_cj13r"]
+[ext_resource type="Texture2D" uid="uid://b8eg8pioeqsst" path="res://entities/player/assets/wizard/walking/Walking_000.png" id="40_giowb"]
 [ext_resource type="Texture2D" uid="uid://c8ayghx6bus7o" path="res://entities/mobs/assets/skeleton/idle/Regular_Skeleton_01_Idle Blink_001.png" id="41_kirfo"]
+[ext_resource type="Texture2D" uid="uid://bjyk1iea1qrdm" path="res://entities/player/assets/wizard/walking/Walking_001.png" id="41_qdtbf"]
+[ext_resource type="Texture2D" uid="uid://30np6o382vvn" path="res://entities/player/assets/wizard/walking/Walking_002.png" id="42_png2n"]
 [ext_resource type="Texture2D" uid="uid://b3od5u2u2ncl2" path="res://entities/mobs/assets/skeleton/idle/Regular_Skeleton_01_Idle Blink_002.png" id="42_tenvo"]
 [ext_resource type="Texture2D" uid="uid://cu1lvaoebx186" path="res://entities/mobs/assets/skeleton/idle/Regular_Skeleton_01_Idle Blink_003.png" id="43_etnx5"]
+[ext_resource type="Texture2D" uid="uid://balphncmpl4l6" path="res://entities/player/assets/wizard/walking/Walking_003.png" id="43_llc1s"]
 [ext_resource type="Texture2D" uid="uid://1vntdf323e8d" path="res://entities/mobs/assets/skeleton/idle/Regular_Skeleton_01_Idle Blink_004.png" id="44_r08dc"]
+[ext_resource type="Texture2D" uid="uid://qd0a8xp7genl" path="res://entities/player/assets/wizard/walking/Walking_004.png" id="44_spj8e"]
 [ext_resource type="Texture2D" uid="uid://boypawne0v1hj" path="res://entities/mobs/assets/skeleton/idle/Regular_Skeleton_01_Idle Blink_005.png" id="45_a4ern"]
+[ext_resource type="Texture2D" uid="uid://d0b6hr6tjxbey" path="res://entities/player/assets/wizard/walking/Walking_005.png" id="45_f8yo4"]
+[ext_resource type="Texture2D" uid="uid://weflyy3eupec" path="res://entities/player/assets/wizard/walking/Walking_006.png" id="46_d7das"]
 [ext_resource type="Texture2D" uid="uid://h7oebwf0w8ds" path="res://entities/mobs/assets/skeleton/idle/Regular_Skeleton_01_Idle Blink_006.png" id="46_xmx3e"]
+[ext_resource type="Texture2D" uid="uid://cnmpc3tmqtja5" path="res://entities/player/assets/wizard/walking/Walking_007.png" id="47_5ow0l"]
 [ext_resource type="Texture2D" uid="uid://yfjpnvyo881e" path="res://entities/mobs/assets/skeleton/idle/Regular_Skeleton_01_Idle Blink_007.png" id="47_bdirk"]
+[ext_resource type="Texture2D" uid="uid://cp7nhak03atai" path="res://entities/player/assets/wizard/walking/Walking_008.png" id="48_7tylw"]
 [ext_resource type="Texture2D" uid="uid://6si2ra6mgji" path="res://entities/mobs/assets/skeleton/idle/Regular_Skeleton_01_Idle Blink_008.png" id="48_s5vnl"]
 [ext_resource type="Texture2D" uid="uid://cfj34hiusrbo2" path="res://entities/mobs/assets/skeleton/idle/Regular_Skeleton_01_Idle Blink_009.png" id="49_dqxcm"]
+[ext_resource type="Texture2D" uid="uid://bg55d7nen301f" path="res://entities/player/assets/wizard/walking/Walking_009.png" id="49_og51f"]
+[ext_resource type="Texture2D" uid="uid://bkxk00m4r5g6v" path="res://entities/player/assets/wizard/walking/Walking_010.png" id="50_hxhiv"]
 [ext_resource type="Texture2D" uid="uid://cnr3gkt8h46no" path="res://entities/mobs/assets/skeleton/idle/Regular_Skeleton_01_Idle Blink_010.png" id="50_wtnph"]
 [ext_resource type="Texture2D" uid="uid://dnrqd64oq6r28" path="res://entities/mobs/assets/skeleton/idle/Regular_Skeleton_01_Idle Blink_011.png" id="51_1u0w8"]
-[ext_resource type="Texture2D" uid="uid://n1edbwxgcu1e" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_000.png" id="52_h4rq5"]
-[ext_resource type="Texture2D" uid="uid://byq4w47ulhcd1" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_001.png" id="53_7kcxo"]
-[ext_resource type="Texture2D" uid="uid://dgyma3jrpch5f" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_002.png" id="54_qhu5x"]
-[ext_resource type="Texture2D" uid="uid://dui6rgv6efao5" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_003.png" id="55_p3v0k"]
-[ext_resource type="Texture2D" uid="uid://e6nps7205ms2" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_004.png" id="56_vf342"]
-[ext_resource type="Texture2D" uid="uid://cyfm8crku861b" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_005.png" id="57_xhsat"]
-[ext_resource type="Texture2D" uid="uid://dplb5rwofs7ve" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_006.png" id="58_n48wb"]
-[ext_resource type="Texture2D" uid="uid://bcn6fiwqrcwqk" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_007.png" id="59_k363q"]
-[ext_resource type="Texture2D" uid="uid://di6mp6xeaya6d" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_008.png" id="60_87ugx"]
-[ext_resource type="Texture2D" uid="uid://j1m4yyhr043i" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_009.png" id="61_g8paa"]
-[ext_resource type="Texture2D" uid="uid://cfrc0bhwthehw" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_010.png" id="62_88l34"]
-[ext_resource type="Texture2D" uid="uid://bgnprmfgm08xm" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_011.png" id="63_jnpfu"]
-[ext_resource type="Texture2D" uid="uid://ckkkdrd5vc8bx" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_012.png" id="64_5tsg1"]
-[ext_resource type="Texture2D" uid="uid://cncue7u4bxjx3" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_013.png" id="65_68o7f"]
-[ext_resource type="Texture2D" uid="uid://cducncrm5sx40" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_014.png" id="66_6g8e3"]
-[ext_resource type="Texture2D" uid="uid://bsxsaxgx0trbj" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_015.png" id="67_iqlo8"]
-[ext_resource type="Texture2D" uid="uid://ckhu3heblpauf" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_016.png" id="68_j744f"]
-[ext_resource type="Texture2D" uid="uid://dkus3mneyctui" path="res://entities/mobs/assets/skeleton/walking/Regular_Skeleton_01_Walking_017.png" id="69_78k7q"]
+[ext_resource type="Texture2D" uid="uid://chf4qmgk12dt" path="res://entities/player/assets/wizard/walking/Walking_011.png" id="51_ms6r6"]
+[ext_resource type="Texture2D" uid="uid://dd3ebjn5yifu" path="res://entities/player/assets/wizard/walking/Walking_012.png" id="52_2vikp"]
+[ext_resource type="Texture2D" uid="uid://bdujn3oghpx0i" path="res://entities/player/assets/wizard/walking/Walking_013.png" id="53_dvmae"]
+[ext_resource type="Texture2D" uid="uid://ykc34cglinn2" path="res://entities/player/assets/wizard/walking/Walking_014.png" id="54_lviqd"]
+[ext_resource type="Texture2D" uid="uid://1nm2etfaafkj" path="res://entities/player/assets/wizard/walking/Walking_015.png" id="55_s8xdq"]
+[ext_resource type="Texture2D" uid="uid://p16o3fipg363" path="res://entities/player/assets/wizard/walking/Walking_016.png" id="56_yaam0"]
+[ext_resource type="Texture2D" uid="uid://bpy0o15qgydr2" path="res://entities/player/assets/wizard/walking/Walking_017.png" id="57_e5d67"]
 
 [resource]
 animations = [{
@@ -247,58 +247,58 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("52_h4rq5")
+"texture": ExtResource("40_giowb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("53_7kcxo")
+"texture": ExtResource("41_qdtbf")
 }, {
 "duration": 1.0,
-"texture": ExtResource("54_qhu5x")
+"texture": ExtResource("42_png2n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("55_p3v0k")
+"texture": ExtResource("43_llc1s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("56_vf342")
+"texture": ExtResource("44_spj8e")
 }, {
 "duration": 1.0,
-"texture": ExtResource("57_xhsat")
+"texture": ExtResource("45_f8yo4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("58_n48wb")
+"texture": ExtResource("46_d7das")
 }, {
 "duration": 1.0,
-"texture": ExtResource("59_k363q")
+"texture": ExtResource("47_5ow0l")
 }, {
 "duration": 1.0,
-"texture": ExtResource("60_87ugx")
+"texture": ExtResource("48_7tylw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("61_g8paa")
+"texture": ExtResource("49_og51f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("62_88l34")
+"texture": ExtResource("50_hxhiv")
 }, {
 "duration": 1.0,
-"texture": ExtResource("63_jnpfu")
+"texture": ExtResource("51_ms6r6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("64_5tsg1")
+"texture": ExtResource("52_2vikp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("65_68o7f")
+"texture": ExtResource("53_dvmae")
 }, {
 "duration": 1.0,
-"texture": ExtResource("66_6g8e3")
+"texture": ExtResource("54_lviqd")
 }, {
 "duration": 1.0,
-"texture": ExtResource("67_iqlo8")
+"texture": ExtResource("55_s8xdq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("68_j744f")
+"texture": ExtResource("56_yaam0")
 }, {
 "duration": 1.0,
-"texture": ExtResource("69_78k7q")
+"texture": ExtResource("57_e5d67")
 }],
 "loop": true,
 "name": &"walking",

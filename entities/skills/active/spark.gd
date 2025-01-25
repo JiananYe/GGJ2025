@@ -12,7 +12,7 @@ func _init() -> void:
 
 func setup_base_stats() -> void:
 	base_stats = {
-		"damage": 20.0,  # Base hit damage
+		"damage": 10.0,  # Base hit damage
 		"lightning_damage": 15.0,  # Base lightning damage
 		"projectile_speed": 600.0,  # Base projectile speed
 		"projectile_amount": 3,  # Base number of projectiles

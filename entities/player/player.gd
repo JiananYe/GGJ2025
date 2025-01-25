@@ -1,5 +1,8 @@
 extends EntityStateMachine
 
+var hp_bar_scene = preload("res://entities/ui/HPBar.tscn")
+@onready var hp_bar: Control
+
 @onready var skill_manager = $SkillManager
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
@@ -10,6 +13,12 @@ func _ready() -> void:
 	setup_skills()
 	# Reset animation speed when changing to non-attack animations
 	animated_sprite.animation_finished.connect(_on_animation_finished)
+
+	# Setup HP bar
+	hp_bar = hp_bar_scene.instantiate()
+	add_child(hp_bar)
+	hp_bar.position = Vector2(0, -100)  # Position above entity
+	hp_bar.entity = self
 
 func _on_animation_finished() -> void:
 	if current_state != PlayerState.ATTACKING:

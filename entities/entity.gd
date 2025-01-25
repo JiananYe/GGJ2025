@@ -1,6 +1,12 @@
 extends CharacterBody2D
 class_name Entity
 
+var damage_number_scene = preload("res://entities/ui/DamageNumber.tscn")
+var last_damage_number_position: Vector2 = Vector2.ZERO
+var damage_number_count: int = 0
+const DAMAGE_NUMBER_RESET_TIME: float = 0.5  # Reset position after this time
+var last_damage_time: float = 0.0
+
 # Base Attributes
 var max_hp: float = 100.0
 var current_hp: float = max_hp
@@ -78,7 +84,38 @@ func spend_mana(amount: float) -> bool:
 
 func take_hit(damage: float, damage_type: String = "physical") -> float:
 	var final_damage = calculate_damage(damage, damage_type)
+	
+	# Check if it's a critical hit
+	var is_crit = randf() < (crit_chance / 100.0)
+	if is_crit:
+		final_damage *= crit_multiplier
+	
 	apply_damage(final_damage)
+	
+	# Spawn damage number with offset
+	var current_time = Time.get_unix_time_from_system()
+	if current_time - last_damage_time > DAMAGE_NUMBER_RESET_TIME:
+		damage_number_count = 0
+		last_damage_number_position = Vector2.ZERO
+	
+	var damage_number = damage_number_scene.instantiate()
+	get_tree().current_scene.add_child(damage_number)
+	
+	# Calculate offset position
+	var base_position = global_position + Vector2(0, -50)
+	var offset = Vector2(
+		randf_range(-20, 20),  # Random X offset
+		-damage_number_count * 30  # Stack vertically
+	)
+	
+	damage_number.global_position = base_position + offset
+	damage_number.setup(final_damage, is_crit)
+	
+	# Update tracking variables
+	last_damage_number_position = offset
+	damage_number_count += 1
+	last_damage_time = current_time
+	
 	return final_damage
 
 func calculate_damage(incoming_damage: float, damage_type: String) -> float:
