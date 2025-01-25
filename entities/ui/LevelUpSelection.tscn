@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2ykp75l4prfb"]
+[gd_scene load_steps=3 format=3 uid="uid://d4bs22iwv46gr"]
 
 [ext_resource type="Script" path="res://entities/ui/level_up_selection.gd" id="1_selection"]
 
@@ -42,10 +42,6 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -350.0
-offset_top = -150.0
-offset_right = 350.0
-offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50

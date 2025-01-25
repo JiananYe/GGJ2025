@@ -3,9 +3,9 @@ class_name SkillCard
 
 signal card_selected
 
-@onready var title_label: Label = $Title
-@onready var description_label: Label = $Description
-@onready var icon: TextureRect = $Icon
+@onready var title_label: Label = $MarginContainer/VBoxContainer/Title
+@onready var description_label: Label = $MarginContainer/VBoxContainer/MarginContainer/Description
+@onready var icon: TextureRect = $MarginContainer/VBoxContainer/Icon
 
 var skill_data: Dictionary
 
