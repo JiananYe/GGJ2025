@@ -33,7 +33,6 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 342.0
 offset_bottom = 576.0
-pivot_offset = Vector2(171, 0)
 script = ExtResource("1_card")
 
 [node name="Button" type="Button" parent="."]
@@ -43,7 +42,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(449, 227)
+pivot_offset = Vector2(171, 227)
 size_flags_vertical = 3
 theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 theme_override_styles/normal = SubResource("StyleBoxFlat_card")
@@ -55,6 +54,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(171, 0)
 mouse_filter = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 70
@@ -96,7 +96,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(446, 135)
+pivot_offset = Vector2(171, 135)
 mouse_filter = 2
 texture = ExtResource("2_2wpdp")
 
