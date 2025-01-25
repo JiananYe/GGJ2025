@@ -20,10 +20,19 @@ func setup_skills() -> void:
 	var spark = SparkSkill.new()
 	var additional_projectiles = AdditionalProjectilesSupport.new()
 	var faster_casting = FasterCastingSupport.new()
+	var increased_duration = IncreasedDurationSupport.new()
+	var faster_projectiles = FasterProjectilesSupport.new()
+	var projectile_damage = ProjectileDamageSupport.new()
 	
 	# Setup primary attack
 	skill_manager.add_skill_link("primary_attack")
-	var support_skills: Array = [additional_projectiles, faster_casting]
+	var support_skills: Array = [
+		additional_projectiles,
+		faster_casting,
+		increased_duration,
+		faster_projectiles,
+		projectile_damage
+	]
 	skill_manager.link_skills("primary_attack", spark, support_skills)
 
 func _physics_process(delta: float) -> void:

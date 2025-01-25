@@ -7,16 +7,17 @@ func _init() -> void:
 	skill_name = "Spark"
 	base_mana_cost = 10.0
 	base_cast_time = 0.5  # Half second base cast time
-	tags = ["Lightning", "Projectile", "Hit", "Spell"]
+	tags = ["Lightning", "Projectile", "Spell", "Duration"]
 	setup_base_stats()
 
 func setup_base_stats() -> void:
 	base_stats = {
 		"damage": 20.0,  # Base hit damage
 		"lightning_damage": 15.0,  # Base lightning damage
-		"projectile_speed": 700.0,  # Base projectile speed
+		"projectile_speed": 600.0,  # Base projectile speed
 		"projectile_amount": 3,  # Base number of projectiles
-		"projectile_damage_multiplier": 1.0  # Base projectile damage multiplier
+		"projectile_damage_multiplier": 1.0,  # Base projectile damage multiplier
+		"projectile_duration": 0.5  # Base duration in seconds
 	}
 	computed_stats = base_stats.duplicate()
 
@@ -57,5 +58,6 @@ func spawn_spark_projectile(caster: Node2D, angle: float, damage: float) -> void
 			angle,
 			damage,
 			computed_stats.projectile_speed,
-			caster  # Pass the caster reference
+			caster,  # Pass the caster reference
+			computed_stats.projectile_duration  # Pass the duration
 		) 
