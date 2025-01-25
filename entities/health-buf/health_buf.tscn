@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3emp4pjjadva"]
+
+[ext_resource type="Texture2D" uid="uid://4qw5ily8qyaw" path="res://entities/health-buf/assets/generic-rpg-loot03.png" id="1_1xhq2"]
+[ext_resource type="Script" path="res://entities/health-buf/health-buf.gd" id="1_wwa4x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g8cdf"]
+size = Vector2(100, 100)
+
+[node name="Health_buf" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_wwa4x")
+
+[node name="Potion" type="Sprite2D" parent="."]
+light_mask = 3
+visibility_layer = 3
+position = Vector2(10.75, 13.1389)
+rotation = 0.261799
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_1xhq2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+light_mask = 2
+shape = SubResource("RectangleShape2D_g8cdf")
+
+[node name="Timer" type="Timer" parent="."]

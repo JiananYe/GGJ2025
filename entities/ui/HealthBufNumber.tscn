@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfliag64mi7wu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jq0gp"]
+font_size = 32
+font_color = Color(0.298039, 1, 0.313726, 1)
+outline_size = 3
+outline_color = Color(0, 0, 0, 1)
+
+[node name="HealthBufNumber" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+text = "+15"
+label_settings = SubResource("LabelSettings_jq0gp")

@@ -116,6 +116,10 @@ func handle_attacking_state() -> void:
 		animated_sprite.speed_scale = 1.0  # Reset speed scale
 		change_state(PlayerState.IDLE)
 
+func increase_health(increase) -> void:
+	if !animated_sprite.is_playing():
+		current_hp += increase
+		
 func handle_hurt_state() -> void:
 	if !animated_sprite.is_playing():
 		change_state(PlayerState.IDLE)
