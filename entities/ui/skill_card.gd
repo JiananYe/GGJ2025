@@ -27,7 +27,6 @@ func _on_button_pressed() -> void:
 	emit_signal("card_selected", skill_data) 
 
 func _process(delta: float) -> void:
-	print(scale.x)
 	if content.scale.x < 1:
 		lerp_time += delta * 1.8
 		var ease_value = ease(lerp_time, 2) * 2 - 1 
