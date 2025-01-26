@@ -222,16 +222,22 @@ theme_override_constants/margin_bottom = 14
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ActionBar/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 40
 alignment = 1
 
-[node name="WeaponSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
+[node name="StaffSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
 layout_mode = 2
 
 [node name="HelmetSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
 layout_mode = 2
 
-[node name="BodySlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
+[node name="BodyArmorSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
+layout_mode = 2
+
+[node name="BracersSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
+layout_mode = 2
+
+[node name="BeltSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
 layout_mode = 2
 
 [node name="BootsSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]

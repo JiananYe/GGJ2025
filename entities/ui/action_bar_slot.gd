@@ -12,7 +12,7 @@ var current_item: Item = null
 func set_item(item: Item) -> void:
 	current_item = item
 	if item and item.base_item:
-		var texture_path = "res://entities/items/assets/%s.png" % item.base_item.item_type.to_lower()
+		var texture_path = "res://entities/items/assets/%s.png" % item.base_item.item_type.to_snake_case()
 		var texture = load(texture_path)
 		if texture:
 			item_icon.texture = texture

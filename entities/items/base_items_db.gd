@@ -1,13 +1,6 @@
 extends Node
 
 const BASE_ITEMS = {
-	"Rusted Sword": {
-		"type": "axe",
-		"stats": {
-			"physical_damage": Vector2(4, 8),
-			"attack_speed": 1.4
-		}
-	},
 	"Wooden Staff": {
 		"type": "staff",
 		"stats": {
@@ -52,32 +45,11 @@ const BASE_ITEMS = {
 			"armor": Vector2(8, 12)
 		}
 	},
-	"Wooden Shield": {
-		"type": "shield",
-		"stats": {
-			"block": Vector2(15, 20),
-			"armor": Vector2(2, 4)
-		}
-	},
-	"Simple Bow": {
-		"type": "bow",
-		"stats": {
-			"physical_damage": Vector2(3, 7),
-			"attack_speed": 1.2
-		}
-	},
 	"Cloth Bracers": {
 		"type": "bracers",
 		"stats": {
 			"armor": Vector2(1, 3),
 			"cast_speed": 1.1
-		}
-	},
-	"Wooden Mace": {
-		"type": "mace",
-		"stats": {
-			"physical_damage": Vector2(5, 9),
-			"attack_speed": 1.0
 		}
 	}
 }

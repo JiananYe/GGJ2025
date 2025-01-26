@@ -61,11 +61,16 @@ func _on_item_pickup(item: Item) -> void:
 		
 	# Get the appropriate slot based on item type
 	var item_type = item.base_item.item_type.to_lower()
+	# Map "staff" type to "staff" slot
+	if item_type == "staff":
+		item_type = "staff"
+	elif item_type == "body_armor":
+		item_type = "bodyarmor"
+		
 	if slot_map.has(item_type):
 		var slot = slot_map[item_type]
 		if !slot.current_item:  # Only equip if slot is empty
 			slot.set_item(item)
-			# No need to call _on_item_equipped here as it's called in set_item
 		else:
 			print("Slot already occupied for item type: ", item_type)
 	else:

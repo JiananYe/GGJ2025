@@ -21,12 +21,14 @@ var event_emitter_get_hit := FmodEventEmitter2D.new()
 signal on_level_up(new_level: int)
 
 var equipped_items: Dictionary = {
-	"weapon": null,
+	"staff": null,
 	"helmet": null,
-	"body": null,
+	"body_armor": null,
 	"boots": null,
+	"belt": null,
 	"ring": null,
-	"amulet": null
+	"amulet": null,
+	"bracers": null
 }
 
 func _ready() -> void:
