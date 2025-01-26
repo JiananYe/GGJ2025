@@ -10,7 +10,7 @@ extends Control
 @onready var bubble_sprite: Control = $MainMenu/BubbleSprite
 @onready var settings_window: Window = $MainMenu/SettingsWindow
 @onready var main_menu: Control = $MainMenu
-@onready var main_main: Node2D = $"../.."
+@onready var main_main: Node2D = $"../"
 
 const level_scene = preload("res://scenes/Main.tscn")
 var level: Node2D = null

@@ -1,9 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://hu7eadpdypie"]
+[gd_scene load_steps=2 format=3 uid="uid://c8yrfr7n5qjuy"]
 
-[ext_resource type="PackedScene" uid="uid://c5xb5jcb1x5gx" path="res://ui/main_menu/menus.tscn" id="2_y6kvi"]
+[ext_resource type="PackedScene" uid="uid://chbdet1pi0r85" path="res://ui/main_menu/menus.tscn" id="2_y6kvi"]
 
 [node name="MainMain" type="Node2D"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." groups=["ui_layer"]]
-
-[node name="Menus" parent="CanvasLayer" instance=ExtResource("2_y6kvi")]
+[node name="Menus" parent="." instance=ExtResource("2_y6kvi")]

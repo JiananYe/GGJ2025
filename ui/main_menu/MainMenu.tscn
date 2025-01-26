@@ -1,16 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://chbdet1pi0r85"]
+[gd_scene load_steps=8 format=3 uid="uid://bnixo2dow3kly"]
 
-[ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_3l45r"]
-[ext_resource type="Shader" path="res://ui/main_menu/fish_eye.gdshader" id="1_u6k2w"]
-[ext_resource type="Texture2D" uid="uid://q3o3tujij50x" path="res://ui/main_menu/you_died.png" id="2_w6xsl"]
-[ext_resource type="Texture2D" uid="uid://d3mjhmn4sayjs" path="res://ui/main_menu/main_menu_bubble.png" id="3_fq87h"]
-[ext_resource type="Texture2D" uid="uid://7lq37lgh1sag" path="res://ui/main_menu/bubble_buttons.png" id="5_h3v45"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj7dt"]
-bg_color = Color(0, 0, 0, 1)
+[ext_resource type="Shader" path="res://ui/main_menu/fish_eye.gdshader" id="1_5tdww"]
+[ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="2_bouvp"]
+[ext_resource type="Texture2D" uid="uid://d3mjhmn4sayjs" path="res://ui/main_menu/main_menu_bubble.png" id="2_kr7ud"]
+[ext_resource type="Texture2D" uid="uid://7lq37lgh1sag" path="res://ui/main_menu/bubble_buttons.png" id="3_xp6jc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3jmjq"]
-shader = ExtResource("1_u6k2w")
+shader = ExtResource("1_5tdww")
 shader_parameter/aspect = 1.0
 shader_parameter/distortion = 1.0
 shader_parameter/radius = 1.0
@@ -24,7 +20,7 @@ shader_parameter/effect_size = Vector2(1, 1)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sxcrn"]
-shader = ExtResource("1_u6k2w")
+shader = ExtResource("1_5tdww")
 shader_parameter/aspect = 1.0
 shader_parameter/distortion = 1.5
 shader_parameter/radius = 1.0
@@ -34,65 +30,22 @@ shader_parameter/crop_color = Vector4(0, 0, 0, 1)
 shader_parameter/effect_center = Vector2(0.5, 0.5)
 shader_parameter/effect_size = Vector2(0.35, 0.62)
 
-[node name="Menus" type="Control"]
+[node name="MainMenu" type="Control"]
+material = SubResource("ShaderMaterial_3jmjq")
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_3l45r")
+script = ExtResource("2_bouvp")
 
-[node name="DeathMenu" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BlackBackground" type="Panel" parent="DeathMenu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_qj7dt")
-
-[node name="YouDied" type="MarginContainer" parent="DeathMenu"]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 200
-theme_override_constants/margin_right = 0
-theme_override_constants/margin_bottom = 200
-
-[node name="TextureRect" type="TextureRect" parent="DeathMenu/YouDied"]
-layout_mode = 2
-texture = ExtResource("2_w6xsl")
-expand_mode = 5
-stretch_mode = 5
-
-[node name="MainMenu" type="Control" parent="."]
-material = SubResource("ShaderMaterial_3jmjq")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BubbleSprite" type="Control" parent="MainMenu"]
+[node name="BubbleSprite" type="Control" parent="."]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ButtonPlay" type="Button" parent="MainMenu/BubbleSprite"]
+[node name="ButtonPlay" type="Button" parent="BubbleSprite"]
 layout_mode = 0
 offset_left = -80.0
 offset_top = 104.0
@@ -106,7 +59,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_g0gpx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_g0gpx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g0gpx")
 
-[node name="ButtonSettings" type="Button" parent="MainMenu/BubbleSprite"]
+[node name="ButtonSettings" type="Button" parent="BubbleSprite"]
 layout_mode = 0
 offset_left = 152.0
 offset_top = -130.0
@@ -119,7 +72,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_g0gpx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_g0gpx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g0gpx")
 
-[node name="ButtonQuit" type="Button" parent="MainMenu/BubbleSprite"]
+[node name="ButtonQuit" type="Button" parent="BubbleSprite"]
 layout_mode = 0
 offset_left = 556.0
 offset_top = -92.0
@@ -133,7 +86,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_g0gpx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_g0gpx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g0gpx")
 
-[node name="Bubble" type="TextureRect" parent="MainMenu/BubbleSprite"]
+[node name="Bubble" type="TextureRect" parent="BubbleSprite"]
 texture_filter = 1
 custom_minimum_size = Vector2(672, 669.6)
 layout_mode = 1
@@ -141,10 +94,10 @@ offset_right = 672.0
 offset_bottom = 669.6
 pivot_offset = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("3_fq87h")
+texture = ExtResource("2_kr7ud")
 expand_mode = 1
 
-[node name="Buttons" type="TextureRect" parent="MainMenu/BubbleSprite"]
+[node name="Buttons" type="TextureRect" parent="BubbleSprite"]
 texture_filter = 1
 custom_minimum_size = Vector2(715, 51)
 layout_mode = 1
@@ -154,11 +107,11 @@ offset_right = 717.0
 offset_bottom = 158.0
 pivot_offset = Vector2(0.5, 0.5)
 mouse_filter = 2
-texture = ExtResource("5_h3v45")
+texture = ExtResource("3_xp6jc")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="MainMenu"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureRect" type="ColorRect" parent="MainMenu/CanvasLayer"]
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer"]
 visible = false
 material = SubResource("ShaderMaterial_sxcrn")
 use_parent_material = true
@@ -172,7 +125,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(1, 1, 1, 0)
 
-[node name="SettingsWindow" type="Window" parent="MainMenu"]
+[node name="SettingsWindow" type="Window" parent="."]
+auto_translate_mode = 1
 title = "Settings"
 initial_position = 3
 size = Vector2i(600, 300)
@@ -180,7 +134,7 @@ current_screen = 0
 visible = false
 theme_override_font_sizes/title_font_size = 30
 
-[node name="MarginContainer" type="MarginContainer" parent="MainMenu/SettingsWindow"]
+[node name="MarginContainer" type="MarginContainer" parent="SettingsWindow"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -191,28 +145,22 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/SettingsWindow/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsWindow/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/SettingsWindow/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="SettingsWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainMenu/SettingsWindow/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="SettingsWindow/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Audio Volume "
 
-[node name="HSlider" type="HSlider" parent="MainMenu/SettingsWindow/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="SettingsWindow/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 max_value = 1.0
 step = 0.001
 value = 0.5
-
-[connection signal="pressed" from="MainMenu/BubbleSprite/ButtonPlay" to="." method="_on_button_play_pressed"]
-[connection signal="pressed" from="MainMenu/BubbleSprite/ButtonSettings" to="." method="_on_button_settings_pressed"]
-[connection signal="pressed" from="MainMenu/BubbleSprite/ButtonQuit" to="." method="_on_button_quit_pressed"]
-[connection signal="close_requested" from="MainMenu/SettingsWindow" to="." method="_on_settings_window_close_requested"]
-[connection signal="value_changed" from="MainMenu/SettingsWindow/MarginContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
