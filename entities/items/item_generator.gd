@@ -42,7 +42,7 @@ func roll_rarity() -> int:
 	var roll = randf()
 	if roll < 1.0:  # 10% chance for rare
 		return Rarity.RARE
-	elif roll < 0.35:  # 25% chance for magic
+	elif roll < 0.35:  # 35% chance for magic
 		return Rarity.MAGIC
 	return Rarity.COMMON
 
