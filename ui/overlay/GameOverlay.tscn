@@ -32,6 +32,7 @@ offset_top = -175.0
 offset_right = 470.0
 offset_bottom = 5.0
 grow_vertical = 0
+mouse_filter = 0
 texture = ExtResource("2_5vqhg")
 expand_mode = 2
 
@@ -53,6 +54,27 @@ anchor_right = 1.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
+[node name="TooltipLabel" type="Label" parent="HPGlobe"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -13.0
+offset_right = 60.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "100 / 100 HP"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ManaGlobe" type="TextureRect" parent="."]
 anchors_preset = 3
 anchor_left = 1.0
@@ -65,6 +87,7 @@ offset_right = -302.0
 offset_bottom = 4.0
 grow_horizontal = 0
 grow_vertical = 0
+mouse_filter = 0
 texture = ExtResource("2_5vqhg")
 expand_mode = 2
 
@@ -86,6 +109,27 @@ anchor_right = 1.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
 
+[node name="TooltipLabel" type="Label" parent="ManaGlobe"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -13.0
+offset_right = 60.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 18
+text = "100 / 100 Mana"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="ActionBar" type="TextureRect" parent="."]
 anchors_preset = 7
 anchor_left = 0.5
@@ -98,6 +142,7 @@ offset_right = 594.0
 offset_bottom = 11.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 texture = ExtResource("6_p8aap")
 expand_mode = 1
 
@@ -157,6 +202,7 @@ offset_right = 580.0
 offset_bottom = 67.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 120
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 120
@@ -184,3 +230,8 @@ layout_mode = 2
 
 [node name="AmuletSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
 layout_mode = 2
+
+[connection signal="mouse_entered" from="HPGlobe" to="." method="_on_hp_globe_mouse_entered"]
+[connection signal="mouse_exited" from="HPGlobe" to="." method="_on_hp_globe_mouse_exited"]
+[connection signal="mouse_entered" from="ManaGlobe" to="." method="_on_mana_globe_mouse_entered"]
+[connection signal="mouse_exited" from="ManaGlobe" to="." method="_on_mana_globe_mouse_exited"]

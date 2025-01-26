@@ -5,6 +5,8 @@ extends CanvasLayer
 @onready var exp_bar = $ActionBar/ExpBar/ExpFill
 @onready var level_label = $ActionBar/ExpBar/LevelLabel
 @onready var action_bar = $ActionBar/MarginContainer/HBoxContainer
+@onready var hp_tooltip = $HPGlobe/TooltipLabel
+@onready var mana_tooltip = $ManaGlobe/TooltipLabel
 var slot_map = {}
 
 var player: Node
@@ -20,7 +22,10 @@ func _ready() -> void:
 			slot_map[slot_name] = slot
 			slot.item_equipped.connect(_on_item_equipped)
 			slot.item_unequipped.connect(_on_item_unequipped)
-
+	
+	# Hide tooltips initially
+	hp_tooltip.hide()
+	mana_tooltip.hide()
 
 func _process(_delta: float) -> void:
 	if !player:
@@ -30,11 +35,13 @@ func _process(_delta: float) -> void:
 	var hp_shader = hp_fill.material as ShaderMaterial
 	if hp_shader:
 		hp_shader.set_shader_parameter("fill_amount", player.current_hp / player.max_hp)
+		hp_tooltip.text = "%d / %d HP" % [player.current_hp, player.max_hp]
 	
 	# Update Mana globe fill
 	var mana_shader = mana_fill.material as ShaderMaterial
 	if mana_shader:
 		mana_shader.set_shader_parameter("fill_amount", player.current_mana / player.max_mana)
+		mana_tooltip.text = "%d / %d Mana" % [player.current_mana, player.max_mana]
 	
 	# Update exp bar
 	exp_bar.scale.x = player.experience / player.exp_to_next_level
@@ -68,3 +75,15 @@ func _on_item_unequipped(item: Item) -> void:
 	var player = get_tree().get_first_node_in_group("player")
 	if player:
 		player.unequip_item(item)
+
+func _on_hp_globe_mouse_entered() -> void:
+	hp_tooltip.show()
+
+func _on_hp_globe_mouse_exited() -> void:
+	hp_tooltip.hide()
+
+func _on_mana_globe_mouse_entered() -> void:
+	mana_tooltip.show()
+
+func _on_mana_globe_mouse_exited() -> void:
+	mana_tooltip.hide()
