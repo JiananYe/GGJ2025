@@ -10,6 +10,7 @@ signal start_game_signal
 @onready var black_background: Panel = $DeathMenu/BlackBackground
 @onready var you_died: MarginContainer = $DeathMenu/YouDied
 @onready var bubble_shader: ColorRect = $MainMenu/CanvasLayer/TextureRect
+@onready var bubble_sprite: TextureRect = $MainMenu/TextureRect
 
 
 var is_main_menu_displaying := true
@@ -28,6 +29,7 @@ func _ready() -> void:
 	hide_death_menu()
 	shader_bubble_center = shader_bubble_walk_in_position
 	move_shader_bubble_center(shader_bubble_walk_in_position)
+	update_bubble_sprite_position(shader_bubble_walk_in_position)
 	is_bubble_walking_in = true
 
 
@@ -37,6 +39,7 @@ func _process(delta: float) -> void:
 		var easing_factor = (distance * 7) if distance < 0.1 else 1.0  # Ease only at the very end
 		shader_bubble_center.y -= shader_bubble_walk_in_speed * delta * easing_factor
 		move_shader_bubble_center(shader_bubble_center)
+		update_bubble_sprite_position(shader_bubble_center)
 		if shader_bubble_center.y <= shader_bubble_init_center.y:
 			is_bubble_walking_in = false
 	#
@@ -47,13 +50,13 @@ func _process(delta: float) -> void:
 
 
 func trigger_death_menu():
-	#you_died.modulate.a = 0
-	#black_background.modulate.a = 0
-	#you_died.show()
-	#black_background.show()
-	#await fade_in(you_died, 2.5)
-	#await fade_in(black_background, 2)
-	#await get_tree().create_timer(3).timeout
+	you_died.modulate.a = 0
+	black_background.modulate.a = 0
+	you_died.show()
+	black_background.show()
+	await fade_in(you_died, 2.5)
+	await fade_in(black_background, 2)
+	await get_tree().create_timer(3).timeout
 	death_menu_fade_finished.emit()
 
 
@@ -78,6 +81,13 @@ func start_game():
 func move_shader_bubble_center(pos: Vector2) -> void:
 	var shader = bubble_shader.material
 	(shader as ShaderMaterial).set_shader_parameter("effect_center", pos)
+	update_bubble_sprite_position(pos)
+
+
+func update_bubble_sprite_position(pos: Vector2) -> void:
+	var screen_size = get_viewport().size
+	var bubble_position = Vector2(pos.x * screen_size.x, pos.y * screen_size.y)
+	bubble_sprite.position = bubble_position
 
 
 func float_shader_bubble(time: float) -> void:

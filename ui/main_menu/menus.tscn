@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://c5xb5jcb1x5gx"]
+[gd_scene load_steps=8 format=3 uid="uid://c5xb5jcb1x5gx"]
 
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_3l45r"]
 [ext_resource type="Shader" path="res://ui/main_menu/fish_eye.gdshader" id="1_u6k2w"]
 [ext_resource type="Texture2D" uid="uid://q3o3tujij50x" path="res://ui/main_menu/you_died.png" id="2_w6xsl"]
+[ext_resource type="Texture2D" uid="uid://d3mjhmn4sayjs" path="res://ui/main_menu/main_menu_bubble.png" id="3_fq87h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj7dt"]
 bg_color = Color(0, 0, 0, 1)
@@ -39,6 +40,7 @@ grow_vertical = 2
 script = ExtResource("1_3l45r")
 
 [node name="DeathMenu" type="Control" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,6 +84,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenu"]
+texture_filter = 1
+custom_minimum_size = Vector2(672, 669.6)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fq87h")
+expand_mode = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="MainMenu"]
 
