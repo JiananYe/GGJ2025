@@ -42,7 +42,7 @@ func _ready() -> void:
 	# Setup HP bar
 	hp_bar = hp_bar_scene.instantiate()
 	add_child(hp_bar)
-	hp_bar.position = Vector2(0, -100)  # Position above entity
+	hp_bar.position = Vector2(-50, -100)  # Position above entity
 	hp_bar.entity = self
 	
 	# Initialize exp system
@@ -91,7 +91,7 @@ func _physics_process(delta: float) -> void:
 	if direction.length() > 1.0:
 		direction = direction.normalized()
 	
-	velocity = direction * SPEED
+	velocity = direction * speed
 	
 	# Update sprite direction
 	if direction.x != 0:
@@ -157,7 +157,7 @@ func die() -> void:
 		change_state(PlayerState.DYING)
 		
 	is_dead = true
-	DirtyDirtyUiManager.main_menu.trigger_death_menu()
+	#DirtyDirtyUiManager.main_menu.trigger_death_menu()
 
 # Override level_up to emit signal and handle player-specific bonuses
 func level_up() -> void:
@@ -224,42 +224,97 @@ func unequip_item(item: Item) -> void:
 
 func apply_item_stats(item: Item) -> void:
 	# Apply base stats
-	for stat_name in item.base_item.base_stats:
+	for stat_name in item.base_stats:
 		match stat_name:
 			"physical_damage":
-				attack_damage += item.base_item.base_stats[stat_name].y
+				attack_damage += item.base_stats[stat_name]
 			"spell_damage":
-				spell_damage += item.base_item.base_stats[stat_name].y
+				spell_damage += item.base_stats[stat_name]
 			"armor":
-				armor += item.base_item.base_stats[stat_name].y
-			# Add more stats as needed
+				armor += item.base_stats[stat_name]
+			"hp_bonus":
+				max_hp += item.base_stats[stat_name]
+				current_hp += item.base_stats[stat_name]
+			"mana_bonus":
+				max_mana += item.base_stats[stat_name]
+				current_mana += item.base_stats[stat_name]
+			"movement_speed":
+				speed += item.base_stats[stat_name]
 	
 	# Apply modifiers
 	for mod in item.prefixes + item.suffixes:
-		for i in range(mod.values.size()):
-			match mod.name:
-				"Adds ({0}-{1}) Physical Damage":
-					attack_damage += mod.values[i]
-				"({0}-{1})% Increased Spell Damage":
-					spell_damage += mod.values[i]
-				# Add more modifier types as needed
+		match mod.name:
+			"Adds {0} Physical Damage":
+				attack_damage += mod.values[0]
+			"{0}% Increased Spell Damage":
+				spell_damage += mod.values[0]
+			"{0}% Increased Armor":
+				armor += (armor * mod.values[0] / 100.0)
+			"+{0} to Maximum Life":
+				max_hp += mod.values[0]
+				current_hp += mod.values[0]
+			"+{0} to Maximum Mana":
+				max_mana += mod.values[0]
+				current_mana += mod.values[0]
+			"{0}% Increased Movement Speed":
+				speed += (speed * mod.values[0] / 100.0)
+			"{0}% Increased Cast Speed":
+				cast_speed += mod.values[0]
+			"{0}% Increased Critical Strike Chance":
+				crit_chance += mod.values[0]
+			"+{0} to All Attributes":
+				# Assuming attributes affect multiple stats
+				max_hp += mod.values[0] * 2
+				current_hp += mod.values[0] * 2
+				max_mana += mod.values[0] * 2
+				current_mana += mod.values[0] * 2
+				attack_damage += mod.values[0]
+				spell_damage += mod.values[0]
 
 func remove_item_stats(item: Item) -> void:
 	# Remove base stats
-	for stat_name in item.base_item.base_stats:
+	for stat_name in item.base_stats:
 		match stat_name:
 			"physical_damage":
-				attack_damage -= item.base_item.base_stats[stat_name].y
+				attack_damage -= item.base_stats[stat_name]
 			"spell_damage":
-				spell_damage -= item.base_item.base_stats[stat_name].y
+				spell_damage -= item.base_stats[stat_name]
 			"armor":
-				armor -= item.base_item.base_stats[stat_name].y
+				armor -= item.base_stats[stat_name]
+			"hp_bonus":
+				max_hp -= item.base_stats[stat_name]
+				current_hp = min(current_hp, max_hp)
+			"mana_bonus":
+				max_mana -= item.base_stats[stat_name]
+				current_mana = min(current_mana, max_mana)
+			"movement_speed":
+				speed -= item.base_stats[stat_name]
 	
 	# Remove modifiers
 	for mod in item.prefixes + item.suffixes:
-		for i in range(mod.values.size()):
-			match mod.name:
-				"Adds ({0}-{1}) Physical Damage":
-					attack_damage -= mod.values[i]
-				"({0}-{1})% Increased Spell Damage":
-					spell_damage -= mod.values[i]
+		match mod.name:
+			"Adds {0} Physical Damage":
+				attack_damage -= mod.values[0]
+			"{0}% Increased Spell Damage":
+				spell_damage -= mod.values[0]
+			"{0}% Increased Armor":
+				armor -= (armor * mod.values[0] / 100.0)
+			"+{0} to Maximum Life":
+				max_hp -= mod.values[0]
+				current_hp = min(current_hp, max_hp)
+			"+{0} to Maximum Mana":
+				max_mana -= mod.values[0]
+				current_mana = min(current_mana, max_mana)
+			"{0}% Increased Movement Speed":
+				speed -= (speed * mod.values[0] / 100.0)
+			"{0}% Increased Cast Speed":
+				cast_speed -= mod.values[0]
+			"{0}% Increased Critical Strike Chance":
+				crit_chance -= mod.values[0]
+			"+{0} to All Attributes":
+				max_hp -= mod.values[0] * 2
+				current_hp = min(current_hp, max_hp)
+				max_mana -= mod.values[0] * 2
+				current_mana = min(current_mana, max_mana)
+				attack_damage -= mod.values[0]
+				spell_damage -= mod.values[0]

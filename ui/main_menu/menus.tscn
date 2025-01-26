@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c5xb5jcb1x5gx"]
+[gd_scene load_steps=10 format=3 uid="uid://chbdet1pi0r85"]
 
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_3l45r"]
 [ext_resource type="Shader" path="res://ui/main_menu/fish_eye.gdshader" id="1_u6k2w"]

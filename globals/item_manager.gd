@@ -9,7 +9,7 @@ func drop_random_item(position: Vector2, level: int) -> void:
 	
 	var item_node = equipment_item_scene.instantiate()
 	item_node.item = dropped_item
-	get_tree().current_scene.call_deferred("add_child", item_node)
+	get_tree().get_first_node_in_group("main").call_deferred("add_child", item_node)
 	item_node.global_position = position
 	
 	# Drop animation

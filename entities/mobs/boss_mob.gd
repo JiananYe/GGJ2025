@@ -23,10 +23,14 @@ func _ready() -> void:
 func setup_skills() -> void:
 	super.setup_skills()  # Setup basic melee attack
 	
+	var additional_projectiles = AdditionalProjectilesSupport.new()
+	var faster_projectiles = FasterProjectilesSupport.new()
+	var projectile_damage = ProjectileDamageSupport.new()
+	
 	# Add projectile attack
 	var projectile_skill = BossProjectileSkill.new()
 	skill_manager.add_skill_link("projectile_attack")
-	skill_manager.link_skills("projectile_attack", projectile_skill, [])
+	skill_manager.link_skills("projectile_attack", projectile_skill, [additional_projectiles, faster_projectiles, projectile_damage])
 
 func _physics_process(delta: float) -> void:
 	if is_dead:

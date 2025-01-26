@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=70 format=3 uid="uid://bjxedcxinbu51"]
+[gd_resource type="SpriteFrames" load_steps=70 format=3 uid="uid://roeobuuy4k8n"]
 
 [ext_resource type="Texture2D" uid="uid://devvywb5byl4" path="res://entities/player/assets/wizard/attacking/Casting Spells_000.png" id="1_qgeb8"]
 [ext_resource type="Texture2D" uid="uid://bxkscq5nle17b" path="res://entities/player/assets/wizard/attacking/Casting Spells_001.png" id="2_03sn2"]

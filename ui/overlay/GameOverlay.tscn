@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxbtqygb11gjd"]
+[gd_scene load_steps=13 format=3 uid="uid://dxbtqygb11gjd"]
 
 [ext_resource type="Script" path="res://ui/overlay/game_overlay.gd" id="1_overlay"]
 [ext_resource type="Texture2D" uid="uid://cb3tonsrd3p3u" path="res://ui/overlay/assets/globes/globe_empty.png" id="2_5vqhg"]
@@ -19,6 +19,18 @@ shader_parameter/fill_color = Color(1, 0.2, 0.2, 1)
 shader = ExtResource("2_shader")
 shader_parameter/fill_amount = 1.0
 shader_parameter/fill_color = Color(0.2, 0.4, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tooltip"]
+bg_color = Color(0.121569, 0.121569, 0.121569, 0.941176)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.156863)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [node name="GameOverlay" type="CanvasLayer" groups=["game_overlay"]]
 script = ExtResource("1_overlay")
@@ -230,6 +242,36 @@ layout_mode = 2
 
 [node name="AmuletSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
 layout_mode = 2
+
+[node name="EquipmentTooltip" type="Panel" parent="."]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 150.0
+offset_bottom = 100.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_tooltip")
+
+[node name="MarginContainer" type="MarginContainer" parent="EquipmentTooltip"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="TooltipText" type="Label" parent="EquipmentTooltip/MarginContainer"]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 16
+text = "test"
+vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="mouse_entered" from="HPGlobe" to="." method="_on_hp_globe_mouse_entered"]
 [connection signal="mouse_exited" from="HPGlobe" to="." method="_on_hp_globe_mouse_exited"]

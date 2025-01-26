@@ -4,6 +4,7 @@ class_name Item
 var base_item: BaseItem
 var rarity: int
 var item_level: int
+var base_stats: Dictionary
 var prefixes: Array[Modifier] = []
 var suffixes: Array[Modifier] = []
 
@@ -18,3 +19,6 @@ func get_modifier_descriptions() -> Array[String]:
 	for suffix in suffixes:
 		descriptions.append(suffix.text)
 	return descriptions 
+
+func get_base_stat(stat_name: String) -> int:
+	return base_stats.get(stat_name, 0) 
