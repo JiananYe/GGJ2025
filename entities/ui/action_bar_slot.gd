@@ -49,4 +49,4 @@ func _on_mouse_exited() -> void:
 func _on_gui_input(event: InputEvent) -> void:
 	if event.is_action_pressed("right") and current_item:
 		emit_signal("item_unequipped", current_item)
-		set_item(null) 
+		set_item(null)

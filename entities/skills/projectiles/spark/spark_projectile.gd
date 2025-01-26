@@ -10,8 +10,15 @@ var caster: Node2D  # Store reference to caster
 var time_offset: float = randf() * PI * 2  # Random starting point for sinusoidal movement
 var sinusoidal_amplitude: float = 3.0  # Control the deviation from the original line
 var initial_speed: float = 0.0  # Store the initial speed for exponential decay
+var is_bursting: bool = false
+
+func _ready() -> void:
+	# Connect to the animation finished signal
+	$Sprite2D.animation_finished.connect(_on_animation_finished)
 
 func _physics_process(delta: float) -> void:
+	if is_bursting:
+		return
 	var time = Time.get_ticks_msec() / 1000.0
 	var sinusoidal_offset = Vector2(-direction.y, direction.x) * sin(time * 5 + time_offset) * sinusoidal_amplitude
 	if $LifetimeTimer.time_left < 0.3:  # Start slowing down exponentially in the last 0.2 seconds
@@ -44,10 +51,17 @@ func _on_area_entered(area: Area2D) -> void:
 		
 	if body.has_method("take_hit"):
 		body.take_hit(damage, "lightning")
-		queue_free()
-	elif bounces_remaining > 0:
-		bounce(body)
-	else:
+	start_burst_animation()
+	#elif bounces_remaining > 0:
+		#bounce(body)
+
+func start_burst_animation() -> void:
+	is_bursting = true
+	$CollisionShape2D.set_deferred("disabled", true)  # Disable collision
+	$Sprite2D.play("burst")
+
+func _on_animation_finished() -> void:
+	if is_bursting:
 		queue_free()
 
 func bounce(collision_body: Node2D) -> void:
@@ -68,4 +82,4 @@ func bounce(collision_body: Node2D) -> void:
 	set_collision_mask_value(collision_body.collision_layer, true)
 
 func _on_lifetime_timer_timeout() -> void:
-	queue_free()
+	start_burst_animation()

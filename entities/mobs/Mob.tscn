@@ -9,15 +9,11 @@ radius = 36.0
 height = 72.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4ak1"]
-radius = 88.0
-height = 250.0
+radius = 60.0
+height = 156.0
 
 [node name="Mob" type="CharacterBody2D"]
 script = ExtResource("1_mob")
-movement_speed = null
-detection_range = null
-min_distance = null
-attack_range = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.7, 0.7)

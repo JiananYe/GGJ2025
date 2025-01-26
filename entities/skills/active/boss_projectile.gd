@@ -13,9 +13,9 @@ func _init() -> void:
 func setup_base_stats() -> void:
 	base_stats = {
 		"damage": 15.0,
-		"projectile_speed": 400.0,
-		"projectile_amount": 5,  # Fire multiple projectiles
-		"projectile_duration": 2.0
+		"projectile_speed": 500.0,
+		"projectile_amount": 8,  # Fire multiple projectiles
+		"projectile_duration": 3.0
 	}
 	computed_stats = base_stats.duplicate()
 
