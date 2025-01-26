@@ -2,6 +2,9 @@ class_name MainMenu
 extends Control
 
 
+signal death_menu_fade_finished
+
+
 @onready var death_menu: Control = $DeathMenu
 @onready var black_background: Panel = $DeathMenu/BlackBackground
 @onready var you_died: MarginContainer = $DeathMenu/YouDied
@@ -23,6 +26,8 @@ func trigger_death_menu():
 	black_background.show()
 	await fade_in(you_died, 2.5)
 	await fade_in(black_background, 2)
+	await get_tree().create_timer(3).timeout
+	death_menu_fade_finished.emit()
 
 
 func fade_in(node: CanvasItem, duration: float) -> void:
