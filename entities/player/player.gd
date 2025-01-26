@@ -138,10 +138,14 @@ func handle_dying_state() -> void:
 		die()
 
 func die() -> void:
+	if is_dead:
+		return
+	
 	if current_state != PlayerState.DYING:
 		change_state(PlayerState.DYING)
 		
 	is_dead = true
+	DirtyDirtyUiManager.main_menu.trigger_death_menu()
 
 # Override level_up to emit signal and handle player-specific bonuses
 func level_up() -> void:

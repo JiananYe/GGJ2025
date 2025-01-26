@@ -21,6 +21,7 @@ GameManager="*res://globals/game_manager.gd"
 BMOD="*res://addons/bmod/autoloads/bmod/bmod.tscn"
 BaseItemsDB="*res://entities/items/base_items_db.gd"
 ItemManager="*res://globals/item_manager.gd"
+DirtyDirtyUiManager="*res://globals/dirty_dirty_ui_manager.gd"
 
 [display]
 
