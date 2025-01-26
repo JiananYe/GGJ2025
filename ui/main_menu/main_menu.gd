@@ -17,15 +17,19 @@ var level: Node2D = null
 
 var is_main_menu_displaying := true
 var is_bubble_walking_in := false
-var shader_bubble_init_center := Vector2(0.5, 0.5)
+var shader_bubble_init_center := Vector2(0.5, 0.4)
 var shader_bubble_walk_in_speed := 0.3
-var shader_bubble_walk_in_position := Vector2(0.5, 1.5)
+var shader_bubble_walk_in_position := Vector2(0.5, 0.4)
 var shader_bubble_center := Vector2(0.5, 0.5)
-var shader_bubble_amplitude := Vector2(0.05, 0.06)
+var shader_bubble_amplitude := Vector2(0.03, 0.04)
 var bubble_transform_scale := 1
 
 
+var event_emitter_player_death = FmodEventEmitter2D.new()
+
+
 func _ready() -> void:
+	event_emitter_player_death.event_guid = "{99560804-4ad8-4bdf-8e98-2fb773d49a60}"
 	DirtyDirtyUiManager.main_menu = self
 	for node in get_tree().get_nodes_in_group("game_overlay"):
 		node.hide()
@@ -52,6 +56,7 @@ func _process(delta: float) -> void:
 
 
 func trigger_death_menu():
+	event_emitter_player_death.play()
 	you_died.modulate.a = 0
 	black_background.modulate.a = 0
 	you_died.show()

@@ -13,6 +13,10 @@ var level_up_text = preload("res://entities/ui/LevelUpText.tscn")
 var level_up_selection_scene = preload("res://entities/ui/LevelUpSelection.tscn")
 var level_up_selection: Control
 
+var event_emitter_walking := FmodEventEmitter2D.new()
+var event_emitter_attacking := FmodEventEmitter2D.new()
+var event_emitter_get_hit := FmodEventEmitter2D.new()
+
 # Change the signal name
 signal on_level_up(new_level: int)
 
@@ -26,6 +30,9 @@ var equipped_items: Dictionary = {
 }
 
 func _ready() -> void:
+	event_emitter_walking.event_guid = "{96460e9c-8e03-4beb-bc4b-3d1024601d6f}"
+	event_emitter_attacking.event_guid = "{bf3e6da1-dc87-482b-8a5b-763d0fed6917}"
+	event_emitter_get_hit.event_guid = "{447aa498-ee8b-49ae-864e-2e7888b8ccfc}"
 	super._ready()
 	add_to_group("player")
 	setup_skills()
@@ -50,9 +57,12 @@ func _ready() -> void:
 	else:
 		push_error("UI Layer not found! Make sure the CanvasLayer is in group 'ui_layer'")
 
+
 func _on_animation_finished() -> void:
 	if current_state != PlayerState.ATTACKING:
 		animated_sprite.speed_scale = 1.0
+	else:
+		event_emitter_attacking.play()
 
 func setup_skills() -> void:
 	# Create skills
@@ -102,11 +112,13 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+
 func handle_idle_state() -> void:
 	if Input.is_action_pressed("attack"):
 		change_state(PlayerState.ATTACKING)
 	elif velocity.length() > 0:
 		change_state(PlayerState.WALKING)
+		
 
 func handle_walking_state() -> void:
 	if Input.is_action_just_pressed("attack"):

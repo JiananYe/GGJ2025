@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=70 format=3 uid="uid://roeobuuy4k8n"]
+[gd_resource type="SpriteFrames" load_steps=70 format=3 uid="uid://bjxedcxinbu51"]
 
 [ext_resource type="Texture2D" uid="uid://devvywb5byl4" path="res://entities/player/assets/wizard/attacking/Casting Spells_000.png" id="1_qgeb8"]
 [ext_resource type="Texture2D" uid="uid://bxkscq5nle17b" path="res://entities/player/assets/wizard/attacking/Casting Spells_001.png" id="2_03sn2"]
@@ -247,12 +247,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("52_fu3gw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("53_3myfj")
-}, {
-"duration": 1.0,
 "texture": ExtResource("54_wl4wj")
 }, {
 "duration": 1.0,
@@ -283,6 +277,9 @@ animations = [{
 "texture": ExtResource("63_agjtc")
 }, {
 "duration": 1.0,
+"texture": ExtResource("52_fu3gw")
+}, {
+"duration": 1.0,
 "texture": ExtResource("64_attq5")
 }, {
 "duration": 1.0,
@@ -299,6 +296,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("69_2ybok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_3myfj")
 }],
 "loop": true,
 "name": &"walking",

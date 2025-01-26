@@ -8,6 +8,24 @@
 
 config_version=5
 
+[Fmod]
+
+General/auto_initialize=true
+General/channel_count=1024
+General/is_live_update_enabled=true
+General/is_memory_tracking_enabled=false
+"Software Format/sample_rate"=48000
+"Software Format/speaker_mode"=3
+"Software Format/raw_speaker_count"=0
+General/default_listener_count=1
+General/banks_path="res://"
+General/should_load_by_name=false
+DSP/dsp_buffer_size=512
+DSP/dsp_buffer_count=4
+"3D Settings/doppler_scale"=1.0
+"3D Settings/distance_factor"=1.0
+"3D Settings/rolloff_scale"=1.0
+
 [application]
 
 config/name="GGJ2025"
@@ -22,6 +40,7 @@ BMOD="*res://addons/bmod/autoloads/bmod/bmod.tscn"
 BaseItemsDB="*res://entities/items/base_items_db.gd"
 ItemManager="*res://globals/item_manager.gd"
 DirtyDirtyUiManager="*res://globals/dirty_dirty_ui_manager.gd"
+FmodManager="*res://addons/fmod/FmodManager.gd"
 
 [display]
 
@@ -33,7 +52,7 @@ window/stretch/mode="viewport"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/bmod/plugin.cfg")
+enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
 [input]
 

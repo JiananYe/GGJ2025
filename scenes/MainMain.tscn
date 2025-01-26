@@ -7,3 +7,9 @@
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["ui_layer"]]
 
 [node name="Menus" parent="CanvasLayer" instance=ExtResource("2_y6kvi")]
+
+[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
+bank_paths = ["res:///Master.strings.bank", "res:///Master.bank"]
+
+[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
+event_guid = "{00000000-0000-0000-20ef-da67c55e0000}"
