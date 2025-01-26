@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://entities/skills/skill_manager.gd" id="3_mveny"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mfgd2"]
-radius = 36.0
-height = 72.0
+radius = 25.0
+height = 54.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4ak1"]
 radius = 60.0

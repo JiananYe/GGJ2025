@@ -15,7 +15,11 @@ func _ready() -> void:
 	current_hp = max_hp
 	movement_speed = 150.0  # Slower but tankier
 	experience_value = 200.0  # More exp reward
-
+	
+	#fix hp bar
+	hp_bar.max_value = max_hp
+	hp_bar.value = current_hp
+	
 func setup_skills() -> void:
 	super.setup_skills()  # Setup basic melee attack
 	

@@ -182,5 +182,5 @@ layout_mode = 2
 [node name="RingSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
 layout_mode = 2
 
-[node name="AmuletSlot" parent="ActionBar/MarginContainer/HBoxContainer" groups=["game_overlay"] instance=ExtResource("9_n0tyi")]
+[node name="AmuletSlot" parent="ActionBar/MarginContainer/HBoxContainer" instance=ExtResource("9_n0tyi")]
 layout_mode = 2

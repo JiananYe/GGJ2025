@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bkl8kgsm6774m"]
+[gd_scene load_steps=5 format=3 uid="uid://bkl8kgsm6774m"]
 
 [ext_resource type="PackedScene" uid="uid://tuj7ktbyhbuq" path="res://entities/mobs/Mob.tscn" id="1_boss"]
 [ext_resource type="Script" path="res://entities/mobs/boss_mob.gd" id="2_boss"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yobhn"]
+radius = 36.0
+height = 72.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijdvb"]
+radius = 96.0
+height = 260.0
 
 [node name="BossMob" instance=ExtResource("1_boss")]
 script = ExtResource("2_boss")
@@ -11,3 +19,7 @@ scale = Vector2(1.2, 1.2)
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(2, 101)
+shape = SubResource("CapsuleShape2D_yobhn")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CapsuleShape2D_ijdvb")

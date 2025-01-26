@@ -1,25 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b3vs1lsns88f0"]
+[gd_scene load_steps=4 format=3 uid="uid://qa212och0nka"]
 
-[sub_resource type="GDScript" id="GDScript_3yjhy"]
-script/source = "extends Control
-
-@onready var hp_bar: ProgressBar = $HPBar
-
-var entity: Entity
-
-func _ready() -> void:
-	if not entity:
-		return
-		
-	hp_bar.max_value = entity.max_hp
-	hp_bar.value = entity.current_hp
-
-func _process(_delta: float) -> void:
-	if not entity:
-		return
-		
-	hp_bar.value = entity.current_hp
-"
+[ext_resource type="Script" path="res://entities/ui/hp_bar.gd" id="1_pnm06"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.2, 0.2, 0.2, 0.8)
@@ -45,25 +26,11 @@ corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
-[node name="HPBar" type="Control"]
-layout_mode = 3
-anchors_preset = 0
-script = SubResource("GDScript_3yjhy")
-
-[node name="HPBar" type="ProgressBar" parent="."]
+[node name="HPBar" type="ProgressBar"]
 custom_minimum_size = Vector2(100, 10)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -12.0
-offset_right = 50.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 100.0
+offset_bottom = 10.0
 theme_override_styles/background = SubResource("StyleBoxFlat_bg")
 theme_override_styles/fill = SubResource("StyleBoxFlat_hp")
 show_percentage = false
+script = ExtResource("1_pnm06")

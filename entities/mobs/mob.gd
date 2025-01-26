@@ -2,7 +2,7 @@ extends EntityStateMachine
 class_name Mob
 
 var hp_bar_scene = preload("res://entities/ui/HPBar.tscn")
-@onready var hp_bar: Control
+@onready var hp_bar: ProgressBar
 
 @onready var skill_manager = $SkillManager
 
@@ -36,6 +36,7 @@ func _ready() -> void:
 	# Apply initial difficulty scaling
 	apply_difficulty_scaling(GameManager.get_difficulty_multiplier())
 
+	
 func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
@@ -149,6 +150,10 @@ func apply_difficulty_scaling(multiplier: float) -> void:
 	# Scale experience value with both difficulty and a random factor
 	var base_exp = experience_value
 	experience_value = base_exp * GameManager.get_exp_multiplier()
+	
+	if hp_bar:
+		hp_bar.max_value = max_hp
+		hp_bar.value = current_hp
 
 func drop_random_item() -> void:
 	ItemManager.drop_random_item(global_position, level)
