@@ -21,7 +21,7 @@ shader_parameter/effect_size = Vector2(1, 1)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sxcrn"]
 shader = ExtResource("1_u6k2w")
 shader_parameter/aspect = 1.0
-shader_parameter/distortion = 10.0
+shader_parameter/distortion = 1.5
 shader_parameter/radius = 1.0
 shader_parameter/alpha = 1.0
 shader_parameter/crop = 1.0
@@ -47,6 +47,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="BlackBackground" type="Panel" parent="DeathMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,6 +57,7 @@ grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qj7dt")
 
 [node name="YouDied" type="MarginContainer" parent="DeathMenu"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

@@ -19,10 +19,11 @@ uniform vec2 effect_size = vec2(1.0, 1.0); // Size of the effect in normalized c
 vec2 distort(vec2 p)
 {
 	float d = length(p);
+	if (d == 0.0) return vec2(0.5, 0.5); // handle the center case
 	float z = sqrt(distortion + d * d * -distortion);
 	float r = atan(d, z) / 3.1415926535;
 	float phi = atan(p.y, p.x);
-	return vec2(r * cos(phi) * (1.0 / aspect) + 0.5, r * sin(phi) + 0.5);
+	return vec2(r * cos(phi) * (1.0 / aspect), r * sin(phi));
 }
 
 void fragment()
@@ -39,13 +40,11 @@ void fragment()
 	if (d < radius)
 	{
 		xy = distort(xy);
-		tex = texture(SCREEN_TEXTURE, (xy / scale) * effect_size + effect_center); // scale and move back to original UV space
+		tex = texture(SCREEN_TEXTURE, (xy / scale) * effect_size / 2.0 + effect_center); // scale and move back to original UV space
 		COLOR = tex;
 		COLOR.a = alpha;
 	}
-
-	// radial crop
-	if (d > crop)
+	else
 	{
 		COLOR = crop_color;
 	}
