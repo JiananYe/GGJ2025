@@ -101,7 +101,7 @@ func move_shader_bubble_center(pos: Vector2) -> void:
 func bubble_sprite_follow_shader_bubble(pos := Vector2.ZERO) -> void:
 	var screen_size = get_viewport().size
 	var x: float = screen_size.x * pos.x
-	var y: float = screen_size.y * pos.y
+	var y: float = screen_size.y * pos.y - bubble_sprite.size.y
 	bubble_sprite.position = Vector2i(x, y)
 
 
