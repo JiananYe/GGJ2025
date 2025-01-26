@@ -37,25 +37,25 @@ func _ready() -> void:
 	DirtyDirtyUiManager.main_menu = self
 	for node in get_tree().get_nodes_in_group("game_overlay"):
 		node.hide()
-	shader_bubble_center = shader_bubble_walk_in_position
-	move_shader_bubble_center(shader_bubble_walk_in_position)
-	is_bubble_walking_in = true
+	#shader_bubble_center = shader_bubble_walk_in_position
+	#move_shader_bubble_center(shader_bubble_walk_in_position)
+	#is_bubble_walking_in = true
 	you_died.modulate.a = 0
 	GameManager.set_process(false)
 
 
-func _process(delta: float) -> void:
-	if is_bubble_walking_in:
-		var distance = shader_bubble_center.y - shader_bubble_init_center.y
-		var easing_factor = (distance * 7) if distance < 0.1 else 1.0  # Ease only at the very end
-		shader_bubble_center.y -= shader_bubble_walk_in_speed * delta * easing_factor
-		move_shader_bubble_center(shader_bubble_center)
-		if shader_bubble_center.y <= shader_bubble_init_center.y:
-			is_bubble_walking_in = false
-	#
-	if is_main_menu_displaying:
-		var time = Time.get_ticks_msec() / 1000.0
-		float_shader_bubble(time)
+#func _process(delta: float) -> void:
+	##if is_bubble_walking_in:
+		##var distance = shader_bubble_center.y - shader_bubble_init_center.y
+		##var easing_factor = (distance * 7) if distance < 0.1 else 1.0  # Ease only at the very end
+		##shader_bubble_center.y -= shader_bubble_walk_in_speed * delta * easing_factor
+		##move_shader_bubble_center(shader_bubble_center)
+		##if shader_bubble_center.y <= shader_bubble_init_center.y:
+			##is_bubble_walking_in = false
+	##
+	#if is_main_menu_displaying:
+		#var time = Time.get_ticks_msec() / 1000.0
+		#float_shader_bubble(time)
 
 
 
