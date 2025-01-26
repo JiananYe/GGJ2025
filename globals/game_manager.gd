@@ -12,6 +12,13 @@ var last_boss_spawn_time: float = 0.0  # Track when last boss spawned
 var difficulty_popup_scene = preload("res://ui/difficulty_popup/DifficultyPopup.tscn")
 var current_popup: Control
 
+func reset() -> void:
+	game_time = 0
+	difficulty_level = 0
+	difficulty_interval = 20.0
+	boss_spawn_interval = 20.0
+	last_boss_spawn_time = 0.0
+
 func _ready() -> void:
 	# Create the popup
 	current_popup = difficulty_popup_scene.instantiate()
