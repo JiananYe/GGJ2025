@@ -40,7 +40,7 @@ func generate_item(base_item: BaseItem, item_level: int, rarity: int = -1) -> It
 
 func roll_rarity() -> int:
 	var roll = randf()
-	if roll < 1.0:  # 10% chance for rare
+	if roll < 0.1:  # 10% chance for rare
 		return Rarity.RARE
 	elif roll < 0.35:  # 35% chance for magic
 		return Rarity.MAGIC

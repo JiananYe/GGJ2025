@@ -11,3 +11,12 @@ bank_paths = ["res:///Master.strings.bank", "res:///Master.bank"]
 event_guid = "{00000000-0000-0000-20ef-da67c55e0000}"
 
 [node name="Menus" parent="." instance=ExtResource("2_y6kvi")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = 1010.0
+offset_top = 557.0
+offset_right = 1010.0
+offset_bottom = 557.0
+grow_horizontal = 0
+grow_vertical = 0

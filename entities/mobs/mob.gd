@@ -136,7 +136,7 @@ func die() -> void:
 		despawn_timer.timeout.connect(func(): queue_free())
 		
 		# Chance to drop item
-		if randf() < 10:  # 30% chance to drop item
+		if randf() < 5:  # 30% chance to drop item
 			drop_random_item()
 
 func apply_difficulty_scaling(multiplier: float) -> void:
