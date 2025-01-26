@@ -22,7 +22,7 @@ signal mob_spawned(mob: Node2D)
 signal mob_died(mob: Node2D)
 
 func _ready() -> void:
-	await get_tree().create_timer(3).timeout
+	await get_tree().create_timer(4.6).timeout
 	setup_timer()
 	# Find the player node
 	player = get_tree().get_first_node_in_group("player")
