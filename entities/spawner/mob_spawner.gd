@@ -9,6 +9,8 @@ class_name MobSpawner
 @export var spawn_interval: float = 0.5  # Time between spawns
 @export var initial_spawn_count: int = 10
 @export var auto_start: bool = true
+@export var melee_mob_scene: PackedScene
+@export var ranged_mob_scene: PackedScene
 
 var current_mobs: int = 0
 var spawn_timer: Timer
@@ -75,10 +77,16 @@ func get_random_spawn_position() -> Vector2:
 	return player.global_position + spawn_offset
 
 func spawn_mob() -> void:
-	if !active or !mob_scene or current_mobs >= max_mobs or !player:
+	if !active or current_mobs >= max_mobs or !player:
 		return
 		
-	var mob = mob_scene.instantiate() as Node2D
+	# Randomly choose between melee and ranged mob (30% chance for ranged)
+	var mob_scene_to_use = ranged_mob_scene if randf() < 0.3 else melee_mob_scene
+	if !mob_scene_to_use:
+		push_error("No mob scene assigned")
+		return
+		
+	var mob = mob_scene_to_use.instantiate() as Node2D
 	if !mob:
 		push_error("Failed to instantiate mob scene")
 		return
