@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dcswe86dml24p" path="res://ui/background/Background.tscn" id="3_n77g8"]
 [ext_resource type="PackedScene" uid="uid://dxbtqygb11gjd" path="res://ui/overlay/GameOverlay.tscn" id="4_rjfr3"]
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=["main"]]
 y_sort_enabled = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["ui_layer"]]
