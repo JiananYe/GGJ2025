@@ -13,6 +13,8 @@ uniform float radius = 1.0;
 uniform float alpha = 1.0;
 uniform float crop = 1.0;
 uniform vec4 crop_color = vec4(0,0,0,1);
+uniform vec2 effect_center = vec2(0.5, 0.5); // Center of the effect in normalized coordinates
+uniform vec2 effect_size = vec2(1.0, 1.0); // Size of the effect in normalized coordinates
 
 vec2 distort(vec2 p)
 {
@@ -25,9 +27,10 @@ vec2 distort(vec2 p)
 
 void fragment()
 {
-	vec2 xy = (SCREEN_UV * 2.0 - 1.0); // move origin of UV coordinates to center of screen
+	vec2 scale = vec2(aspect, 1.0);
+	vec2 xy = (SCREEN_UV - effect_center) / effect_size * 2.0; // move origin of UV coordinates to center of effect and scale
 
-	xy = vec2(xy.x * aspect, xy.y); // adjust aspect ratio
+	xy = xy * scale; // adjust aspect ratio
 
 	float d = length(xy); // distance from center
 
@@ -36,7 +39,7 @@ void fragment()
 	if (d < radius)
 	{
 		xy = distort(xy);
-		tex = texture(SCREEN_TEXTURE, xy);
+		tex = texture(SCREEN_TEXTURE, (xy / scale) * effect_size + effect_center); // scale and move back to original UV space
 		COLOR = tex;
 		COLOR.a = alpha;
 	}
