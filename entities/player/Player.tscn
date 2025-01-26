@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://csleddnfksqkl"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_68vns"]
-[ext_resource type="SpriteFrames" path="res://entities/player/assets/wizard/wizard.tres" id="2_2rwx1"]
+[ext_resource type="SpriteFrames" uid="uid://bjxedcxinbu51" path="res://entities/player/assets/wizard/wizard.tres" id="2_2rwx1"]
 [ext_resource type="Script" path="res://entities/skills/skill_manager.gd" id="3_c628s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t0w13"]
@@ -19,6 +19,8 @@ script = ExtResource("1_68vns")
 scale = Vector2(0.7, 0.7)
 sprite_frames = ExtResource("2_2rwx1")
 animation = &"walking"
+frame = 16
+frame_progress = 0.749197
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(10, 57)

@@ -247,12 +247,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("52_fu3gw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("53_3myfj")
-}, {
-"duration": 1.0,
 "texture": ExtResource("54_wl4wj")
 }, {
 "duration": 1.0,
@@ -283,6 +277,9 @@ animations = [{
 "texture": ExtResource("63_agjtc")
 }, {
 "duration": 1.0,
+"texture": ExtResource("52_fu3gw")
+}, {
+"duration": 1.0,
 "texture": ExtResource("64_attq5")
 }, {
 "duration": 1.0,
@@ -299,6 +296,9 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("69_2ybok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_3myfj")
 }],
 "loop": true,
 "name": &"walking",

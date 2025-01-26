@@ -19,8 +19,11 @@ var attack_cooldown: float = 1.0  # Time between attacks
 @onready var movement_collision_shape: CollisionShape2D = $CollisionShape2D
 @onready var hit_box_collision_shape: CollisionShape2D = $HitBox/CollisionShape2D
 
+var event_get_hit := FmodEventEmitter2D.new()
+
 func _ready() -> void:
 	super._ready()
+	event_get_hit.event_guid = "{f4848995-9e1e-4a6d-9c85-9e9672458ecf}"
 	find_player()
 	setup_skills()
 	
@@ -102,6 +105,7 @@ func get_target_direction() -> Vector2:
 	return direction
 
 func take_hit(damage: float, damage_type: String = "physical") -> float:
+	event_get_hit.play()
 	var final_damage = super.take_hit(damage, damage_type)
 	
 	if current_hp <= 0:
