@@ -44,6 +44,7 @@ script = ExtResource("2_bouvp")
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 1
 
 [node name="ButtonPlay" type="Button" parent="BubbleSprite"]
 layout_mode = 0

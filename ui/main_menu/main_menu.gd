@@ -3,13 +3,13 @@ extends Control
 
 
 
-@onready var death_menu: Control = $DeathMenu
-@onready var black_background: Panel = $DeathMenu/BlackBackground
-@onready var you_died: MarginContainer = $DeathMenu/YouDied
-@onready var bubble_shader: ColorRect = $MainMenu/CanvasLayer/TextureRect
-@onready var bubble_sprite: Control = $MainMenu/BubbleSprite
-@onready var settings_window: Window = $MainMenu/SettingsWindow
-@onready var main_menu: Control = $MainMenu
+@onready var death_menu: Control = $CanvasLayer/DeathMenu
+@onready var black_background: Panel = $CanvasLayer/DeathMenu/BlackBackground
+@onready var you_died: MarginContainer = $CanvasLayer/DeathMenu/YouDied
+@onready var bubble_shader: ColorRect = $CanvasLayer/MainMenu/CanvasLayer/TextureRect
+@onready var bubble_sprite: Control = $CanvasLayer/MainMenu/BubbleSprite
+@onready var settings_window: Window = $CanvasLayer/MainMenu/SettingsWindow
+@onready var main_menu: Control = $CanvasLayer/MainMenu
 @onready var main_main: Node2D = $"../"
 
 const level_scene = preload("res://scenes/Main.tscn")

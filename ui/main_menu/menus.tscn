@@ -35,32 +35,38 @@ shader_parameter/effect_center = Vector2(0.5, 0.5)
 shader_parameter/effect_size = Vector2(0.35, 0.62)
 
 [node name="Menus" type="Control"]
+y_sort_enabled = true
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_3l45r")
 
-[node name="DeathMenu" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="BlackBackground" type="Panel" parent="DeathMenu"]
+[node name="DeathMenu" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="BlackBackground" type="Panel" parent="CanvasLayer/DeathMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_qj7dt")
 
-[node name="YouDied" type="MarginContainer" parent="DeathMenu"]
+[node name="YouDied" type="MarginContainer" parent="CanvasLayer/DeathMenu"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -72,22 +78,23 @@ theme_override_constants/margin_top = 200
 theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 200
 
-[node name="TextureRect" type="TextureRect" parent="DeathMenu/YouDied"]
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/DeathMenu/YouDied"]
 layout_mode = 2
 texture = ExtResource("2_w6xsl")
 expand_mode = 5
 stretch_mode = 5
 
-[node name="MainMenu" type="Control" parent="."]
+[node name="MainMenu" type="Control" parent="CanvasLayer"]
 material = SubResource("ShaderMaterial_3jmjq")
-layout_mode = 1
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
-[node name="BubbleSprite" type="Control" parent="MainMenu"]
+[node name="BubbleSprite" type="Control" parent="CanvasLayer/MainMenu"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -100,8 +107,9 @@ offset_right = 20.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
-[node name="ButtonPlay" type="Button" parent="MainMenu/BubbleSprite"]
+[node name="ButtonPlay" type="Button" parent="CanvasLayer/MainMenu/BubbleSprite"]
 layout_mode = 0
 offset_left = -401.0
 offset_top = -161.0
@@ -115,7 +123,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_g0gpx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_g0gpx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g0gpx")
 
-[node name="ButtonSettings" type="Button" parent="MainMenu/BubbleSprite"]
+[node name="ButtonSettings" type="Button" parent="CanvasLayer/MainMenu/BubbleSprite"]
 layout_mode = 0
 offset_left = -169.0
 offset_top = -395.0
@@ -128,7 +136,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_g0gpx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_g0gpx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g0gpx")
 
-[node name="ButtonQuit" type="Button" parent="MainMenu/BubbleSprite"]
+[node name="ButtonQuit" type="Button" parent="CanvasLayer/MainMenu/BubbleSprite"]
 layout_mode = 0
 offset_left = 235.0
 offset_top = -357.0
@@ -142,7 +150,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_g0gpx")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_g0gpx")
 theme_override_styles/normal = SubResource("StyleBoxFlat_g0gpx")
 
-[node name="Bubble" type="TextureRect" parent="MainMenu/BubbleSprite"]
+[node name="Bubble" type="TextureRect" parent="CanvasLayer/MainMenu/BubbleSprite"]
 texture_filter = 1
 custom_minimum_size = Vector2(672, 669.6)
 layout_mode = 1
@@ -155,7 +163,7 @@ mouse_filter = 2
 texture = ExtResource("3_fq87h")
 expand_mode = 1
 
-[node name="Buttons" type="TextureRect" parent="MainMenu/BubbleSprite"]
+[node name="Buttons" type="TextureRect" parent="CanvasLayer/MainMenu/BubbleSprite"]
 texture_filter = 1
 custom_minimum_size = Vector2(715, 51)
 layout_mode = 1
@@ -167,9 +175,9 @@ pivot_offset = Vector2(0.5, 0.5)
 mouse_filter = 2
 texture = ExtResource("5_h3v45")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="MainMenu"]
+[node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer/MainMenu"]
 
-[node name="TextureRect" type="ColorRect" parent="MainMenu/CanvasLayer"]
+[node name="TextureRect" type="ColorRect" parent="CanvasLayer/MainMenu/CanvasLayer"]
 visible = false
 material = SubResource("ShaderMaterial_sxcrn")
 use_parent_material = true
@@ -183,7 +191,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(1, 1, 1, 0)
 
-[node name="SettingsWindow" type="Window" parent="MainMenu"]
+[node name="SettingsWindow" type="Window" parent="CanvasLayer/MainMenu"]
 title = "Settings"
 initial_position = 3
 size = Vector2i(600, 300)
@@ -191,7 +199,7 @@ current_screen = 0
 visible = false
 theme_override_font_sizes/title_font_size = 30
 
-[node name="MarginContainer" type="MarginContainer" parent="MainMenu/SettingsWindow"]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MainMenu/SettingsWindow"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -202,19 +210,19 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MainMenu/SettingsWindow/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MainMenu/SettingsWindow/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MainMenu/SettingsWindow/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MainMenu/SettingsWindow/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MainMenu/SettingsWindow/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="CanvasLayer/MainMenu/SettingsWindow/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "Audio Volume "
 
-[node name="HSlider" type="HSlider" parent="MainMenu/SettingsWindow/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="CanvasLayer/MainMenu/SettingsWindow/MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -222,8 +230,8 @@ max_value = 1.0
 step = 0.001
 value = 0.5
 
-[connection signal="pressed" from="MainMenu/BubbleSprite/ButtonPlay" to="." method="_on_button_play_pressed"]
-[connection signal="pressed" from="MainMenu/BubbleSprite/ButtonSettings" to="." method="_on_button_settings_pressed"]
-[connection signal="pressed" from="MainMenu/BubbleSprite/ButtonQuit" to="." method="_on_button_quit_pressed"]
-[connection signal="close_requested" from="MainMenu/SettingsWindow" to="." method="_on_settings_window_close_requested"]
-[connection signal="value_changed" from="MainMenu/SettingsWindow/MarginContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/BubbleSprite/ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/BubbleSprite/ButtonSettings" to="." method="_on_button_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/BubbleSprite/ButtonQuit" to="." method="_on_button_quit_pressed"]
+[connection signal="close_requested" from="CanvasLayer/MainMenu/SettingsWindow" to="." method="_on_settings_window_close_requested"]
+[connection signal="value_changed" from="CanvasLayer/MainMenu/SettingsWindow/MarginContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://chbdet1pi0r85" path="res://ui/main_menu/menus.tscn" id="2_y6kvi"]
 
 [node name="MainMain" type="Node2D"]
+y_sort_enabled = true
 
 [node name="FmodBankLoader" type="FmodBankLoader" parent="."]
 bank_paths = ["res:///Master.strings.bank", "res:///Master.bank"]
