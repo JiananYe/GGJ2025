@@ -12,6 +12,16 @@ func generate_item(base_item: BaseItem, item_level: int, rarity: int = -1) -> It
 	item.base_item = base_item
 	item.item_level = item_level
 	
+	# Roll base stats
+	var rolled_base_stats = {}
+	for stat_name in base_item.base_stats:
+		var stat_range = base_item.base_stats[stat_name]
+		if stat_range is Vector2:
+			rolled_base_stats[stat_name] = randi_range(stat_range.x, stat_range.y)
+		else:
+			rolled_base_stats[stat_name] = stat_range # Use fixed value if not a range
+	item.base_stats = rolled_base_stats
+	
 	# Determine rarity if not specified
 	if rarity == -1:
 		rarity = roll_rarity()
@@ -30,7 +40,7 @@ func generate_item(base_item: BaseItem, item_level: int, rarity: int = -1) -> It
 
 func roll_rarity() -> int:
 	var roll = randf()
-	if roll < 0.1:  # 10% chance for rare
+	if roll < 1.0:  # 10% chance for rare
 		return Rarity.RARE
 	elif roll < 0.35:  # 25% chance for magic
 		return Rarity.MAGIC
@@ -90,7 +100,7 @@ func add_random_mod(item: Item, mod_pool: Array, is_prefix: bool) -> void:
 	
 	# Roll values
 	var values = []
-	values.append(randf_range(tier_data.values.x, tier_data.values.y))
+	values.append(randi_range(tier_data.values.x, tier_data.values.y))
 	
 	mod.values = values
 	mod.text = mod_template.name.format(values)

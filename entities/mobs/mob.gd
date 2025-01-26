@@ -27,7 +27,7 @@ func _ready() -> void:
 	# Setup HP bar
 	hp_bar = hp_bar_scene.instantiate()
 	add_child(hp_bar)
-	hp_bar.position = Vector2(0, -100)
+	hp_bar.position = Vector2(-50, -100)
 	hp_bar.entity = self
 	
 	# Set base experience value

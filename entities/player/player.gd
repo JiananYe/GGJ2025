@@ -35,7 +35,7 @@ func _ready() -> void:
 	# Setup HP bar
 	hp_bar = hp_bar_scene.instantiate()
 	add_child(hp_bar)
-	hp_bar.position = Vector2(0, -100)  # Position above entity
+	hp_bar.position = Vector2(-50, -100)  # Position above entity
 	hp_bar.entity = self
 	
 	# Initialize exp system
@@ -145,7 +145,7 @@ func die() -> void:
 		change_state(PlayerState.DYING)
 		
 	is_dead = true
-	DirtyDirtyUiManager.main_menu.trigger_death_menu()
+	#DirtyDirtyUiManager.main_menu.trigger_death_menu()
 
 # Override level_up to emit signal and handle player-specific bonuses
 func level_up() -> void:
