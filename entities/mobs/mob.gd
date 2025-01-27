@@ -7,7 +7,7 @@ var hp_bar_scene = preload("res://entities/ui/HPBar.tscn")
 @onready var skill_manager = $SkillManager
 
 @export var movement_speed: float = 200.0
-@export var detection_range: float = 1000.0
+@export var detection_range: float = 1200.0
 @export var min_distance: float = 80.0  # Reduced to allow melee attacks
 @export var attack_range: float = 100.0  # Range at which mob will try to attack
 

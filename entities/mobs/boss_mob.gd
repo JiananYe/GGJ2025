@@ -14,7 +14,7 @@ func _ready() -> void:
 	max_hp *= 5.0
 	current_hp = max_hp
 	movement_speed = 150.0  # Slower but tankier
-	experience_value = 200.0  # More exp reward
+	experience_value = 100.0  # More exp reward
 	
 	#fix hp bar
 	hp_bar.max_value = max_hp

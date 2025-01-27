@@ -4,18 +4,18 @@
 [ext_resource type="Script" path="res://entities/mobs/ranged_mob.gd" id="2_ranged"]
 [ext_resource type="SpriteFrames" uid="uid://cctgkkgihxeg3" path="res://entities/mobs/assets/archer/archer.tres" id="3_3jg7q"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mfgd2"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_06p0e"]
 radius = 25.0
 height = 54.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e4ak1"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfadd"]
 radius = 60.0
 height = 156.0
 
 [node name="RangedMob" instance=ExtResource("1_ranged")]
 script = ExtResource("2_ranged")
 movement_speed = 150.0
-detection_range = 600.0
+detection_range = 1000.0
 min_distance = 250.0
 attack_range = 400.0
 
@@ -24,7 +24,7 @@ modulate = Color(0.8, 0.2, 0.2, 1)
 sprite_frames = ExtResource("3_3jg7q")
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CapsuleShape2D_mfgd2")
+shape = SubResource("CapsuleShape2D_06p0e")
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-shape = SubResource("CapsuleShape2D_e4ak1")
+shape = SubResource("CapsuleShape2D_wfadd")

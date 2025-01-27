@@ -1,29 +1,28 @@
-[gd_scene load_steps=5 format=3 uid="uid://bkl8kgsm6774m"]
+[gd_scene load_steps=6 format=3 uid="uid://bkl8kgsm6774m"]
 
 [ext_resource type="PackedScene" uid="uid://tuj7ktbyhbuq" path="res://entities/mobs/Mob.tscn" id="1_boss"]
 [ext_resource type="Script" path="res://entities/mobs/boss_mob.gd" id="2_boss"]
+[ext_resource type="SpriteFrames" uid="uid://ddiy8halvwciu" path="res://entities/mobs/assets/giant/giant.tres" id="3_0vwl5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yobhn"]
-radius = 36.0
-height = 72.0
+radius = 47.0
+height = 138.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijdvb"]
-radius = 96.0
-height = 260.0
+radius = 123.0
+height = 376.0
 
 [node name="BossMob" instance=ExtResource("1_boss")]
 script = ExtResource("2_boss")
-movement_speed = 200.0
-detection_range = 1000.0
-min_distance = 80.0
-attack_range = 100.0
 
 [node name="AnimatedSprite2D" parent="." index="0"]
-scale = Vector2(1.2, 1.2)
+scale = Vector2(1, 1)
+sprite_frames = ExtResource("3_0vwl5")
 
 [node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(2, 101)
+position = Vector2(4, 178)
 shape = SubResource("CapsuleShape2D_yobhn")
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(17, 39)
 shape = SubResource("CapsuleShape2D_ijdvb")
