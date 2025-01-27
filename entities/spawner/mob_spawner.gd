@@ -12,6 +12,8 @@ class_name MobSpawner
 @export var melee_mob_scene: PackedScene
 @export var ranged_mob_scene: PackedScene
 @export var fast_mob_scene: PackedScene
+@export var fast_mob_start_time: float = 20.0  # Time when fast mobs start spawning
+@export var ranged_mob_start_time: float = 40.0  # Time when ranged mobs start spawning
 
 var current_mobs: int = 0
 var spawn_timer: Timer
@@ -84,15 +86,45 @@ func spawn_mob() -> void:
 	if !active or !player:
 		return
 		
-	# Randomly choose between melee, ranged and fast mob
-	var rand = randf()
+	# Choose mob type based on game time
 	var mob_scene_to_use
-	if rand < 0.2:  # 20% chance for fast mob
-		mob_scene_to_use = fast_mob_scene
-	elif rand < 0.5:  # 30% chance for ranged mob
-		mob_scene_to_use = ranged_mob_scene
-	else:  # 50% chance for melee mob
-		mob_scene_to_use = melee_mob_scene
+	var available_types = []
+	
+	# Basic melee mob is always available
+	available_types.append({
+		"scene": melee_mob_scene,
+		"weight": 0.5  # 50% chance when all types available
+	})
+	
+	# Add fast mob after start time
+	if GameManager.game_time >= fast_mob_start_time:
+		available_types.append({
+			"scene": fast_mob_scene,
+			"weight": 0.2  # 20% chance when available
+		})
+	
+	# Add ranged mob after start time
+	if GameManager.game_time >= ranged_mob_start_time:
+		available_types.append({
+			"scene": ranged_mob_scene,
+			"weight": 0.3  # 30% chance when available
+		})
+	
+	# Calculate total weight
+	var total_weight = 0.0
+	for type in available_types:
+		total_weight += type.weight
+	
+	# Choose random mob type based on weights
+	var rand = randf() * total_weight
+	var current_weight = 0.0
+	
+	for type in available_types:
+		current_weight += type.weight
+		if rand <= current_weight:
+			mob_scene_to_use = type.scene
+			break
+	
 	if !mob_scene_to_use:
 		push_error("No mob scene assigned")
 		return
