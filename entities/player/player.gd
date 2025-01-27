@@ -320,3 +320,6 @@ func remove_item_stats(item: Item) -> void:
 				current_mana = min(current_mana, max_mana)
 				attack_damage -= mod.values[0]
 				spell_damage -= mod.values[0]
+
+func is_equipment_slot_empty(slot: String) -> bool:
+	return equipped_items[slot] == null

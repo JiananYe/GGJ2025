@@ -14,7 +14,6 @@ y_sort_enabled = true
 [node name="Player" parent="." instance=ExtResource("2_7neqf")]
 
 [node name="MobSpawner" parent="." instance=ExtResource("2_ysyyj")]
-mob_scene = null
 
 [node name="HealthBufSpawner" parent="." instance=ExtResource("3_5w8hm")]
 

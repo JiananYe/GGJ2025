@@ -63,7 +63,12 @@ func _on_mouse_exited() -> void:
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event.is_action_pressed("interact"):
-		# Find the game overlay and notify it of the pickup
-		var game_overlay = get_tree().get_first_node_in_group("game_overlay")
-		game_overlay._on_item_pickup(item)
-		queue_free() 
+		# Find the player and check if the slot is empty
+		var player = get_tree().get_first_node_in_group("player")
+		if player and player.is_equipment_slot_empty(item.base_item.item_type.to_lower()):
+			var game_overlay = get_tree().get_first_node_in_group("game_overlay")
+			game_overlay._on_item_pickup(item)
+			queue_free()
+		else:
+			# Optional: Show feedback that slot is occupied
+			print("Cannot pick up item - slot is occupied")

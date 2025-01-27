@@ -23,6 +23,6 @@ func set_item(item: Item) -> void:
 		item_icon.hide()
 
 func _on_gui_input(event: InputEvent) -> void:
-	if event.is_action_pressed("right") and current_item:
+	if event.is_action_pressed("interact") and current_item:
 		emit_signal("item_unequipped", current_item)
 		set_item(null)
