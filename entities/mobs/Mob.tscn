@@ -12,7 +12,7 @@ height = 66.0
 radius = 60.0
 height = 156.0
 
-[node name="Mob" type="CharacterBody2D"]
+[node name="Mob" type="CharacterBody2D" groups=["mob"]]
 script = ExtResource("1_mob")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

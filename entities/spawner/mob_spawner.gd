@@ -3,8 +3,9 @@ class_name MobSpawner
 
 @export var min_spawn_distance: float = 600.0
 @export var max_spawn_distance: float = 1000.0
+@export var max_distance: float = 2000.0  # Maximum distance before respawning
 @export var max_mobs: int = 20
-@export var spawn_interval: float = 0.5  # Time between spawns
+@export var spawn_interval: float = 1  # Time between spawns
 @export var initial_spawn_count: int = 10
 @export var auto_start: bool = true
 @export var boss_scene: PackedScene
@@ -80,6 +81,9 @@ func spawn_mob() -> void:
 	if current_mobs >= max_mobs:
 		return
 		
+	if !active or !player:
+		return
+		
 	# Randomly choose between melee, ranged and fast mob
 	var rand = randf()
 	var mob_scene_to_use
@@ -153,3 +157,26 @@ func _on_boss_spawn_time() -> void:
 		boss.global_position = spawn_pos
 		add_child(boss)
 		emit_signal("mob_spawned", boss)
+
+func _physics_process(_delta: float) -> void:
+	if !player:
+		return
+		
+	# Check all mobs
+	for mob in get_tree().get_nodes_in_group("mob"):
+		if mob.global_position.distance_to(player.global_position) > max_distance:
+			# Get mob type
+			var mob_type = "melee"
+			if mob is RangedMob:
+				mob_type = "ranged"
+			elif mob is FastMob:
+				mob_type = "fast"
+			elif mob is BossMob:
+				continue  # Don't respawn bosses
+			
+			# Remove old mob
+			current_mobs -= 1
+			mob.queue_free()
+			
+			# Spawn new mob
+			spawn_mob()
