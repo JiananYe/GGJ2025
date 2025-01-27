@@ -29,30 +29,29 @@ func load_available_skills() -> void:
 		}
 		available_skills.append(main_skill_data)
 	
-	# Load support skills
-	var support_dir = "res://entities/skills/support"
-	var dir = DirAccess.open(support_dir)
-	if dir:
-		dir.list_dir_begin()
-		var file_name = dir.get_next()
-		while file_name != "":
-			if file_name.ends_with(".gd") and not file_name.begins_with("."):
-				var skill_path = support_dir.path_join(file_name)
-				var skill_script = load(skill_path)
-				if skill_script:
-					var skill_instance = skill_script.new()
-					if skill_instance is Skill:  # Verify it's a skill
-						# Skip if player already has this skill
-						if !has_skill(file_name.get_basename().to_pascal_case()):
-							var skill_data = {
-								"title": skill_instance.skill_name,
-								"description": get_skill_description(skill_instance),
-								"type": "support",
-								"skill": file_name.get_basename().to_pascal_case()
-							}
-							available_skills.append(skill_data)
-			file_name = dir.get_next()
-		dir.list_dir_end()
+	# Directly reference support skills
+	var support_skills = {
+		"AdditionalProjectiles": preload("res://entities/skills/support/additional_projectiles.gd"),
+		"FasterCasting": preload("res://entities/skills/support/faster_casting.gd"),
+		"FasterProjectiles": preload("res://entities/skills/support/faster_projectiles.gd"),
+		"IncreasedDuration": preload("res://entities/skills/support/increased_duration.gd"),
+		"ProjectileDamage": preload("res://entities/skills/support/projectile_damage.gd")
+	}
+	
+	for skill_name in support_skills:
+		var skill_script = support_skills[skill_name]
+		if skill_script:
+			var skill_instance = skill_script.new()
+			if skill_instance is Skill:  # Verify it's a skill
+				# Skip if player already has this skill
+				if !has_skill(skill_name):
+					var skill_data = {
+						"title": skill_instance.skill_name,
+						"description": get_skill_description(skill_instance),
+						"type": "support",
+						"skill": skill_name
+					}
+					available_skills.append(skill_data)
 
 func has_skill(skill_name: String) -> bool:
 	if !player or !player.skill_manager:
