@@ -1,14 +1,13 @@
 extends Node2D
 class_name MobSpawner
 
-@export var mob_scene: PackedScene
-@export var boss_scene: PackedScene = preload("res://entities/mobs/BossMob.tscn")
-@export var min_spawn_distance: float = 500.0
+@export var min_spawn_distance: float = 600.0
 @export var max_spawn_distance: float = 1000.0
 @export var max_mobs: int = 20
 @export var spawn_interval: float = 0.5  # Time between spawns
 @export var initial_spawn_count: int = 10
 @export var auto_start: bool = true
+@export var boss_scene: PackedScene
 @export var melee_mob_scene: PackedScene
 @export var ranged_mob_scene: PackedScene
 

@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://yr2483au35rl"]
+[gd_scene load_steps=5 format=3 uid="uid://yr2483au35rl"]
 
 [ext_resource type="Script" path="res://entities/spawner/mob_spawner.gd" id="1_spawner"]
 [ext_resource type="PackedScene" uid="uid://tuj7ktbyhbuq" path="res://entities/mobs/Mob.tscn" id="2_narhl"]
+[ext_resource type="PackedScene" uid="uid://bkl8kgsm6774m" path="res://entities/mobs/BossMob.tscn" id="2_ortt0"]
 [ext_resource type="PackedScene" uid="uid://c8j2kq4q6d3rx" path="res://entities/mobs/RangedMob.tscn" id="3_p4ede"]
 
 [node name="MobSpawner" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_spawner")
-mob_scene = ExtResource("2_narhl")
+min_spawn_distance = 700.0
+boss_scene = ExtResource("2_ortt0")
 melee_mob_scene = ExtResource("2_narhl")
 ranged_mob_scene = ExtResource("3_p4ede")
