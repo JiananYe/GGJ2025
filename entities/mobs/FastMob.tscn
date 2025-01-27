@@ -4,11 +4,11 @@
 [ext_resource type="Script" path="res://entities/mobs/fast_mob.gd" id="2_fast"]
 [ext_resource type="SpriteFrames" uid="uid://csdptcstkirq1" path="res://entities/mobs/assets/fast_skeleton/fast_skeleton.tres" id="3_fast"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_06p0e"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7gq3l"]
 radius = 25.0
 height = 54.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfadd"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8wrdq"]
 radius = 60.0
 height = 156.0
 
@@ -21,9 +21,12 @@ min_distance = 60.0
 [node name="AnimatedSprite2D" parent="." index="0"]
 modulate = Color(0.683656, 0.701381, 0.183847, 1)
 sprite_frames = ExtResource("3_fast")
+animation = &"dying"
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("CapsuleShape2D_06p0e")
+position = Vector2(0, 58)
+shape = SubResource("CapsuleShape2D_7gq3l")
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
-shape = SubResource("CapsuleShape2D_wfadd")
+position = Vector2(-2, -14)
+shape = SubResource("CapsuleShape2D_8wrdq")
