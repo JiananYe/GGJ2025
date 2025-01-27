@@ -1,9 +1,9 @@
 name: "Godot Build Pipeline"
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 env:
   GODOT_VERSION: 4.3
