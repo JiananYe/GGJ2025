@@ -19,7 +19,7 @@ func _ready() -> void:
 
 func setup_skills() -> void:
 	# Only use projectile attack
-	var projectile_skill = BossProjectileSkill.new()
+	var projectile_skill = RangeProjectileSkill.new()
 	skill_manager.add_skill_link("projectile_attack")
 	skill_manager.link_skills("projectile_attack", projectile_skill, [])
 
