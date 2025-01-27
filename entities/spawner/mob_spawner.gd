@@ -10,6 +10,7 @@ class_name MobSpawner
 @export var boss_scene: PackedScene
 @export var melee_mob_scene: PackedScene
 @export var ranged_mob_scene: PackedScene
+@export var fast_mob_scene: PackedScene
 
 var current_mobs: int = 0
 var spawn_timer: Timer
@@ -76,11 +77,18 @@ func get_random_spawn_position() -> Vector2:
 	return player.global_position + spawn_offset
 
 func spawn_mob() -> void:
-	if !active or current_mobs >= max_mobs or !player:
+	if current_mobs >= max_mobs:
 		return
 		
-	# Randomly choose between melee and ranged mob (30% chance for ranged)
-	var mob_scene_to_use = ranged_mob_scene if randf() < 0.3 else melee_mob_scene
+	# Randomly choose between melee, ranged and fast mob
+	var rand = randf()
+	var mob_scene_to_use
+	if rand < 0.2:  # 20% chance for fast mob
+		mob_scene_to_use = fast_mob_scene
+	elif rand < 0.5:  # 30% chance for ranged mob
+		mob_scene_to_use = ranged_mob_scene
+	else:  # 50% chance for melee mob
+		mob_scene_to_use = melee_mob_scene
 	if !mob_scene_to_use:
 		push_error("No mob scene assigned")
 		return

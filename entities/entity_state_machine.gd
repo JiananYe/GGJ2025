@@ -10,7 +10,7 @@ enum PlayerState {
 	DYING
 }
 
-var speed = 500.0
+var speed = 400.0
 
 var current_state: PlayerState = PlayerState.IDLE
 var is_dead: bool = false

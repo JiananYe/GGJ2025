@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8kgnkbw04w72"]
+
+[ext_resource type="PackedScene" uid="uid://tuj7ktbyhbuq" path="res://entities/mobs/Mob.tscn" id="1_fast"]
+[ext_resource type="Script" path="res://entities/mobs/fast_mob.gd" id="2_fast"]
+[ext_resource type="SpriteFrames" uid="uid://csdptcstkirq1" path="res://entities/mobs/assets/fast_skeleton/fast_skeleton.tres" id="3_fast"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_06p0e"]
+radius = 25.0
+height = 54.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wfadd"]
+radius = 60.0
+height = 156.0
+
+[node name="FastMob" instance=ExtResource("1_fast")]
+script = ExtResource("2_fast")
+movement_speed = 400.0
+detection_range = 1000.0
+min_distance = 60.0
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+modulate = Color(0.683656, 0.701381, 0.183847, 1)
+sprite_frames = ExtResource("3_fast")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CapsuleShape2D_06p0e")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("CapsuleShape2D_wfadd")
