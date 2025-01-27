@@ -50,7 +50,7 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 		
 	if body.has_method("take_hit"):
-		body.take_hit(damage, "lightning")
+		body.take_hit(damage, "physical")
 	start_burst_animation()
 	#elif bounces_remaining > 0:
 		#bounce(body)

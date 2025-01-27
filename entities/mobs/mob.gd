@@ -144,12 +144,18 @@ func apply_difficulty_scaling(multiplier: float) -> void:
 	max_hp *= multiplier
 	current_hp = max_hp
 	
-	# Scale damage
+	# Scale damage with a slightly lower factor to avoid one-shots at high difficulty
+	var damage_multiplier = 1.0 + (multiplier - 1.0) * 0.75  # 75% der Schwierigkeitsskalierung
+	
+	# Scale damage for all skills
 	if skill_manager:
-		var attack_skill = skill_manager.get_main_skill("basic_attack")
-		if attack_skill:
-			attack_skill.base_stats.damage *= multiplier
-			attack_skill.computed_stats.damage *= multiplier
+		for skill_name in skill_manager.skill_links:
+			var skill = skill_manager.get_main_skill(skill_name)
+			if skill:
+				# Skaliere den Basis- und berechneten Schaden
+				if "damage" in skill.base_stats:
+					skill.base_stats.damage *= damage_multiplier
+					skill.computed_stats.damage *= damage_multiplier
 	
 	# Scale experience value with both difficulty and a random factor
 	var base_exp = experience_value

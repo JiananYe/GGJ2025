@@ -50,10 +50,11 @@ var crit_chance: float = 5.0  # Base 5% crit chance
 var crit_multiplier: float = 1.5  # Base 150% crit damage
 
 # Combat Constants
-const ARMOR_EFFECTIVENESS = 0.1  # 10% effectiveness per point
+const ARMOR_EFFECTIVENESS = 0.1  # 10% effectiveness per point (reduziert von 20%)
 const EVASION_EFFECTIVENESS = 0.05  # 5% per point
 const RESISTANCE_CAP = 75.0  # Maximum resistance percentage
-const BASE_DAMAGE_REDUCTION = 0.25  # Base damage reduction from armor
+const BASE_DAMAGE_REDUCTION = 1.0  # Base damage reduction factor (erhöht von 0.5)
+const MAX_ARMOR_REDUCTION = 0.75  # Maximum damage reduction from armor (75% statt 90%)
 
 # Experience Attributes
 var experience: float = 0.0  # Current exp
@@ -131,9 +132,14 @@ func calculate_damage(incoming_damage: float, damage_type: String) -> float:
 	# Apply resistance based on damage type
 	match damage_type:
 		"physical":
-			# Armor damage reduction formula (similar to PoE)
-			var damage_reduction = (armor * ARMOR_EFFECTIVENESS) / (armor * ARMOR_EFFECTIVENESS + BASE_DAMAGE_REDUCTION)
-			damage_reduction = min(damage_reduction, 0.9)  # Cap at 90%
+			# Abgeschwächte Rüstungsformel:
+			# Schadenreduzierung = (Rüstung * Effektivität) / (Rüstung * Effektivität + Basisfaktor)
+			var armor_factor = armor * ARMOR_EFFECTIVENESS
+			var damage_reduction = armor_factor / (armor_factor + BASE_DAMAGE_REDUCTION)
+			
+			# Niedrigere maximale Schadensreduzierung (75%)
+			damage_reduction = min(damage_reduction, MAX_ARMOR_REDUCTION)
+			
 			final_damage *= (1.0 - damage_reduction)
 			
 		"fire", "cold", "lightning":

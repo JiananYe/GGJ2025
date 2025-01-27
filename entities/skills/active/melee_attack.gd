@@ -13,7 +13,7 @@ func _init() -> void:
 
 func setup_base_stats() -> void:
 	base_stats = {
-		"damage": 15.0,  # Base hit damage
+		"damage": 30.0,  # Base hit damage
 		"attack_speed": 1.0,  # Base attack speed multiplier
 		"attack_range": 100.0,  # Base attack range
 	}

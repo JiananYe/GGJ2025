@@ -12,7 +12,7 @@ func _init() -> void:
 
 func setup_base_stats() -> void:
 	base_stats = {
-		"damage": 15.0,
+		"damage": 25.0,
 		"projectile_speed": 500.0,
 		"projectile_amount": 5,  # Fire multiple projectiles
 		"projectile_duration": 2.0

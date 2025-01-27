@@ -8,6 +8,9 @@ var difficulty_level: int = 0
 var difficulty_interval: float = 20.0  # Increase difficulty every 20 seconds
 var boss_spawn_interval: float = 20.0  # Changed to 40 seconds
 var last_boss_spawn_time: float = 0.0  # Track when last boss spawned
+var difficulty_multiplier: float = 1.0
+
+var difficulty_popup = preload("res://entities/ui/DifficultyPopup.tscn")
 
 func reset() -> void:
 	game_time = 0
@@ -23,7 +26,13 @@ func _process(delta: float) -> void:
 	var new_level = floor(game_time / difficulty_interval)
 	if new_level > difficulty_level:
 		difficulty_level = new_level
-		print("diff increased", difficulty_level)
+
+		var ui_layer = get_tree().get_first_node_in_group("ui_layer")
+		if ui_layer:
+			var popup = difficulty_popup.instantiate()
+			popup.setup(difficulty_level)  # Pass the current difficulty level
+			ui_layer.add_child(popup)
+
 		emit_signal("difficulty_increased", difficulty_level)
 
 	# Check for boss spawn
