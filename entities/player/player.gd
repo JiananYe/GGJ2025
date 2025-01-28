@@ -5,6 +5,10 @@ var hp_bar_scene = preload("res://entities/ui/HPBar.tscn")
 
 @onready var skill_manager = $SkillManager
 
+@onready var event_emitter_walking : AudioStreamPlayer = $Stein2
+@onready var event_emitter_attacking : AudioStreamPlayer = $MainCharacterShooting
+@onready var event_emitter_get_hit : AudioStreamPlayer = $HitEnemy
+
 var has_cast_skill: bool = false  # Track if we've cast the skill in this attack state
 
 var level_up_particles = preload("res://entities/ui/LevelUpParticles.tscn")
@@ -12,10 +16,6 @@ var level_up_text = preload("res://entities/ui/LevelUpText.tscn")
 
 var level_up_selection_scene = preload("res://entities/ui/LevelUpSelection.tscn")
 var level_up_selection: Control
-
-var event_emitter_walking := FmodEventEmitter2D.new()
-var event_emitter_attacking := FmodEventEmitter2D.new()
-var event_emitter_get_hit := FmodEventEmitter2D.new()
 
 # Change the signal name
 signal on_level_up(new_level: int)
@@ -32,9 +32,6 @@ var equipped_items: Dictionary = {
 }
 
 func _ready() -> void:
-	event_emitter_walking.event_guid = "{96460e9c-8e03-4beb-bc4b-3d1024601d6f}"
-	event_emitter_attacking.event_guid = "{bf3e6da1-dc87-482b-8a5b-763d0fed6917}"
-	event_emitter_get_hit.event_guid = "{447aa498-ee8b-49ae-864e-2e7888b8ccfc}"
 	super._ready()
 	add_to_group("player")
 	setup_skills()

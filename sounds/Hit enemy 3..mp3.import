@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c7dfk1o1v8jsl"
+path="res://.godot/imported/Hit enemy 3..mp3-e95d0a6ea22bc1ed9113183b0ed3b58e.mp3str"
+
+[deps]
+
+source_file="res://sounds/Hit enemy 3..mp3"
+dest_files=["res://.godot/imported/Hit enemy 3..mp3-e95d0a6ea22bc1ed9113183b0ed3b58e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

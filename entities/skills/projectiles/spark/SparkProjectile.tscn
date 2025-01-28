@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cwjp861jsd6nr"]
+[gd_scene load_steps=13 format=3 uid="uid://cwjp861jsd6nr"]
 
 [ext_resource type="Script" path="res://entities/skills/projectiles/spark/spark_projectile.gd" id="1_l3g64"]
 [ext_resource type="Texture2D" uid="uid://dvae3po5egueu" path="res://entities/skills/projectiles/spark/assets/bubble_pop_one_spritesheet_512px_by_512px_per_frame.png" id="2_a0p6g"]
+[ext_resource type="AudioStream" uid="uid://ui07lo4knfoc" path="res://sounds/bubblepop-01-255624.mp3" id="3_3dcuf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m5t8d"]
 atlas = ExtResource("2_a0p6g")
@@ -87,6 +88,10 @@ shape = SubResource("CircleShape2D_uq1wc")
 [node name="LifetimeTimer" type="Timer" parent="."]
 one_shot = true
 autostart = true
+
+[node name="Bubblepop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3dcuf")
+volume_db = -9.865
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="LifetimeTimer" to="." method="_on_lifetime_timer_timeout"]

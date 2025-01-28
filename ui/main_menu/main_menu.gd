@@ -11,6 +11,8 @@ extends Control
 @onready var settings_window: Window = $CanvasLayer/MainMenu/SettingsWindow
 @onready var main_menu: Control = $CanvasLayer/MainMenu
 @onready var main_main: Node2D = $"../"
+@onready var event_emitter_player_death: AudioStreamPlayer = $CanvasLayer/DeathMenu/DeathScreen
+@onready var event_emitter_music: AudioStreamPlayer = $ThemeMenu
 
 const level_scene = preload("res://scenes/Main.tscn")
 var level: Node2D = null
@@ -25,13 +27,8 @@ var shader_bubble_amplitude := Vector2(0.03, 0.04)
 var bubble_transform_scale := 1
 
 
-var event_emitter_player_death = FmodEventEmitter2D.new()
-var event_emitter_music = FmodEventEmitter2D.new()
-
 
 func _ready() -> void:
-	event_emitter_player_death.event_guid = "{99560804-4ad8-4bdf-8e98-2fb773d49a60}"
-	event_emitter_music.event_guid = "{6d1dd6e0-dae0-4570-b1e8-7606077a2353}"
 	event_emitter_music.play()
 	
 	DirtyDirtyUiManager.main_menu = self
@@ -69,18 +66,13 @@ func trigger_death_menu():
 	black_background.show()
 	GameManager.set_process(false)
 	GameManager.reset()
-	event_emitter_music.volume = 0.4
 	await fade_in(you_died, 2.5)
 	await fade_in(black_background, 2)
 	if level != null:
 		level.queue_free()
 	await fade_out(you_died, 2)
 	event_emitter_music.stop()
-	event_emitter_music.set_parameter_by_id(6950735280407328060, 0)
-	event_emitter_music.set_parameter_by_id(2901611796246114581, 1)
 	await fade_in(main_menu, 2)
-	event_emitter_music.set_parameter_by_id(2901611796246114581, 0)
-	event_emitter_music.volume = 1.0
 	event_emitter_music.play()
 	you_died.hide()
 	main_menu.show()
@@ -132,7 +124,7 @@ func _on_button_quit_pressed() -> void:
 
 
 func _on_button_play_pressed() -> void:
-	event_emitter_music.set_parameter_by_id(6950735280407328060, 1)
+	event_emitter_music.stop()
 	for node in get_tree().get_nodes_in_group("game_overlay"):
 		node.show()
 	main_menu.hide()

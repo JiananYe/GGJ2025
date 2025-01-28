@@ -39,7 +39,6 @@ GameManager="*res://globals/game_manager.gd"
 BaseItemsDB="*res://entities/items/base_items_db.gd"
 ItemManager="*res://globals/item_manager.gd"
 DirtyDirtyUiManager="*res://globals/dirty_dirty_ui_manager.gd"
-FmodManager="*res://addons/fmod/FmodManager.gd"
 
 [display]
 
@@ -52,10 +51,6 @@ window/stretch/mode="viewport"
 [dotnet]
 
 project/assembly_name="GGJ2025"
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/fmod/plugin.cfg")
 
 [input]
 

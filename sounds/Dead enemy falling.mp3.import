@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d334633basuqd"
+path="res://.godot/imported/Dead enemy falling.mp3-2436de6ec6b7c1951f9cee5cbe7b369e.mp3str"
+
+[deps]
+
+source_file="res://sounds/Dead enemy falling.mp3"
+dest_files=["res://.godot/imported/Dead enemy falling.mp3-2436de6ec6b7c1951f9cee5cbe7b369e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,6 +1,8 @@
 extends Area2D
 class_name SparkProjectile
 
+@onready var bubblepop : AudioStreamPlayer = $Bubblepop
+
 var speed: float = 1000.0
 var damage: float = 0.0
 var direction: Vector2 = Vector2.RIGHT
@@ -59,6 +61,8 @@ func start_burst_animation() -> void:
 	is_bursting = true
 	$CollisionShape2D.set_deferred("disabled", true)  # Disable collision
 	$Sprite2D.play("burst")
+	
+	bubblepop.play()
 
 func _on_animation_finished() -> void:
 	if is_bursting:
@@ -82,4 +86,5 @@ func bounce(collision_body: Node2D) -> void:
 	set_collision_mask_value(collision_body.collision_layer, true)
 
 func _on_lifetime_timer_timeout() -> void:
+	await get_tree().create_timer(randf_range(0.0, 0.2)).timeout
 	start_burst_animation()

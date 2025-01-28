@@ -5,12 +5,6 @@
 [node name="MainMain" type="Node2D"]
 y_sort_enabled = true
 
-[node name="FmodBankLoader" type="FmodBankLoader" parent="."]
-bank_paths = ["res:///Master.strings.bank", "res:///Master.bank"]
-
-[node name="FmodEventEmitter2D" type="FmodEventEmitter2D" parent="."]
-event_guid = "{00000000-0000-0000-20ef-da67c55e0000}"
-
 [node name="Menus" parent="." instance=ExtResource("2_y6kvi")]
 anchors_preset = 3
 anchor_left = 1.0

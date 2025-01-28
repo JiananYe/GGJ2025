@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://tuj7ktbyhbuq"]
+[gd_scene load_steps=7 format=3 uid="uid://tuj7ktbyhbuq"]
 
 [ext_resource type="Script" path="res://entities/mobs/mob.gd" id="1_mob"]
 [ext_resource type="SpriteFrames" uid="uid://cgurtrab3366u" path="res://entities/mobs/assets/skeleton/skeleton.tres" id="2_1b2f8"]
 [ext_resource type="Script" path="res://entities/skills/skill_manager.gd" id="3_mveny"]
+[ext_resource type="AudioStream" uid="uid://c7dfk1o1v8jsl" path="res://sounds/Hit enemy 3..mp3" id="4_tdniv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mfgd2"]
 radius = 25.0
@@ -35,3 +36,6 @@ shape = SubResource("CapsuleShape2D_e4ak1")
 
 [node name="SkillManager" type="Node" parent="."]
 script = ExtResource("3_mveny")
+
+[node name="HitEnemy3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tdniv")
