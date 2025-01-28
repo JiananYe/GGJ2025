@@ -67,3 +67,28 @@ jobs:
             ${{ env.PROJECT_NAME }}-web/**
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }} 
+
+  deploy-itch:
+    needs: build
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/master'
+    
+    steps:
+      - name: Download Web Build
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.PROJECT_NAME }}-web
+          path: build/web
+
+      - name: Install Butler
+        run: |
+          curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          unzip butler.zip
+          chmod +x butler
+          ./butler -V
+      
+      - name: Deploy to itch.io
+        env:
+          BUTLER_API_KEY: ${{ secrets.ITCH_API_KEY }}
+        run: |
+          ./butler push build/web jiananye/${{ env.PROJECT_NAME }}:web 
