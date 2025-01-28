@@ -46,7 +46,7 @@ jobs:
   create-release:
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/master'
     
     steps:
       - name: Download All Artifacts
@@ -61,4 +61,4 @@ jobs:
             ${{ env.PROJECT_NAME }}-windows/**
             ${{ env.PROJECT_NAME }}-linux/**
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+          GITHUB_TOKEN: ${{ secrets.TOKEN }} 
