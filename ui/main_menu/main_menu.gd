@@ -13,6 +13,7 @@ extends Control
 @onready var main_main: Node2D = $"../"
 @onready var event_emitter_player_death: AudioStreamPlayer = $CanvasLayer/DeathMenu/DeathScreen
 @onready var event_emitter_music: AudioStreamPlayer = $ThemeMenu
+@onready var event_emitter_music_game: AudioStreamPlayer = $BossFightMusicTry2
 
 const level_scene = preload("res://scenes/Main.tscn")
 var level: Node2D = null
@@ -57,6 +58,7 @@ func _ready() -> void:
 
 
 func trigger_death_menu():
+	event_emitter_music_game.stop()
 	event_emitter_player_death.play()
 	you_died.modulate.a = 0
 	black_background.modulate.a = 0
@@ -132,6 +134,7 @@ func _on_button_play_pressed() -> void:
 	main_main.add_child(level)
 	GameManager.set_process(true)
 	await fade_out(black_background, 1)
+	event_emitter_music_game.play()
 
 
 func _on_button_settings_pressed() -> void:

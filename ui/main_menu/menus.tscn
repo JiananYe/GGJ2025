@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://chbdet1pi0r85"]
+[gd_scene load_steps=13 format=3 uid="uid://chbdet1pi0r85"]
 
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_3l45r"]
 [ext_resource type="Shader" path="res://ui/main_menu/fish_eye.gdshader" id="1_u6k2w"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://d3mjhmn4sayjs" path="res://ui/main_menu/main_menu_bubble.png" id="3_fq87h"]
 [ext_resource type="Texture2D" uid="uid://7lq37lgh1sag" path="res://ui/main_menu/bubble_buttons.png" id="5_h3v45"]
 [ext_resource type="AudioStream" uid="uid://yakigiveaxnl" path="res://sounds/Theme Menu.mp3" id="7_x6403"]
+[ext_resource type="AudioStream" uid="uid://cyjpaijy1yflm" path="res://sounds/Boss fight music try 2.mp3" id="8_ic46i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qj7dt"]
 bg_color = Color(0, 0, 0, 1)
@@ -237,6 +238,9 @@ value = 0.5
 
 [node name="ThemeMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_x6403")
+
+[node name="BossFightMusicTry2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_ic46i")
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/BubbleSprite/ButtonPlay" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="CanvasLayer/MainMenu/BubbleSprite/ButtonSettings" to="." method="_on_button_settings_pressed"]

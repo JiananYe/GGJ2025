@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [windows, linux]
+        platform: [windows, linux, web]
     
     container:
       image: barichello/godot-ci:4.3
@@ -34,7 +34,7 @@ jobs:
       - name: Build
         run: |
           mkdir -v -p build/${{ matrix.platform }}
-          godot --headless --verbose --export-release "${{ matrix.platform }}" ./build/${{ matrix.platform }}/$PROJECT_NAME.${{ matrix.platform == 'windows' && 'exe' || 'x86_64' }}
+          godot --headless --verbose --export-release "${{ matrix.platform }}" ./build/${{ matrix.platform }}/${{ matrix.platform == 'web' && 'index.html' || matrix.platform == 'windows' && env.PROJECT_NAME }}.exe || env.PROJECT_NAME }}.x86_64 }}
       
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
@@ -64,5 +64,6 @@ jobs:
           files: |
             ${{ env.PROJECT_NAME }}-windows/**
             ${{ env.PROJECT_NAME }}-linux/**
+            ${{ env.PROJECT_NAME }}-web/**
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }} 
