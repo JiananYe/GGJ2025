@@ -70,7 +70,6 @@ jobs:
           files: |
             ${{ env.PROJECT_NAME }}-windows/**
             ${{ env.PROJECT_NAME }}-linux/**
-            ${{ env.PROJECT_NAME }}-web/**
         env:
           GITHUB_TOKEN: ${{ secrets.TOKEN }} 
 
