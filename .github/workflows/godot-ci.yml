@@ -7,7 +7,7 @@ on:
 
 env:
   GODOT_VERSION: 4.3
-  PROJECT_NAME: GGJ2025
+  PROJECT_NAME: Floaty
 
 jobs:
   build:
