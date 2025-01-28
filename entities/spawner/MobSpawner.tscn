@@ -10,7 +10,6 @@
 [node name="MobSpawner" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_spawner")
-min_spawn_distance = 700.0
 boss_scene = ExtResource("2_ortt0")
 melee_mob_scene = ExtResource("2_narhl")
 ranged_mob_scene = ExtResource("3_p4ede")

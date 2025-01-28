@@ -1,10 +1,10 @@
 extends Node2D
 class_name MobSpawner
 
-@export var min_spawn_distance: float = 600.0
-@export var max_spawn_distance: float = 1000.0
+@export var min_spawn_distance: float = 700.0
+@export var max_spawn_distance: float = 1100.0
 @export var max_distance: float = 2000.0  # Maximum distance before respawning
-@export var max_mobs: int = 20
+@export var max_mobs: int = 18
 @export var spawn_interval: float = 1  # Time between spawns
 @export var initial_spawn_count: int = 10
 @export var auto_start: bool = true
@@ -12,8 +12,8 @@ class_name MobSpawner
 @export var melee_mob_scene: PackedScene
 @export var ranged_mob_scene: PackedScene
 @export var fast_mob_scene: PackedScene
-@export var fast_mob_start_time: float = 20.0  # Time when fast mobs start spawning
-@export var ranged_mob_start_time: float = 40.0  # Time when ranged mobs start spawning
+@export var fast_mob_start_time: float = 40.0  # Time when fast mobs start spawning
+@export var ranged_mob_start_time: float = 20.0  # Time when ranged mobs start spawning
 @export var final_boss_scene: PackedScene
 @export var final_boss_start_time: float = 80.0  # Zeit bis zum Final Boss Spawn
 
@@ -173,12 +173,12 @@ func clear_spawn_points() -> void:
 
 func _on_difficulty_increased(level: int) -> void:
 	# Increase spawn rate with difficulty
-	spawn_interval = max(0.2, 0.5 - (level * 0.05))  # Decrease interval, minimum 0.2s
+	spawn_interval = max(0.4, 0.5 - (level * 0.05))  # Decrease interval, minimum 0.2s
 	if spawn_timer:
 		spawn_timer.wait_time = spawn_interval
 	
 	# Increase max mobs with difficulty
-	max_mobs = 20 + (level * 2)  # Add 2 max mobs per difficulty level
+	max_mobs = max_mobs + (level * 2)  # Add 2 max mobs per difficulty level
 
 func _on_boss_spawn_time() -> void:
 	if !player:

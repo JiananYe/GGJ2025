@@ -39,18 +39,18 @@
 [ext_resource type="Texture2D" uid="uid://cpsdiu2440v20" path="res://entities/mobs/assets/giant/hurt/Giant_Skeleton_01_Hurt_009.png" id="37_rb46c"]
 [ext_resource type="Texture2D" uid="uid://dkikolv7jgfae" path="res://entities/mobs/assets/giant/hurt/Giant_Skeleton_01_Hurt_010.png" id="38_3ls37"]
 [ext_resource type="Texture2D" uid="uid://cnm026vtdtrh6" path="res://entities/mobs/assets/giant/hurt/Giant_Skeleton_01_Hurt_011.png" id="39_4f8sd"]
-[ext_resource type="Texture2D" uid="uid://dm215athgl06p" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_000.png" id="40_q7u2a"]
-[ext_resource type="Texture2D" uid="uid://wpj38sgmpa8c" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_001.png" id="41_0d85j"]
-[ext_resource type="Texture2D" uid="uid://c3lw8vurtakkw" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_002.png" id="42_ox1xb"]
-[ext_resource type="Texture2D" uid="uid://uc6hncqfjrvg" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_003.png" id="43_blg0j"]
-[ext_resource type="Texture2D" uid="uid://nj7dt08gxv5d" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_004.png" id="44_65u20"]
-[ext_resource type="Texture2D" uid="uid://cutmtnfgd77jo" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_005.png" id="45_r7mnh"]
-[ext_resource type="Texture2D" uid="uid://dl68l5o78t2yp" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_006.png" id="46_da5j4"]
-[ext_resource type="Texture2D" uid="uid://b0cjq7ob1hyt0" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_007.png" id="47_hcgwq"]
-[ext_resource type="Texture2D" uid="uid://bjjne4q0jfj1c" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_008.png" id="48_2en38"]
-[ext_resource type="Texture2D" uid="uid://hoav5psqh84l" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_009.png" id="49_w7v2o"]
-[ext_resource type="Texture2D" uid="uid://bocjx3yg4a5a3" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_010.png" id="50_2wekx"]
-[ext_resource type="Texture2D" uid="uid://djx6movn1vflf" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_011.png" id="51_4g7et"]
+[ext_resource type="Texture2D" uid="uid://dm215athgl06p" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_000.png" id="40_61wfg"]
+[ext_resource type="Texture2D" uid="uid://wpj38sgmpa8c" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_001.png" id="41_wwam4"]
+[ext_resource type="Texture2D" uid="uid://c3lw8vurtakkw" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_002.png" id="42_dg4go"]
+[ext_resource type="Texture2D" uid="uid://uc6hncqfjrvg" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_003.png" id="43_j6k6x"]
+[ext_resource type="Texture2D" uid="uid://nj7dt08gxv5d" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_004.png" id="44_qp2me"]
+[ext_resource type="Texture2D" uid="uid://cutmtnfgd77jo" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_005.png" id="45_xqno8"]
+[ext_resource type="Texture2D" uid="uid://dl68l5o78t2yp" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_006.png" id="46_2yjnt"]
+[ext_resource type="Texture2D" uid="uid://b0cjq7ob1hyt0" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_007.png" id="47_mjeru"]
+[ext_resource type="Texture2D" uid="uid://bjjne4q0jfj1c" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_008.png" id="48_ikeiw"]
+[ext_resource type="Texture2D" uid="uid://hoav5psqh84l" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_009.png" id="49_rpspy"]
+[ext_resource type="Texture2D" uid="uid://bocjx3yg4a5a3" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_010.png" id="50_16af5"]
+[ext_resource type="Texture2D" uid="uid://djx6movn1vflf" path="res://entities/mobs/assets/giant/idlle/Giant_Skeleton_01_Idle_011.png" id="51_py2ms"]
 [ext_resource type="Texture2D" uid="uid://b2cu2eptjqa7l" path="res://entities/mobs/assets/giant/walking/Giant_Skeleton_01_Walking_000.png" id="52_tkmtf"]
 [ext_resource type="Texture2D" uid="uid://bglwohlhquabr" path="res://entities/mobs/assets/giant/walking/Giant_Skeleton_01_Walking_001.png" id="53_2mn1d"]
 [ext_resource type="Texture2D" uid="uid://dglwacbgjeiea" path="res://entities/mobs/assets/giant/walking/Giant_Skeleton_01_Walking_002.png" id="54_i2hb0"]
@@ -206,40 +206,40 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("40_q7u2a")
+"texture": ExtResource("40_61wfg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("41_0d85j")
+"texture": ExtResource("41_wwam4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("42_ox1xb")
+"texture": ExtResource("42_dg4go")
 }, {
 "duration": 1.0,
-"texture": ExtResource("43_blg0j")
+"texture": ExtResource("43_j6k6x")
 }, {
 "duration": 1.0,
-"texture": ExtResource("44_65u20")
+"texture": ExtResource("44_qp2me")
 }, {
 "duration": 1.0,
-"texture": ExtResource("45_r7mnh")
+"texture": ExtResource("45_xqno8")
 }, {
 "duration": 1.0,
-"texture": ExtResource("46_da5j4")
+"texture": ExtResource("46_2yjnt")
 }, {
 "duration": 1.0,
-"texture": ExtResource("47_hcgwq")
+"texture": ExtResource("47_mjeru")
 }, {
 "duration": 1.0,
-"texture": ExtResource("48_2en38")
+"texture": ExtResource("48_ikeiw")
 }, {
 "duration": 1.0,
-"texture": ExtResource("49_w7v2o")
+"texture": ExtResource("49_rpspy")
 }, {
 "duration": 1.0,
-"texture": ExtResource("50_2wekx")
+"texture": ExtResource("50_16af5")
 }, {
 "duration": 1.0,
-"texture": ExtResource("51_4g7et")
+"texture": ExtResource("51_py2ms")
 }],
 "loop": true,
 "name": &"idle",

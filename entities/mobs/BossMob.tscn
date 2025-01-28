@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://tuj7ktbyhbuq" path="res://entities/mobs/Mob.tscn" id="1_boss"]
 [ext_resource type="Script" path="res://entities/mobs/boss_mob.gd" id="2_boss"]
-[ext_resource type="SpriteFrames" uid="uid://ddiy8halvwciu" path="res://entities/mobs/assets/giant_boss/giant_boss.tres" id="3_ymmgl"]
+[ext_resource type="SpriteFrames" uid="uid://ddiy8halvwciu" path="res://entities/mobs/assets/giant/giant.tres" id="3_0vwl5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yobhn"]
 radius = 47.0
@@ -17,7 +17,7 @@ script = ExtResource("2_boss")
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 scale = Vector2(1, 1)
-sprite_frames = ExtResource("3_ymmgl")
+sprite_frames = ExtResource("3_0vwl5")
 
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(4, 178)
