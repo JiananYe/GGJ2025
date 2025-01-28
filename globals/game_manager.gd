@@ -6,7 +6,7 @@ signal boss_spawn_time
 var game_time: float = 0.0
 var difficulty_level: int = 0
 var difficulty_interval: float = 20.0  # Increase difficulty every 20 seconds
-var boss_spawn_interval: float = 20.0  # Changed to 40 seconds
+var boss_spawn_interval: float = 30.0  # Changed to 40 seconds
 var last_boss_spawn_time: float = 0.0  # Track when last boss spawned
 var difficulty_multiplier: float = 1.0
 
@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 
 # Get multiplier for mob stats based on current difficulty
 func get_difficulty_multiplier() -> float:
-	return 1.0 + (difficulty_level * 0.2)  # 20% increase per level
+	return 1.0 + (difficulty_level * 0.1)  # 20% increase per level
 
 # Get experience multiplier based on current difficulty
 func get_exp_multiplier() -> float:

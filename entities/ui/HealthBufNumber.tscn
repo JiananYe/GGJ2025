@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://bjjgvorkotps2"]
+[gd_scene load_steps=3 format=3 uid="uid://bjjgvorkotps2"]
+
+[ext_resource type="Script" path="res://entities/ui/health_buf_number.gd" id="1_8o5d4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_jq0gp"]
 font_size = 32
@@ -7,6 +9,7 @@ outline_size = 3
 outline_color = Color(0, 0, 0, 1)
 
 [node name="HealthBufNumber" type="Node2D"]
+script = ExtResource("1_8o5d4")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
