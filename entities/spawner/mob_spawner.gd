@@ -14,6 +14,8 @@ class_name MobSpawner
 @export var fast_mob_scene: PackedScene
 @export var fast_mob_start_time: float = 20.0  # Time when fast mobs start spawning
 @export var ranged_mob_start_time: float = 40.0  # Time when ranged mobs start spawning
+@export var final_boss_scene: PackedScene
+@export var final_boss_start_time: float = 80.0  # Zeit bis zum Final Boss Spawn
 
 var current_mobs: int = 0
 var spawn_timer: Timer
@@ -182,13 +184,30 @@ func _on_boss_spawn_time() -> void:
 	if !player:
 		return
 		
-	# Spawn boss at a random position around the player
-	var boss = boss_scene.instantiate()
-	if boss:
-		var spawn_pos = get_random_spawn_position()
-		boss.global_position = spawn_pos
-		add_child(boss)
-		emit_signal("mob_spawned", boss)
+	if GameManager.game_time >= final_boss_start_time:
+		# Spawne Final Boss statt normalen Boss
+		var boss = final_boss_scene.instantiate()
+		if boss:
+			stop_spawning()  # Stoppe andere Mob Spawns
+			var spawn_pos = get_random_spawn_position()
+			boss.global_position = spawn_pos
+			add_child(boss)
+			emit_signal("mob_spawned", boss)
+			
+			# Starte Timer für 10 Sekunden
+			await get_tree().create_timer(10.0).timeout
+			
+			# Starte Spawning wieder, wenn der Boss noch lebt
+			if is_instance_valid(boss) and boss.is_inside_tree():
+				start_spawning()
+	else:
+		# Normaler Boss Spawn Code
+		var boss = boss_scene.instantiate()
+		if boss:
+			var spawn_pos = get_random_spawn_position()
+			boss.global_position = spawn_pos
+			add_child(boss)
+			emit_signal("mob_spawned", boss)
 
 func _physics_process(_delta: float) -> void:
 	if !player:

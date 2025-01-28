@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://yr2483au35rl"]
+[gd_scene load_steps=7 format=3 uid="uid://yr2483au35rl"]
 
 [ext_resource type="Script" path="res://entities/spawner/mob_spawner.gd" id="1_spawner"]
 [ext_resource type="PackedScene" uid="uid://tuj7ktbyhbuq" path="res://entities/mobs/Mob.tscn" id="2_narhl"]
 [ext_resource type="PackedScene" uid="uid://bkl8kgsm6774m" path="res://entities/mobs/BossMob.tscn" id="2_ortt0"]
 [ext_resource type="PackedScene" uid="uid://c8j2kq4q6d3rx" path="res://entities/mobs/RangedMob.tscn" id="3_p4ede"]
 [ext_resource type="PackedScene" uid="uid://b8kgnkbw04w72" path="res://entities/mobs/FastMob.tscn" id="4_fast"]
+[ext_resource type="PackedScene" uid="uid://bmwcofgauueby" path="res://entities/mobs/FinalBossMob.tscn" id="4_final"]
 
 [node name="MobSpawner" type="Node2D"]
 y_sort_enabled = true
@@ -14,3 +15,4 @@ boss_scene = ExtResource("2_ortt0")
 melee_mob_scene = ExtResource("2_narhl")
 ranged_mob_scene = ExtResource("3_p4ede")
 fast_mob_scene = ExtResource("4_fast")
+final_boss_scene = ExtResource("4_final")
