@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=70 format=3 uid="uid://ddiy8halvwciu"]
+[gd_resource type="SpriteFrames" load_steps=70 format=3 uid="uid://bdiy8halvwciu"]
 
 [ext_resource type="Texture2D" uid="uid://cm0u33fkdls7n" path="res://entities/mobs/assets/giant_boss/attacking/Giant_Skeleton_02_Attacking_000.png" id="1_fjttr"]
 [ext_resource type="Texture2D" uid="uid://bsfccjxp40nm7" path="res://entities/mobs/assets/giant_boss/attacking/Giant_Skeleton_02_Attacking_001.png" id="2_avh0n"]

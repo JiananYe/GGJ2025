@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://tuj7ktbyhbuq" path="res://entities/mobs/Mob.tscn" id="1_boss"]
 [ext_resource type="Script" path="res://entities/mobs/boss_mob.gd" id="2_boss"]
-[ext_resource type="SpriteFrames" path="res://entities/mobs/assets/giant/giant.tres" id="3_mknk3"]
+[ext_resource type="SpriteFrames" uid="uid://adiy8halvwciu" path="res://entities/mobs/assets/giant/giant.tres" id="3_mknk3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yobhn"]
 radius = 47.0

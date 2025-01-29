@@ -12,10 +12,10 @@ class_name MobSpawner
 @export var melee_mob_scene: PackedScene
 @export var ranged_mob_scene: PackedScene
 @export var fast_mob_scene: PackedScene
-@export var fast_mob_start_time: float = 40.0  # Time when fast mobs start spawning
-@export var ranged_mob_start_time: float = 20.0  # Time when ranged mobs start spawning
 @export var final_boss_scene: PackedScene
 @export var final_boss_start_time: float = 80.0 
+@export var fast_mob_start_time: float = 40.0  # Time when fast mobs start spawning
+@export var ranged_mob_start_time: float = 20.0  # Time when ranged mobs start spawning
 
 var current_mobs: int = 0
 var spawn_timer: Timer
