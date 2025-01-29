@@ -15,7 +15,7 @@ class_name MobSpawner
 @export var fast_mob_start_time: float = 40.0  # Time when fast mobs start spawning
 @export var ranged_mob_start_time: float = 20.0  # Time when ranged mobs start spawning
 @export var final_boss_scene: PackedScene
-@export var final_boss_start_time: float = 80.0  # Zeit bis zum Final Boss Spawn
+@export var final_boss_start_time: float = 80.0 
 
 var current_mobs: int = 0
 var spawn_timer: Timer
