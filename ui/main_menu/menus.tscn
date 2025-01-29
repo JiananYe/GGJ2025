@@ -256,6 +256,7 @@ stream = ExtResource("7_x6403")
 parameters/looping = true
 
 [node name="BossFightMusicTry2" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("8_ic46i")
 
 [connection signal="pressed" from="CanvasLayer/MainMenu/BubbleSprite/ButtonPlay" to="." method="_on_button_play_pressed"]
