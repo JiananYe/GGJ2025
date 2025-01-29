@@ -2,7 +2,7 @@ class_name MainMenu
 extends Control
 
 
-
+@onready var passive_tree: PassiveTree = $CanvasLayer/PassiveTreeMenu
 @onready var death_menu: Control = $CanvasLayer/DeathMenu
 @onready var black_background: Panel = $CanvasLayer/DeathMenu/BlackBackground
 @onready var you_died: MarginContainer = $CanvasLayer/DeathMenu/YouDied
@@ -35,9 +35,10 @@ func _ready() -> void:
 	DirtyDirtyUiManager.main_menu = self
 	for node in get_tree().get_nodes_in_group("game_overlay"):
 		node.hide()
-	#shader_bubble_center = shader_bubble_walk_in_position
-	#move_shader_bubble_center(shader_bubble_walk_in_position)
-	#is_bubble_walking_in = true
+	
+	# Connect passive tree closed signal
+	passive_tree.closed.connect(_on_passive_tree_closed)
+	
 	you_died.modulate.a = 0
 	GameManager.set_process(false)
 
@@ -148,3 +149,12 @@ func _on_h_slider_value_changed(value: float) -> void:
 
 func _on_settings_window_close_requested() -> void:
 	settings_window.hide()
+
+
+func _on_button_passive_tree_pressed() -> void:
+	main_menu.hide()
+	passive_tree.show()
+
+
+func _on_passive_tree_closed() -> void:
+	main_menu.show()

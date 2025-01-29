@@ -31,6 +31,21 @@ var equipped_items: Dictionary = {
 	"bracers": null
 }
 
+# Base stats that will be used when resetting
+const BASE_STATS = {
+	"max_hp": 100.0,
+	"max_mana": 200.0,
+	"armor": 0.0,
+	"evasion": 0.0,
+	"resistance": 0.0,
+	"damage_multiplier": 1.0,
+	"projectile_damage": 0.0,
+	"crit_chance": 5.0,
+	"crit_multiplier": 1.5,
+	"mana_regeneration_rate": 1.0,
+	"cast_speed": 100.0  # Base multiplier of 1.0 (100%)
+}
+
 func _ready() -> void:
 	super._ready()
 	add_to_group("player")
@@ -319,3 +334,20 @@ func remove_item_stats(item: Item) -> void:
 
 func is_equipment_slot_empty(slot: String) -> bool:
 	return equipped_items[slot] == null
+
+func reset_to_base_stats() -> void:
+	max_hp = BASE_STATS.max_hp
+	max_mana = BASE_STATS.max_mana
+	armor = BASE_STATS.armor
+	evasion = BASE_STATS.evasion
+	resistance = BASE_STATS.resistance
+	damage_multiplier = BASE_STATS.damage_multiplier
+	projectile_damage = BASE_STATS.projectile_damage
+	crit_chance = BASE_STATS.crit_chance
+	crit_multiplier = BASE_STATS.crit_multiplier
+	mana_regeneration_rate = BASE_STATS.mana_regeneration_rate
+	cast_speed = BASE_STATS.cast_speed
+	
+	# Set current values
+	current_hp = max_hp
+	current_mana = max_mana

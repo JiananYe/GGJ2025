@@ -1,11 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://chbdet1pi0r85"]
+[gd_scene load_steps=15 format=3 uid="uid://chbdet1pi0r85"]
 
 [ext_resource type="Script" path="res://ui/main_menu/main_menu.gd" id="1_3l45r"]
 [ext_resource type="Shader" path="res://ui/main_menu/fish_eye.gdshader" id="1_u6k2w"]
+[ext_resource type="PackedScene" uid="uid://c8g1853lgdmx5" path="res://menus/passive_tree/passive_tree.tscn" id="2_hmneg"]
 [ext_resource type="Texture2D" uid="uid://q3o3tujij50x" path="res://ui/main_menu/you_died.png" id="2_w6xsl"]
 [ext_resource type="AudioStream" uid="uid://dm31r1tisgcxg" path="res://sounds/Death screen.mp3" id="3_2j1x0"]
 [ext_resource type="Texture2D" uid="uid://d3mjhmn4sayjs" path="res://ui/main_menu/main_menu_bubble.png" id="3_fq87h"]
 [ext_resource type="Texture2D" uid="uid://7lq37lgh1sag" path="res://ui/main_menu/bubble_buttons.png" id="5_h3v45"]
+[ext_resource type="Texture2D" uid="uid://b20jewtlqkh5x" path="res://menus/passive_tree/assets/Icons_19.png" id="7_pokxd"]
 [ext_resource type="AudioStream" uid="uid://yakigiveaxnl" path="res://sounds/Theme Menu.mp3" id="7_x6403"]
 [ext_resource type="AudioStream" uid="uid://cyjpaijy1yflm" path="res://sounds/Boss fight music try 2.mp3" id="8_ic46i"]
 
@@ -236,8 +238,22 @@ max_value = 1.0
 step = 0.001
 value = 0.5
 
+[node name="ButtonPassiveTree" type="TextureButton" parent="CanvasLayer/MainMenu"]
+layout_mode = 0
+offset_left = 501.0
+offset_top = 489.0
+offset_right = 533.0
+offset_bottom = 521.0
+rotation = -1.2706
+scale = Vector2(2.5, 2.5)
+texture_normal = ExtResource("7_pokxd")
+
+[node name="PassiveTreeMenu" parent="CanvasLayer" instance=ExtResource("2_hmneg")]
+visible = false
+
 [node name="ThemeMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_x6403")
+parameters/looping = true
 
 [node name="BossFightMusicTry2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_ic46i")
@@ -247,3 +263,4 @@ stream = ExtResource("8_ic46i")
 [connection signal="pressed" from="CanvasLayer/MainMenu/BubbleSprite/ButtonQuit" to="." method="_on_button_quit_pressed"]
 [connection signal="close_requested" from="CanvasLayer/MainMenu/SettingsWindow" to="." method="_on_settings_window_close_requested"]
 [connection signal="value_changed" from="CanvasLayer/MainMenu/SettingsWindow/MarginContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="pressed" from="CanvasLayer/MainMenu/ButtonPassiveTree" to="." method="_on_button_passive_tree_pressed"]

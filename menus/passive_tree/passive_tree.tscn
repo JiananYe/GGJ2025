@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8g1853lgdmx5"]
+
+[ext_resource type="Script" path="res://menus/passive_tree/passive_tree.gd" id="1_xxxxx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxxxx"]
+bg_color = Color(0.12, 0.12, 0.12, 0.95)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.8, 0.8, 0.8, 0.5)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="PassiveTree" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_xxxxx")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.1, 0.1, 0.1, 1)
+
+[node name="LineContainer" type="Node2D" parent="."]
+
+[node name="NodeContainer" type="Node2D" parent="."]
+
+[node name="PointsLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = 46.0
+grow_horizontal = 0
+text = "Available Points: 0"
+
+[node name="SaveButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -50.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_xxxxx")
+text = "Save & Close"
