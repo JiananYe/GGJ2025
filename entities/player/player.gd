@@ -172,9 +172,13 @@ func die() -> void:
 	is_dead = true
 	DirtyDirtyUiManager.main_menu.trigger_death_menu()
 
-# Override level_up to emit signal and handle player-specific bonuses
 func level_up() -> void:
 	super.level_up()
+	
+	# Send exp to passive tree
+	var passive_tree = get_tree().get_first_node_in_group("passive_tree")
+	if passive_tree:
+		passive_tree.add_ascension_exp(exp_to_next_level)
 	
 	# Increase player stats with level
 	max_hp += 2.0

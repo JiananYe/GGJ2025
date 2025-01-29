@@ -5,7 +5,7 @@ signal point_allocated(node_id: String)
 signal point_deallocated(node_id: String)
 signal closed
 
-var available_points: int = 4
+var available_points: int = 0
 var allocated_nodes: Dictionary = {}  # node_id: PassiveNode
 var starting_node: PassiveNode
 var passive_node_scene = preload("res://menus/passive_tree/passive_node.tscn")
@@ -24,12 +24,20 @@ var initial_container_position: Vector2
 
 # Add at the top with other variables
 var pending_stat_application := false
+var total_points_earned: int = 0  # Track total points from ascension
+var ascension_level: int = 0
+var ascension_exp: float = 0.0
+var exp_to_next_ascension: float = 100.0  # Base exp needed
+const ASCENSION_EXP_MULTIPLIER = 1.5  # Each level requires 50% more exp
 
 @onready var node_container: Node2D = $NodeContainer
 @onready var line_container: Node2D = $LineContainer
 @onready var points_label: Label = $PointsLabel
+@onready var exp_bar: ProgressBar = $ExpBar
 
 func _ready() -> void:
+	add_to_group("passive_tree")
+	
 	# Calculate center of the screen
 	center_offset = get_viewport_rect().size / 2
 	# Move node container to center
@@ -38,6 +46,7 @@ func _ready() -> void:
 	
 	setup_tree()
 	update_points_display()
+	update_exp_bar()
 	
 	# Connect save button
 	$SaveButton.pressed.connect(_on_save_button_pressed)
@@ -373,7 +382,17 @@ func deallocate_node(node: PassiveNode) -> void:
 	apply_node_stats_to_player(node, false)
 
 func update_points_display() -> void:
-	points_label.text = "Available Points: %d" % available_points
+	points_label.text = "Available Points: %d\nAscension Level: %d" % [
+		available_points,
+		ascension_level
+	]
+
+func update_exp_bar() -> void:
+	exp_bar.max_value = get_exp_to_next_ascension()
+	exp_bar.value = ascension_exp
+
+func get_exp_to_next_ascension() -> float:
+	return exp_to_next_ascension * pow(ASCENSION_EXP_MULTIPLIER, ascension_level)
 
 func apply_node_stats_to_player(node: PassiveNode, is_adding: bool) -> void:
 	var player = get_tree().get_first_node_in_group("player")
@@ -473,3 +492,21 @@ func _on_save_button_pressed() -> void:
 	# Hide the passive tree and show main menu
 	hide()
 	emit_signal("closed")
+
+# Add this function to receive exp from player level ups
+func add_ascension_exp(amount: float) -> void:
+	ascension_exp += amount
+	
+	# Check for level ups
+	while ascension_exp >= get_exp_to_next_ascension():
+		ascend()
+	
+	update_exp_bar()
+
+func ascend() -> void:
+	ascension_exp -= get_exp_to_next_ascension()
+	ascension_level += 1
+	available_points += 1
+	total_points_earned += 1
+	update_points_display()
+	update_exp_bar()

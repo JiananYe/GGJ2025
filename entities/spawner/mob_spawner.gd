@@ -188,18 +188,18 @@ func _on_boss_spawn_time() -> void:
 		# Spawne Final Boss statt normalen Boss
 		var boss = final_boss_scene.instantiate()
 		if boss:
-			stop_spawning()  # Stoppe andere Mob Spawns
+			#stop_spawning()  # Stoppe andere Mob Spawns
 			var spawn_pos = get_random_spawn_position()
 			boss.global_position = spawn_pos
 			add_child(boss)
 			emit_signal("mob_spawned", boss)
 			
 			# Starte Timer für 10 Sekunden
-			await get_tree().create_timer(10.0).timeout
+			#await get_tree().create_timer(10.0).timeout
 			
 			# Starte Spawning wieder, wenn der Boss noch lebt
-			if is_instance_valid(boss) and boss.is_inside_tree():
-				start_spawning()
+			#if is_instance_valid(boss) and boss.is_inside_tree():
+			#	start_spawning()
 	else:
 		# Normaler Boss Spawn Code
 		var boss = boss_scene.instantiate()

@@ -8,7 +8,7 @@ const PROJECTILE_BURST_COUNT = 12  # Anzahl der Projektile in alle Richtungen
 func _ready() -> void:
 	super._ready()
 	# Verstärkte Boss-Statistiken
-	max_hp *= 3.0  # Noch mehr HP als normaler Boss
+	max_hp *= 10.0  # Noch mehr HP als normaler Boss
 	current_hp = max_hp
 	movement_speed = 120.0  # Noch langsamer aber tankiger
 	experience_value = 500.0  # Massive EXP-Belohnung

@@ -50,7 +50,7 @@ var crit_chance: float = 5.0  # Base 5% crit chance
 var crit_multiplier: float = 1.5  # Base 150% crit damage
 
 # Combat Constants
-const ARMOR_EFFECTIVENESS = 0.1  # 10% effectiveness per point (reduziert von 20%)
+const ARMOR_EFFECTIVENESS = 0.05  # 10% effectiveness per point (reduziert von 20%)
 const EVASION_EFFECTIVENESS = 0.05  # 5% per point
 const RESISTANCE_CAP = 75.0  # Maximum resistance percentage
 const BASE_DAMAGE_REDUCTION = 1.0  # Base damage reduction factor (erhöht von 0.5)
@@ -132,8 +132,6 @@ func calculate_damage(incoming_damage: float, damage_type: String) -> float:
 	# Apply resistance based on damage type
 	match damage_type:
 		"physical":
-			# Abgeschwächte Rüstungsformel:
-			# Schadenreduzierung = (Rüstung * Effektivität) / (Rüstung * Effektivität + Basisfaktor)
 			var armor_factor = armor * ARMOR_EFFECTIVENESS
 			var damage_reduction = armor_factor / (armor_factor + BASE_DAMAGE_REDUCTION)
 			

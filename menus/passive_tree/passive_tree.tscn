@@ -1,6 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://c8g1853lgdmx5"]
+[gd_scene load_steps=7 format=3 uid="uid://c8g1853lgdmx5"]
 
 [ext_resource type="Script" path="res://menus/passive_tree/passive_tree.gd" id="1_xxxxx"]
+[ext_resource type="Texture2D" uid="uid://0ssydroe5m36" path="res://ui/overlay/assets/xp_bar/action_bar_xp_empty.png" id="2_xxxxx"]
+[ext_resource type="Texture2D" uid="uid://gcwpy2vvlmtf" path="res://ui/overlay/assets/xp_bar/action_bar_xp_fill.png" id="3_xxxxx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xxxxx"]
 bg_color = Color(0.12, 0.12, 0.12, 0.95)
@@ -13,6 +15,12 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bg"]
+texture = ExtResource("2_xxxxx")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fill"]
+texture = ExtResource("3_xxxxx")
 
 [node name="PassiveTree" type="Control"]
 layout_mode = 3
@@ -65,3 +73,13 @@ grow_horizontal = 0
 grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxFlat_xxxxx")
 text = "Save & Close"
+
+[node name="ExpBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 19.0
+grow_horizontal = 2
+theme_override_styles/background = SubResource("StyleBoxTexture_bg")
+theme_override_styles/fill = SubResource("StyleBoxTexture_fill")
+show_percentage = false
