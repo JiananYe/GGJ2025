@@ -1,15 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://c51vk28rl0fog"]
+[gd_scene load_steps=8 format=3 uid="uid://c51vk28rl0fog"]
 
+[ext_resource type="Script" path="res://scenes/Main.gd" id="1_8k4yd"]
 [ext_resource type="PackedScene" uid="uid://csleddnfksqkl" path="res://entities/player/Player.tscn" id="2_7neqf"]
 [ext_resource type="PackedScene" uid="uid://yr2483au35rl" path="res://entities/spawner/MobSpawner.tscn" id="2_ysyyj"]
 [ext_resource type="PackedScene" uid="uid://cuhkp6fiwdgr5" path="res://entities/spawner/HealthBufSpawner.tscn" id="3_5w8hm"]
 [ext_resource type="PackedScene" uid="uid://dcswe86dml24p" path="res://ui/background/Background.tscn" id="3_n77g8"]
 [ext_resource type="PackedScene" uid="uid://dxbtqygb11gjd" path="res://ui/overlay/GameOverlay.tscn" id="4_rjfr3"]
+[ext_resource type="PackedScene" uid="uid://bsdv067sye2ts" path="res://ui/pause_menu/PauseMenu.tscn" id="5_pause_menu"]
 
 [node name="Main" type="Node2D" groups=["main"]]
 y_sort_enabled = true
+script = ExtResource("1_8k4yd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." groups=["ui_layer"]]
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_pause_menu")]
 
 [node name="Player" parent="." instance=ExtResource("2_7neqf")]
 
